@@ -1,0 +1,61 @@
+aid: plandex
+name: Plandex
+description: >-
+  Plandex is an open-source, terminal-based AI coding agent designed to take
+  on large, multi-step software development tasks across many files in real
+  world codebases. Written in Go and released under the MIT license, Plandex
+  builds and executes long-running "plans" — durable, branchable units of
+  work that combine intelligent context management, project maps generated
+  with tree-sitter for 30+ programming languages, an effective 2M-token
+  context window, and a cumulative diff review sandbox that isolates AI
+  edits until a developer explicitly applies them. The tool ships as a CLI
+  with an interactive REPL (fuzzy auto-complete), supports automated
+  debugging of terminal commands and browser applications, integrates with
+  Git for branching and commit-message generation, and is provider-neutral
+  — working with Anthropic Claude, OpenAI, Google Gemini, OpenRouter.ai,
+  and a range of open-source models. Plandex Cloud, the project's
+  previously hosted offering, was wound down on October 3, 2025; Plandex
+  is now distributed exclusively as a self-hosted / local-mode product
+  that users run via Docker with their own model-provider API keys.
+type: Index
+position: Provider
+access: 3rd-Party
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - AI
+  - AI Coding Agent
+  - Developer Tools
+  - Open Source
+  - CLI
+  - Terminal
+  - LLM
+  - Coding Assistant
+  - Agents
+  - Go
+  - Context Management
+  - Plans
+url: https://raw.githubusercontent.com/api-evangelist/plandex/refs/heads/main/apis.yml
+created: '2026-05-25'
+modified: '2026-05-25'
+specificationVersion: '0.20'
+apis: []
+common:
+  - type: Website
+    url: https://plandex.ai
+  - type: GitHub
+    url: https://github.com/plandex-ai/plandex
+  - type: SourceCode
+    url: https://github.com/plandex-ai/plandex
+  - type: License
+    url: https://github.com/plandex-ai/plandex/blob/main/LICENSE.txt
+  - type: Install
+    url: https://plandex.ai/install.sh
+  - type: Discord
+    url: https://discord.gg/plandex-ai
+  - type: Twitter
+    url: https://twitter.com/plandex_ai
+  - type: YouTube
+    url: https://www.youtube.com/@plandex-ai
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
