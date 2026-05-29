@@ -1,0 +1,13 @@
+{
+  "autoApply": false,
+  "autoCommit": true,
+  "autoContinue": true,
+  "autoDebug": false,
+  "autoDebugTries": 5,
+  "autoExec": false,
+  "autoLoadContext": true,
+  "autoUpdateContext": true,
+  "canExec": true,
+  "skipChangesMenu": false,
+  "smartContext": true
+}

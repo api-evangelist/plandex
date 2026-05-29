@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-context-item-structure.json",
+  "name": "ContextItem",
+  "description": "Plandex context item structure. Describes a single loaded source in a plan branch's working context.",
+  "type": "object",
+  "properties": {
+    "id": {"type": "string"},
+    "planId": {"type": "string"},
+    "branch": {"type": "string"},
+    "name": {"type": "string"},
+    "type": {"type": "string", "enum": ["file", "directoryTree", "directoryMap", "url", "note", "image", "pipedData"]},
+    "path": {"type": "string"},
+    "body": {"type": "string", "optional": true},
+    "tokens": {"type": "int64"},
+    "tokensCached": {"type": "boolean"},
+    "imageDetail": {"type": "string", "optional": true, "enum": ["high", "low"]},
+    "addedAt": {"type": "datetime"},
+    "updatedAt": {"type": "datetime"}
+  }
+}

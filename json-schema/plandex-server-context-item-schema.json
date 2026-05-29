@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-context-item-schema.json",
+  "title": "ContextItem",
+  "description": "A single item loaded into a Plandex plan's context: a file, directory tree, directory map, URL, note, image, or piped data.",
+  "type": "object",
+  "required": ["id", "type"],
+  "properties": {
+    "id": {"type": "string"},
+    "planId": {"type": "string"},
+    "branch": {"type": "string"},
+    "name": {"type": "string"},
+    "type": {
+      "type": "string",
+      "enum": ["file", "directoryTree", "directoryMap", "url", "note", "image", "pipedData"],
+      "description": "Source type of the loaded context."
+    },
+    "path": {"type": "string", "description": "Path or URL of the source."},
+    "body": {"type": "string", "description": "Loaded body (may be omitted in list views to save tokens)."},
+    "tokens": {"type": "integer", "minimum": 0},
+    "tokensCached": {"type": "boolean", "description": "Whether the body is cached against the model provider's prompt cache."},
+    "imageDetail": {"type": "string", "enum": ["high", "low"]},
+    "addedAt": {"type": "string", "format": "date-time"},
+    "updatedAt": {"type": "string", "format": "date-time"}
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,129 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Plandex
+providerId: plandex
+created: '2026-05-29'
+modified: '2026-05-29'
+tags:
+  - AI Coding Agent
+  - Developer Tools
+  - CLI
+  - LLM
+  - Open Source
+  - Rate Limiting
+  - Quotas
+description: >-
+  Machine-readable rate-limit definitions for the Plandex server REST API and
+  the Plandex Cloud commercial surface. The open-source Plandex server does
+  not document fixed HTTP rate limits — operators control throttling by their
+  own deployment configuration. Practical limits are imposed by the upstream
+  model providers (OpenAI, Anthropic, OpenRouter, Google, etc.) used by the
+  configured model pack. The historical Plandex Cloud trial tier capped plans
+  and model responses per plan rather than per-request rates. The hosted
+  service is winding down as of 2025-10-03.
+status: historical
+headers:
+  limit: X-RateLimit-Limit
+  remaining: X-RateLimit-Remaining
+  reset: X-RateLimit-Reset
+  retryAfter: Retry-After
+  policy: RateLimit-Policy
+responseCodes:
+  throttled: 429
+  quotaExceeded: 429
+  serviceUnavailable: 503
+limits:
+  - tier: self-hosted
+    name: Self-Hosted Default
+    scope: operator-controlled
+    metric: requests_per_second
+    limit: -1
+    timeFrame: second
+    notes: >-
+      The open-source Plandex server does not enforce a fixed request rate.
+      Operators may put it behind any reverse proxy (nginx, Caddy, Cloud Run)
+      to apply per-IP or per-token throttling. The effective ceiling is set
+      by the upstream model provider's TPM/RPM rate limits on the configured
+      API keys.
+    applies:
+      - Plandex Server REST API
+  - tier: self-hosted
+    name: Streaming Connections Per Plan
+    scope: plan
+    metric: concurrent_streams
+    limit: 1
+    timeFrame: second
+    notes: >-
+      Only one in-progress streaming run (tell/build/connect) is supported per
+      plan branch at a time; subsequent calls reconnect to the active stream.
+    applies:
+      - Plandex Server REST API
+  - tier: cloud-byo
+    name: Plandex Cloud — BYO Trial Plans
+    scope: account
+    metric: plans
+    limit: 10
+    timeFrame: trial
+    notes: Historical; Plandex Cloud no longer accepts new users.
+    applies:
+      - Plandex Cloud (BYO API Key Mode)
+  - tier: cloud-byo
+    name: Plandex Cloud — BYO Trial Responses Per Plan
+    scope: plan
+    metric: model_responses_per_plan
+    limit: 20
+    timeFrame: trial
+    notes: Historical; Plandex Cloud no longer accepts new users.
+    applies:
+      - Plandex Cloud (BYO API Key Mode)
+  - tier: cloud-integrated
+    name: Plandex Cloud — Integrated Credit Balance
+    scope: account
+    metric: credits_usd_balance
+    limit: -1
+    timeFrame: continuous
+    notes: >-
+      Throughput effectively gated by the user's Plandex credit balance and
+      configured monthly budget rather than per-request quotas. Historical;
+      Plandex Cloud no longer accepts new users.
+    applies:
+      - Plandex Cloud (Integrated Models Mode)
+upstreamProviders:
+  - name: OpenRouter
+    note: Default provider for self-hosted Plandex. OpenRouter applies its own per-key TPM/RPM limits.
+  - name: OpenAI
+    note: Direct OpenAI API limits apply when OPENAI_API_KEY is set.
+  - name: Anthropic
+    note: Direct Anthropic limits apply when ANTHROPIC_API_KEY (or a Claude Pro/Max subscription) is used.
+  - name: Google Gemini / Vertex AI
+    note: Google AI Studio / Vertex per-project quotas apply.
+  - name: Azure OpenAI
+    note: Azure per-deployment TPM/RPM quotas apply.
+  - name: AWS Bedrock
+    note: Bedrock per-region per-model quotas apply.
+  - name: DeepSeek / Perplexity / Ollama / Custom Providers
+    note: Each provider enforces its own limits.
+policies:
+  - name: Backoff Strategy
+    description: >-
+      The Plandex CLI implements client-side retries with exponential backoff
+      for transient upstream-provider failures and honors Retry-After when
+      surfaced by the upstream provider. OpenRouter is used as a failover route
+      when other configured providers error.
+  - name: Streaming Reconnect
+    description: >-
+      Clients reconnect to in-progress plan runs via PATCH
+      /plans/{planId}/{branch}/connect. The server is designed to be resilient
+      to brief client disconnects during long-running coding tasks.
+  - name: Operator Throttling
+    description: >-
+      Self-hosting operators are responsible for any rate-limiting they wish to
+      enforce in front of the Plandex server (e.g., per-IP, per-token, per-org).
+  - name: Concurrency Per Plan
+    description: >-
+      Only one streaming run per plan branch is active at any time; CLI flags
+      like --bg run additional plans in the background under separate streams.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

@@ -1,0 +1,10 @@
+{
+  "id": "msg_01HXYZAAAAAAAAAAAAAAAB",
+  "planId": "pln_01HXYZABCDEF1234567890",
+  "branch": "main",
+  "role": "user",
+  "content": "Add structured logging to the auth middleware and a corresponding test that asserts the request ID is propagated.",
+  "tokens": 36,
+  "modelId": null,
+  "createdAt": "2026-05-28T19:44:00Z"
+}

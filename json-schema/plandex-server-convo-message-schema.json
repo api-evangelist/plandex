@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-convo-message-schema.json",
+  "title": "ConvoMessage",
+  "description": "A single message in a Plandex plan conversation (user prompt, assistant response, or system note).",
+  "type": "object",
+  "required": ["id", "planId", "branch", "role", "content"],
+  "properties": {
+    "id": {"type": "string"},
+    "planId": {"type": "string"},
+    "branch": {"type": "string"},
+    "role": {"type": "string", "enum": ["user", "assistant", "system"]},
+    "content": {"type": "string"},
+    "tokens": {"type": "integer", "minimum": 0},
+    "modelId": {"type": "string", "description": "Identifier of the model that produced an assistant message."},
+    "createdAt": {"type": "string", "format": "date-time"}
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,13 @@
+{
+  "id": "ctx_01HXYZAAAAAAAAAAAAAAAA",
+  "planId": "pln_01HXYZABCDEF1234567890",
+  "branch": "main",
+  "name": "app/cli/cmd/tell.go",
+  "type": "file",
+  "path": "/Users/dev/work/plandex/app/cli/cmd/tell.go",
+  "tokens": 4287,
+  "tokensCached": true,
+  "imageDetail": null,
+  "addedAt": "2026-05-12T14:21:14Z",
+  "updatedAt": "2026-05-28T19:44:01Z"
+}

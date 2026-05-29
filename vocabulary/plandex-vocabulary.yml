@@ -1,0 +1,265 @@
+name: Plandex Vocabulary
+description: Domain vocabulary for Plandex, the open-source terminal-based AI coding agent. Captures the core nouns and verbs used across the CLI, REPL, server REST API, model packs, autonomy levels, and Plandex Cloud commercial surface.
+tags:
+  - AI
+  - AI Coding Agent
+  - Developer Tools
+  - CLI
+  - Terminal
+  - LLM
+  - Open Source
+terms:
+  - term: Plan
+    label: Plan
+    definition: A durable, branchable unit of AI coding work scoped to a project. Plans carry their own context, conversation history, pending diffs, and version-controlled state. Created with `plandex new`.
+    related:
+      - Branch
+      - Context
+      - Conversation
+      - Project
+
+  - term: Project
+    label: Project
+    definition: A container of plans associated with a working directory. Auto-created by Plandex when a plan is started from a directory.
+    related:
+      - Plan
+
+  - term: Branch
+    label: Branch
+    definition: A named line of plan evolution that allows exploring multiple paths or comparing different models against the same context. Each branch carries its own pending diffs.
+    related:
+      - Plan
+      - Rewind
+
+  - term: Context
+    label: Context
+    definition: The set of files, directory trees, project maps, URLs, notes, images, and piped data loaded into a plan for the agent to reason over. Plandex supports up to ~2M tokens of effective context.
+    related:
+      - File Map
+      - Smart Context
+      - Auto-Load Context
+
+  - term: File Map
+    label: File Map
+    definition: A tree-sitter-generated index of function/method/class signatures, types, and variable names produced for a directory. Lets Plandex reason over codebases up to ~20M tokens without loading full bodies.
+    related:
+      - Context
+      - Smart Context
+
+  - term: Smart Context
+    label: Smart Context
+    definition: An autonomy mode that loads only the files needed for each implementation step rather than the entire candidate set.
+    related:
+      - Context
+      - Auto-Load Context
+
+  - term: Auto-Load Context
+    label: Auto-Load Context
+    definition: An autonomy mode in which the agent uses the project map to decide which files to load into the plan context.
+    related:
+      - File Map
+      - Smart Context
+
+  - term: Conversation
+    label: Conversation
+    definition: The ordered sequence of prompts and model responses recorded for a plan branch. Prior conversation may be summarized to fit the model's context window.
+    related:
+      - Plan
+      - Rewind
+
+  - term: Rewind
+    label: Rewind
+    definition: Restore a plan branch to an earlier version SHA, discarding subsequent context, conversation, and diffs.
+    related:
+      - Version Control
+      - Branch
+
+  - term: Tell
+    label: Tell
+    definition: The verb (CLI and REST) used to send a prompt to the agent that drives implementation. `plandex tell` opens an editor or accepts an inline prompt; the REST equivalent is POST /plans/{planId}/{branch}/tell.
+    related:
+      - Build
+      - Continue
+
+  - term: Build
+    label: Build
+    definition: Convert pending changes from the conversation into concrete file updates that can be reviewed and applied.
+    related:
+      - Apply
+      - Reject
+
+  - term: Apply
+    label: Apply
+    definition: Move pending file changes from the cumulative diff sandbox onto the on-disk project files. Optionally commits to git.
+    related:
+      - Build
+      - Reject
+
+  - term: Reject
+    label: Reject
+    definition: Discard one, several, or all pending file changes in the cumulative diff sandbox without applying them to the project.
+    related:
+      - Apply
+      - Build
+
+  - term: Cumulative Diff Sandbox
+    label: Cumulative Diff Sandbox
+    definition: The staging area where AI-generated file changes accumulate until a developer explicitly applies them, keeping the working tree clean during review.
+    related:
+      - Apply
+      - Reject
+
+  - term: Autonomy Level
+    label: Autonomy Level
+    definition: A discrete control over how independently the agent runs. Plandex defines five levels — None, Basic, Plus, Semi-Auto, Full-Auto — surfaced as CLI flags `--no-auto / --basic / --plus / --semi / --full`.
+    related:
+      - Auto-Apply
+      - Auto-Exec
+      - Auto-Debug
+
+  - term: Auto-Apply
+    label: Auto-Apply
+    definition: Automatically apply pending changes once a build completes without prompting the user.
+    related:
+      - Autonomy Level
+      - Apply
+
+  - term: Auto-Exec
+    label: Auto-Exec
+    definition: Automatically execute commands after a successful apply without requiring user confirmation.
+    related:
+      - Autonomy Level
+
+  - term: Auto-Debug
+    label: Auto-Debug
+    definition: Repeatedly run a command and let the agent attempt fixes until the command succeeds, rolling back on failure. Defaults to 5 tries.
+    related:
+      - Autonomy Level
+      - Debug
+
+  - term: Debug
+    label: Debug
+    definition: A workflow (`plandex debug`) that wraps a command and asks the agent to repair failures, also available for browser apps when Chrome is installed.
+    related:
+      - Auto-Debug
+
+  - term: Model Pack
+    label: Model Pack
+    definition: A curated composition of models bound to Plandex's internal roles (planner, coder, builder, summarizer, verifier, context loader). Built-in packs include daily, reasoning, strong, cheap, oss, gemini-planner, o3-planner, r1-planner, perplexity-planner, opus-planner.
+    related:
+      - Planner
+      - Coder
+      - Builder
+
+  - term: Planner
+    label: Planner
+    definition: The model role responsible for high-level planning of multi-step coding tasks.
+    related:
+      - Model Pack
+
+  - term: Coder
+    label: Coder
+    definition: The model role responsible for generating code changes during plan implementation.
+    related:
+      - Model Pack
+
+  - term: Builder
+    label: Builder
+    definition: The model role responsible for converting proposed changes into concrete file edits via the cumulative diff sandbox.
+    related:
+      - Model Pack
+
+  - term: Summarizer
+    label: Summarizer
+    definition: The model role used to summarize conversations when they grow past the context window.
+    related:
+      - Model Pack
+
+  - term: Verifier
+    label: Verifier
+    definition: The model role used to validate generated edits before they are applied.
+    related:
+      - Model Pack
+
+  - term: Context Loader
+    label: Context Loader
+    definition: The model role used to pick which files to auto-load into a plan based on the project map.
+    related:
+      - Auto-Load Context
+
+  - term: REPL
+    label: REPL
+    definition: The interactive shell launched by running `plandex` with no subcommand. Supports fuzzy auto-complete and backslash-prefixed equivalents (e.g. `\new`, `\tell`) of all CLI commands.
+    related:
+      - CLI
+
+  - term: CLI
+    label: CLI
+    definition: The Plandex command-line interface installed via `curl -sL https://plandex.ai/install.sh | bash`. Aliased to `pdx`.
+    related:
+      - REPL
+
+  - term: BYO API Key Mode
+    label: BYO API Key Mode
+    definition: A Plandex Cloud billing mode where the user supplies their own model-provider API keys. After trial, $30/month. Cloud is winding down as of 2025-10-03.
+    related:
+      - Integrated Models Mode
+      - Plandex Cloud
+
+  - term: Integrated Models Mode
+    label: Integrated Models Mode
+    definition: A Plandex Cloud billing mode where users pay for model usage via Plandex credits with a small markup, no separate provider accounts needed. $10 trial, then $45/month including $20/mo of non-expiring credits. Cloud is winding down as of 2025-10-03.
+    related:
+      - BYO API Key Mode
+      - Plandex Cloud
+
+  - term: Plandex Cloud
+    label: Plandex Cloud
+    definition: The hosted offering operated by PlandexAI Inc. Announced wind-down 2025-10-03; no longer accepting new users. Replaced by Docker-based self-hosted / local-mode deployment.
+    related:
+      - Self-Hosted
+      - Local Mode
+
+  - term: Self-Hosted
+    label: Self-Hosted
+    definition: Deployment model in which the user runs the Plandex server (and its Postgres database) themselves, typically via the published docker-compose stack.
+    related:
+      - Local Mode
+      - Plandex Cloud
+
+  - term: Local Mode
+    label: Local Mode
+    definition: A self-hosted deployment of Plandex running on the developer's own machine, default-bound to http://localhost:8099. Brings BYO API keys to model providers.
+    related:
+      - Self-Hosted
+
+  - term: OpenRouter
+    label: OpenRouter
+    definition: Third-party model gateway (openrouter.ai) supported as the recommended built-in provider for self-hosted Plandex. Also used as a failover when other providers error.
+    related:
+      - Provider
+
+  - term: Provider
+    label: Provider
+    definition: An upstream model service (Anthropic, OpenAI, Google AI Studio, Google Vertex AI, Azure OpenAI, AWS Bedrock, DeepSeek, Perplexity, OpenRouter, Ollama, or a custom OpenAI-compatible endpoint).
+    related:
+      - Custom Provider
+
+  - term: Custom Provider
+    label: Custom Provider
+    definition: A user-defined provider declared in a JSON config that points Plandex at any OpenAI-compatible API.
+    related:
+      - Provider
+
+  - term: Claude Pro/Max Subscription
+    label: Claude Pro/Max Subscription
+    definition: Anthropic consumer subscription plans that Plandex can use as the credential when calling Anthropic models, in lieu of a direct API key.
+    related:
+      - Provider
+
+  - term: Project Map
+    label: Project Map
+    definition: A combination of tree-sitter-generated file maps that lets the agent reason over very large repositories without loading every file body.
+    related:
+      - File Map
+      - Smart Context

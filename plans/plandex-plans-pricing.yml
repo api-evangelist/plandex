@@ -1,0 +1,217 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Plandex
+providerId: plandex
+created: '2026-05-29'
+modified: '2026-05-29'
+tags:
+  - AI Coding Agent
+  - Developer Tools
+  - CLI
+  - LLM
+  - Open Source
+  - Pricing
+  - Self-Hosted
+description: >-
+  Machine-readable plans and pricing for the Plandex commercial surface. Plandex
+  is open source (MIT) and free to self-host. The hosted Plandex Cloud offering
+  is winding down as of 2025-10-03 and is no longer accepting new users — its
+  tiers are retained here as a historical record of the BYO API Key Mode and
+  Integrated Models Mode billing surface. Conforms to the API Commons Plans
+  schema.
+status: historical
+plans:
+  - id: plandex-self-hosted
+    name: Self-Hosted / Local Mode
+    type: open-source
+    description: >-
+      Free, MIT-licensed Plandex server + CLI run locally with Docker. Users
+      bring their own model-provider API keys (OpenRouter, OpenAI, Anthropic,
+      Google AI Studio, Google Vertex AI, Azure OpenAI, AWS Bedrock, DeepSeek,
+      Perplexity, Ollama, or any OpenAI-compatible custom provider). All model
+      costs accrue with the chosen upstream provider.
+    entries:
+      - label: Plandex Server
+        description: Unlimited self-hosted Plandex server (Docker container) and Postgres database.
+        name: server
+        type: feature
+        metric: instances
+        limit: -1
+        timeFrame: month
+        geo: global
+        domains:
+          - http://localhost:8099
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+      - label: Plandex CLI
+        description: Unlimited installs of the Plandex CLI / pdx alias and REPL on developer machines.
+        name: cli
+        type: feature
+        metric: installs
+        limit: -1
+        timeFrame: month
+        geo: global
+        domains:
+          - https://plandex.ai/install.sh
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+      - label: Plans
+        description: Unlimited plans, branches, and conversation history.
+        name: plans
+        type: feature
+        metric: plans
+        limit: -1
+        timeFrame: month
+        geo: global
+        domains:
+          - http://localhost:8099
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: Public Documentation
+      - name: Community Support (Discord, GitHub Discussions)
+      - name: MIT License
+      - name: Docker self-host
+      - name: BYO model provider API keys
+      - name: All built-in model packs
+      - name: Custom models + custom providers
+      - name: Plandex Server REST API
+      - name: 2M-token effective context window
+      - name: Tree-sitter file maps (30+ languages)
+      - name: Cumulative diff sandbox
+      - name: Git integration
+      - name: Browser debugging (Chrome required)
+
+  - id: plandex-cloud-byo
+    name: Plandex Cloud — BYO API Key Mode (Historical)
+    type: paid
+    description: >-
+      Hosted Plandex with user-supplied model-provider API keys. Free trial up
+      to 10 plans and 20 model responses per plan, then $30/month. Winding down
+      as of 2025-10-03; no new users.
+    status: deprecated
+    deprecatedAt: '2025-10-03'
+    entries:
+      - label: Free Trial
+        description: Free trial with capped plans and model responses.
+        name: trial-plans
+        type: trial
+        metric: plans
+        limit: 10
+        timeFrame: trial
+        geo: global
+        domains:
+          - https://app.plandex.ai
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+      - label: Free Trial — Responses Per Plan
+        description: Maximum model responses per plan during the free trial.
+        name: trial-responses
+        type: trial
+        metric: model_responses_per_plan
+        limit: 20
+        timeFrame: trial
+        geo: global
+        domains:
+          - https://app.plandex.ai
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+      - label: Paid Subscription
+        description: Monthly subscription after the trial; model usage billed directly to the user's own provider accounts.
+        name: subscription
+        type: subscription
+        metric: months
+        limit: 1
+        timeFrame: month
+        geo: global
+        domains:
+          - https://app.plandex.ai
+        unit: 1
+        price: '30.00'
+        userMultiplied: true
+    elements:
+      - name: Hosted Plandex server
+        description: Plandex AI managed the server and database.
+      - name: BYO model provider API keys
+      - name: All built-in model packs
+      - name: Email + community support
+
+  - id: plandex-cloud-integrated
+    name: Plandex Cloud — Integrated Models Mode (Historical)
+    type: paid
+    description: >-
+      Hosted Plandex with integrated model billing. $10 trial includes $10 in
+      credits. After the trial, $45/month includes $20 in credits per month
+      that never expire. Credits were deducted at the upstream model's price
+      plus a small markup to cover card processing. Winding down as of
+      2025-10-03; no new users.
+    status: deprecated
+    deprecatedAt: '2025-10-03'
+    entries:
+      - label: Paid Trial
+        description: $10 one-time trial that includes $10 in usable Plandex credits.
+        name: trial
+        type: trial
+        metric: credits_usd
+        limit: 10
+        timeFrame: trial
+        geo: global
+        domains:
+          - https://app.plandex.ai
+        unit: 1
+        price: '10.00'
+        userMultiplied: false
+      - label: Monthly Subscription
+        description: Monthly paid plan that bundles $20 of non-expiring credits each billing cycle.
+        name: subscription
+        type: subscription
+        metric: months
+        limit: 1
+        timeFrame: month
+        geo: global
+        domains:
+          - https://app.plandex.ai
+        unit: 1
+        price: '45.00'
+        userMultiplied: true
+      - label: Included Monthly Credits
+        description: Plandex credits included each billing cycle for use against integrated model providers.
+        name: monthly-credits
+        type: included-allowance
+        metric: credits_usd
+        limit: 20
+        timeFrame: month
+        geo: global
+        domains:
+          - https://app.plandex.ai
+        unit: 1
+        price: '0.00'
+        userMultiplied: true
+      - label: Pay-as-you-go Credits
+        description: Additional credits purchased via auto-recharge or one-off top-up; billed via Stripe.
+        name: additional-credits
+        type: metered
+        metric: credits_usd
+        limit: -1
+        timeFrame: month
+        geo: global
+        domains:
+          - https://app.plandex.ai
+        unit: 1
+        price: pass-through-plus-markup
+        userMultiplied: false
+    elements:
+      - name: Hosted Plandex server
+      - name: Integrated billing for OpenAI, OpenRouter (Anthropic / Google / open source), Google Vertex (Gemini / Anthropic), Relace
+      - name: Auto-recharge + monthly budget controls
+      - name: Email notification thresholds
+      - name: Stripe payment processing
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

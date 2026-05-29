@@ -1,0 +1,409 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Plandex Server — Plan Management
+  description: 'Plandex Server — Plan Management. Lists and mutates plans across projects, branches, and configuration. Self-contained Naftiko capability covering the non-streaming plan-management surface of the Plandex REST API.'
+  tags:
+    - Plandex
+    - Plans
+    - Projects
+    - Branches
+    - Settings
+  created: '2026-05-29'
+  modified: '2026-05-29'
+binds:
+  - namespace: env
+    keys:
+      PLANDEX_BASE_URL: PLANDEX_BASE_URL
+      PLANDEX_API_TOKEN: PLANDEX_API_TOKEN
+capability:
+  consumes:
+    - type: http
+      namespace: plandex-plan-mgmt
+      baseUri: '{{env.PLANDEX_BASE_URL}}'
+      description: Plandex Server plan-management surface. Defaults to http://localhost:8099 for local-mode deployments.
+      resources:
+        - name: plans
+          path: /plans
+          operations:
+            - name: listplans
+              method: GET
+              description: List Plans
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: plans-ps
+          path: /plans/ps
+          operations:
+            - name: listplansrunning
+              method: GET
+              description: List Running Plans
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: plans-archive
+          path: /plans/archive
+          operations:
+            - name: listarchivedplans
+              method: GET
+              description: List Archived Plans
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: plans-planId
+          path: /plans/{planId}
+          operations:
+            - name: getplan
+              method: GET
+              description: Get Plan
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+            - name: deleteplan
+              method: DELETE
+              description: Delete Plan
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: plans-planId-rename
+          path: /plans/{planId}/rename
+          operations:
+            - name: renameplan
+              method: PATCH
+              description: Rename Plan
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: plans-planId-archive
+          path: /plans/{planId}/archive
+          operations:
+            - name: archiveplan
+              method: PATCH
+              description: Archive Plan
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: plans-planId-unarchive
+          path: /plans/{planId}/unarchive
+          operations:
+            - name: unarchiveplan
+              method: PATCH
+              description: Unarchive Plan
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: projects-projectId-plans
+          path: /projects/{projectId}/plans
+          operations:
+            - name: createplan
+              method: POST
+              description: Create Plan
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: plans-planId-branches
+          path: /plans/{planId}/branches
+          operations:
+            - name: listbranches
+              method: GET
+              description: List Plan Branches
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: plans-planId-config
+          path: /plans/{planId}/config
+          operations:
+            - name: getplanconfig
+              method: GET
+              description: Get Plan Config
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+            - name: updateplanconfig
+              method: PUT
+              description: Update Plan Config
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+      authentication:
+        type: bearer
+        token: '{{env.PLANDEX_API_TOKEN}}'
+  exposes:
+    - type: rest
+      namespace: plandex-plan-mgmt-rest
+      port: 8080
+      description: REST adapter for Plandex Server plan management. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+      resources:
+        - path: /v1/plans
+          name: plans
+          description: REST surface for plans.
+          operations:
+            - method: GET
+              name: listplans
+              description: List Plans
+              call: plandex-plan-mgmt.listplans
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/plans/running
+          name: plans-running
+          description: REST surface for running plans.
+          operations:
+            - method: GET
+              name: listplansrunning
+              description: List Running Plans
+              call: plandex-plan-mgmt.listplansrunning
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/plans/archived
+          name: plans-archived
+          description: REST surface for archived plans.
+          operations:
+            - method: GET
+              name: listarchivedplans
+              description: List Archived Plans
+              call: plandex-plan-mgmt.listarchivedplans
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/plans/{planid}
+          name: plan-by-id
+          description: REST surface for an individual plan.
+          operations:
+            - method: GET
+              name: getplan
+              description: Get Plan
+              call: plandex-plan-mgmt.getplan
+              outputParameters:
+                - type: object
+                  mapping: $.
+            - method: DELETE
+              name: deleteplan
+              description: Delete Plan
+              call: plandex-plan-mgmt.deleteplan
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/plans/{planid}/rename
+          name: plan-rename
+          description: REST surface for plan rename.
+          operations:
+            - method: PATCH
+              name: renameplan
+              description: Rename Plan
+              call: plandex-plan-mgmt.renameplan
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/plans/{planid}/archive
+          name: plan-archive
+          description: REST surface for plan archive.
+          operations:
+            - method: PATCH
+              name: archiveplan
+              description: Archive Plan
+              call: plandex-plan-mgmt.archiveplan
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/plans/{planid}/unarchive
+          name: plan-unarchive
+          description: REST surface for plan unarchive.
+          operations:
+            - method: PATCH
+              name: unarchiveplan
+              description: Unarchive Plan
+              call: plandex-plan-mgmt.unarchiveplan
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/projects/{projectid}/plans
+          name: project-plans
+          description: REST surface for plan creation within a project.
+          operations:
+            - method: POST
+              name: createplan
+              description: Create Plan
+              call: plandex-plan-mgmt.createplan
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/plans/{planid}/branches
+          name: plan-branches
+          description: REST surface for plan branches.
+          operations:
+            - method: GET
+              name: listbranches
+              description: List Plan Branches
+              call: plandex-plan-mgmt.listbranches
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/plans/{planid}/config
+          name: plan-config
+          description: REST surface for plan config.
+          operations:
+            - method: GET
+              name: getplanconfig
+              description: Get Plan Config
+              call: plandex-plan-mgmt.getplanconfig
+              outputParameters:
+                - type: object
+                  mapping: $.
+            - method: PUT
+              name: updateplanconfig
+              description: Update Plan Config
+              call: plandex-plan-mgmt.updateplanconfig
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: plandex-plan-mgmt-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for Plandex Server plan management. One tool per consumed operation, routed inline through this capability's consumes block.
+      tools:
+        - name: list-plans
+          description: List Plans
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: plandex-plan-mgmt.listplans
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: list-plans-running
+          description: List Running Plans
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: plandex-plan-mgmt.listplansrunning
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: list-plans-archived
+          description: List Archived Plans
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: plandex-plan-mgmt.listarchivedplans
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: get-plan
+          description: Get Plan
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: plandex-plan-mgmt.getplan
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: delete-plan
+          description: Delete Plan
+          hints:
+            readOnly: false
+            destructive: true
+            idempotent: false
+          call: plandex-plan-mgmt.deleteplan
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: rename-plan
+          description: Rename Plan
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: plandex-plan-mgmt.renameplan
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: archive-plan
+          description: Archive Plan
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: true
+          call: plandex-plan-mgmt.archiveplan
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: unarchive-plan
+          description: Unarchive Plan
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: true
+          call: plandex-plan-mgmt.unarchiveplan
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: create-plan
+          description: Create Plan
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: plandex-plan-mgmt.createplan
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: list-branches
+          description: List Plan Branches
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: plandex-plan-mgmt.listbranches
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: get-plan-config
+          description: Get Plan Config
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: plandex-plan-mgmt.getplanconfig
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: update-plan-config
+          description: Update Plan Config
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: true
+          call: plandex-plan-mgmt.updateplanconfig
+          outputParameters:
+            - type: object
+              mapping: $.

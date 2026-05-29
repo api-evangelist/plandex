@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-plan-schema.json",
+  "title": "Plan",
+  "description": "A Plandex plan: a durable, branchable unit of AI coding work scoped to a project and persisted across sessions.",
+  "type": "object",
+  "required": ["id", "name", "projectId"],
+  "properties": {
+    "id": {"type": "string", "description": "Server-assigned plan ID."},
+    "name": {"type": "string", "description": "Human-readable plan name (auto-generated after the first prompt if not set)."},
+    "projectId": {"type": "string", "description": "ID of the project the plan belongs to."},
+    "ownerId": {"type": "string", "description": "ID of the user that created the plan."},
+    "currentBranch": {"type": "string", "default": "main", "description": "Branch currently active on the plan."},
+    "contextTokens": {"type": "integer", "minimum": 0, "description": "Total tokens currently loaded into the plan's context."},
+    "convoTokens": {"type": "integer", "minimum": 0, "description": "Total tokens in the plan conversation prior to summarization."},
+    "archivedAt": {"type": ["string", "null"], "format": "date-time"},
+    "createdAt": {"type": "string", "format": "date-time"},
+    "updatedAt": {"type": "string", "format": "date-time"}
+  },
+  "additionalProperties": false
+}

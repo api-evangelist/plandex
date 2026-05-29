@@ -1,0 +1,12 @@
+{
+  "id": "pln_01HXYZABCDEF1234567890",
+  "name": "refactor-auth-middleware",
+  "projectId": "prj_01HXYZ0000000000000001",
+  "ownerId": "usr_01HXYZAAAAAAAAAAAAAAAA",
+  "currentBranch": "main",
+  "contextTokens": 184320,
+  "convoTokens": 42118,
+  "archivedAt": null,
+  "createdAt": "2026-05-12T14:21:09Z",
+  "updatedAt": "2026-05-29T08:02:55Z"
+}

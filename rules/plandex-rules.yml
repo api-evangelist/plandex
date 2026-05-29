@@ -1,0 +1,91 @@
+extends: spectral:oas
+rules:
+  plandex-operation-summary-title-case:
+    description: All operation summaries must use Title Case.
+    severity: warn
+    given: "$.paths[*][*].summary"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^([A-Z][A-Za-z0-9]*(\\s[A-Z][A-Za-z0-9]*)*)$"
+
+  plandex-operation-ids-camel-case:
+    description: operationId must use camelCase.
+    severity: warn
+    given: "$.paths[*][*].operationId"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9]*$"
+
+  plandex-tags-required:
+    description: Each operation must declare at least one tag drawn from the documented Plandex resource taxonomy.
+    severity: error
+    given: "$.paths[*][*]"
+    then:
+      field: tags
+      function: truthy
+
+  plandex-bearer-auth-required:
+    description: The Plandex server API uses bearer-token auth issued by the sign-in flow.
+    severity: error
+    given: "$.components.securitySchemes"
+    then:
+      field: BearerAuth
+      function: truthy
+
+  plandex-server-localhost-default:
+    description: At least one server URL must point at the default local-mode host (http://localhost:8099) so docs reflect the self-hosted deployment.
+    severity: warn
+    given: "$.servers[*].url"
+    then:
+      function: pattern
+      functionOptions:
+        match: "(localhost:8099|api\\.plandex\\.ai)"
+
+  plandex-plan-id-path-param:
+    description: Plan-scoped paths must use a {planId} path parameter named consistently.
+    severity: info
+    given: "$.paths[?(@property =~ /\\/plans\\//)]"
+    then:
+      field: parameters
+      function: truthy
+
+  plandex-branch-id-path-param:
+    description: Branch-scoped paths must use a {branch} path parameter named consistently.
+    severity: info
+    given: "$.paths[?(@property =~ /\\{branch\\}/)]"
+    then:
+      field: parameters
+      function: truthy
+
+  plandex-resource-tag-allow-list:
+    description: Operation tags should be drawn from the documented Plandex resource taxonomy.
+    severity: info
+    given: "$.paths[*][*].tags[*]"
+    then:
+      function: enumeration
+      functionOptions:
+        values:
+          - Accounts
+          - Orgs
+          - Users
+          - Invites
+          - Projects
+          - Plans
+          - Context
+          - Conversation
+          - Branches
+          - Diffs
+          - Settings
+          - Models
+          - FileMap
+          - Execution
+          - Health
+
+  plandex-streaming-endpoint-naming:
+    description: Streaming endpoints (tell, build, connect) should keep their canonical paths to remain compatible with the CLI/REPL.
+    severity: info
+    given: "$.paths"
+    then:
+      function: truthy

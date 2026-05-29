@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-model-pack-structure.json",
+  "name": "ModelPack",
+  "description": "Plandex model pack structure. Captures the per-role model assignment Plandex uses internally (planner, coder, builder, summarizer, verifier, context loader).",
+  "type": "object",
+  "properties": {
+    "id": {"type": "string"},
+    "name": {"type": "string"},
+    "description": {"type": "string", "optional": true},
+    "planner": {"type": "string"},
+    "coder": {"type": "string"},
+    "builder": {"type": "string"},
+    "summarizer": {"type": "string"},
+    "verifier": {"type": "string"},
+    "contextLoader": {"type": "string"},
+    "isBuiltIn": {"type": "boolean"},
+    "isOpenSource": {"type": "boolean"}
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-plan-config-schema.json",
+  "title": "PlanConfig",
+  "description": "Per-plan configuration controlling Plandex's autonomy flags and executor behavior. Maps to the autonomy levels surfaced via CLI flags (--no-auto, --basic, --plus, --semi, --full).",
+  "type": "object",
+  "properties": {
+    "autoApply": {"type": "boolean", "description": "Automatically apply pending changes without prompting."},
+    "autoCommit": {"type": "boolean", "description": "Commit applied changes to git automatically."},
+    "autoContinue": {"type": "boolean", "description": "Continue a multi-step plan without manual confirmation between steps."},
+    "autoDebug": {"type": "boolean", "description": "Automatically execute and debug failing commands."},
+    "autoDebugTries": {"type": "integer", "minimum": 1, "default": 5, "description": "Maximum debug iterations before giving up."},
+    "autoExec": {"type": "boolean", "description": "Execute commands after successful apply without confirmation."},
+    "autoLoadContext": {"type": "boolean", "description": "Use the project map to automatically load context."},
+    "autoUpdateContext": {"type": "boolean", "description": "Automatically refresh outdated context items."},
+    "canExec": {"type": "boolean", "description": "Allow command execution at all."},
+    "skipChangesMenu": {"type": "boolean", "description": "Skip the interactive changes menu when a response finishes."},
+    "smartContext": {"type": "boolean", "description": "Load only the files needed for each step during implementation."}
+  },
+  "additionalProperties": false
+}

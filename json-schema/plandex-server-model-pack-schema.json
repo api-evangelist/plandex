@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-model-pack-schema.json",
+  "title": "ModelPack",
+  "description": "A curated composition of models assigned to Plandex's internal roles (planner, coder, builder, summarizer, verifier, context loader). Built-in packs include daily, reasoning, strong, cheap, oss, and planner-specific variants.",
+  "type": "object",
+  "required": ["id", "name"],
+  "properties": {
+    "id": {"type": "string"},
+    "name": {"type": "string"},
+    "description": {"type": "string"},
+    "planner": {"type": "string", "description": "Model used for high-level planning of multi-step tasks."},
+    "coder": {"type": "string", "description": "Model used for code generation."},
+    "builder": {"type": "string", "description": "Model used to apply edits and resolve diffs."},
+    "summarizer": {"type": "string", "description": "Model used to summarize the conversation."},
+    "verifier": {"type": "string", "description": "Model used to verify generated changes."},
+    "contextLoader": {"type": "string", "description": "Model used to choose files for auto-load-context."},
+    "isBuiltIn": {"type": "boolean"},
+    "isOpenSource": {"type": "boolean"}
+  },
+  "additionalProperties": false
+}

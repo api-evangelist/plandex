@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-branch-schema.json",
+  "title": "Branch",
+  "description": "A branch on a Plandex plan. Plans can be branched for exploring multiple paths or comparing different models.",
+  "type": "object",
+  "required": ["name", "planId"],
+  "properties": {
+    "name": {"type": "string"},
+    "planId": {"type": "string"},
+    "sha": {"type": "string", "description": "Current commit-style version SHA on the branch."},
+    "parent": {"type": "string", "description": "Name of the parent branch."},
+    "createdAt": {"type": "string", "format": "date-time"},
+    "updatedAt": {"type": "string", "format": "date-time"}
+  },
+  "additionalProperties": false
+}

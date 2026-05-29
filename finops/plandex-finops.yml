@@ -1,0 +1,198 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+provider: Plandex
+providerId: plandex
+publisherName: PlandexAI Inc.
+serviceCategory: Developer Tools / AI Coding Agent
+created: '2026-05-29'
+modified: '2026-05-29'
+tags:
+  - AI Coding Agent
+  - Developer Tools
+  - FinOps
+  - Cost Management
+  - FOCUS
+  - LLM
+  - Open Source
+description: >-
+  FinOps framework definition for Plandex. Plandex itself is MIT-licensed and
+  free; the hosted Plandex Cloud (now winding down as of 2025-10-03) charged a
+  subscription plus pass-through-with-markup model credits in Integrated Models
+  Mode, and a flat subscription in BYO API Key Mode. The dominant ongoing cost
+  for users running Plandex (cloud or self-hosted) is upstream model-provider
+  consumption (OpenAI, Anthropic, OpenRouter, Google, Azure, Bedrock, DeepSeek,
+  Perplexity, Relace). This document maps that surface to the FinOps Foundation
+  framework and FOCUS data spec so consuming organizations can build cost
+  visibility, allocation, optimization, and accountability around Plandex.
+status: historical-and-active
+principles:
+  - name: Visibility
+    description: >-
+      Surface per-plan, per-branch, per-user, and per-model spend through the
+      `plandex usage` command (and historical Plandex Cloud billing settings
+      page) so engineering and finance can see where AI coding spend is going
+      in near real time.
+  - name: Allocation
+    description: >-
+      Tag every model call with the consuming user, plan, branch, model pack,
+      role (planner / coder / builder / summarizer / verifier / context-loader),
+      and upstream provider so cost can be charged back to teams.
+  - name: Optimization
+    description: >-
+      Use the daily, cheap, oss, and planner-specialized model packs to trade
+      capability for cost. Use smart-context, auto-load-context, and the
+      tree-sitter file map to avoid sending unnecessary tokens. Use the
+      built-in prompt caching across OpenAI, Anthropic, and Google models to
+      reduce input-token cost on multi-step plans.
+  - name: Accountability
+    description: >-
+      Establish a Plandex budget owner per org or team. Use auto-recharge,
+      monthly budgets, and email notification thresholds (or the equivalent on
+      self-hosted deployments) to keep spend predictable.
+domains:
+  - name: Understand Usage and Cost
+    capabilities:
+      - Data Ingestion
+      - Allocation
+      - Reporting and Analytics
+      - Anomaly Management
+  - name: Quantify Business Value
+    capabilities:
+      - Planning and Estimating
+      - Forecasting
+      - Budgeting
+      - Benchmarking
+      - Unit Economics
+  - name: Optimize Usage and Cost
+    capabilities:
+      - Workload Optimization
+      - Rate Optimization
+      - Architecting for Cloud
+      - Cloud Sustainability
+      - Licensing and SaaS
+  - name: Manage the FinOps Practice
+    capabilities:
+      - FinOps Practice Operations
+      - FinOps Education and Enablement
+      - Invoicing and Chargeback
+      - Onboarding Workloads
+      - Intersecting Disciplines
+billingModel:
+  pricingCategory: Hybrid
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+    - Usage
+    - Purchase
+    - Tax
+    - Credit
+    - Adjustment
+  chargeFrequency: Recurring
+  components:
+    - name: Self-Hosted License
+      description: MIT license — no Plandex-side fee. Upstream model-provider costs are billed by each provider directly.
+      pricing: free
+    - name: Plandex Cloud Subscription (BYO)
+      description: $30/month flat subscription. Historical — Plandex Cloud winding down 2025-10-03.
+      pricing: subscription
+    - name: Plandex Cloud Subscription (Integrated)
+      description: $45/month subscription including $20 of non-expiring credits. Historical — Plandex Cloud winding down 2025-10-03.
+      pricing: subscription-plus-credits
+    - name: Plandex Credits
+      description: Pay-as-you-go usable against integrated model providers; charged at provider price plus a small markup. Historical.
+      pricing: pass-through-with-markup
+    - name: Upstream Provider Charges
+      description: Direct charges from OpenAI, Anthropic, OpenRouter, Google AI Studio, Vertex AI, Azure OpenAI, AWS Bedrock, DeepSeek, Perplexity, Relace based on token usage.
+      pricing: per-token / per-request (provider-defined)
+focusColumns:
+  ServiceName: Plandex
+  ServiceCategory: Developer Tools / AI Coding Agent
+  ProviderName: PlandexAI Inc.
+  PublisherName: PlandexAI Inc.
+  InvoiceIssuerName: PlandexAI Inc.
+  PricingCategory: Hybrid
+  PricingUnit: subscription-month / credit-usd / provider-token
+  BillingCurrency: USD
+  ChargeCategory: Usage
+meters:
+  - name: subscription_month
+    description: Active months of Plandex Cloud subscription (BYO or Integrated).
+    unit: month
+    aggregation: sum
+    dimensions:
+      - mode
+      - org
+      - user
+  - name: plandex_credit_usage
+    description: Plandex credits spent against integrated model providers.
+    unit: credit-usd
+    aggregation: sum
+    dimensions:
+      - org
+      - user
+      - plan
+      - branch
+      - upstream_provider
+      - upstream_model
+      - role
+  - name: plandex_credit_purchase
+    description: Plandex credits purchased (one-off top-up or auto-recharge).
+    unit: credit-usd
+    aggregation: sum
+    dimensions:
+      - org
+      - user
+  - name: upstream_input_tokens
+    description: Input tokens consumed against upstream model providers when running self-hosted (or BYO) Plandex.
+    unit: token
+    aggregation: sum
+    dimensions:
+      - upstream_provider
+      - upstream_model
+      - plan
+      - branch
+      - role
+      - cached
+  - name: upstream_output_tokens
+    description: Output tokens generated by upstream model providers.
+    unit: token
+    aggregation: sum
+    dimensions:
+      - upstream_provider
+      - upstream_model
+      - plan
+      - branch
+      - role
+  - name: model_response_count
+    description: Count of model responses across plans (used by Cloud BYO trial cap).
+    unit: response
+    aggregation: sum
+    dimensions:
+      - plan
+      - branch
+      - role
+allocationTags:
+  - org
+  - user
+  - plan
+  - branch
+  - model_pack
+  - role
+  - upstream_provider
+  - environment
+optimizationLevers:
+  - Use the `cheap` or `oss` model pack for routine tasks; reserve `strong` / `opus-planner` / `o3-planner` for high-value planning.
+  - Enable `smart-context` and `auto-load-context` so only the necessary files for each step are sent to the model.
+  - Use tree-sitter file maps instead of full file bodies for very large projects.
+  - Take advantage of built-in context caching across OpenAI, Anthropic, and Google models to reduce input-token cost on multi-step plans.
+  - Set monthly budgets and email notification thresholds (Plandex Cloud) or external provider budgets (self-hosted) to fail safe.
+  - Use OpenRouter as the failover provider to absorb transient direct-provider errors without halting plans.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

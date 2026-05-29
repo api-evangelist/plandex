@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-plan-structure.json",
+  "name": "Plan",
+  "description": "Plandex plan structure suitable for cross-language code generation. Mirrors the REST API's Plan resource.",
+  "type": "object",
+  "properties": {
+    "id": {"type": "string"},
+    "name": {"type": "string"},
+    "projectId": {"type": "string"},
+    "ownerId": {"type": "string"},
+    "currentBranch": {"type": "string"},
+    "contextTokens": {"type": "int64"},
+    "convoTokens": {"type": "int64"},
+    "archivedAt": {"type": "datetime", "optional": true},
+    "createdAt": {"type": "datetime"},
+    "updatedAt": {"type": "datetime"}
+  }
+}

@@ -13,10 +13,14 @@ description: >-
   debugging of terminal commands and browser applications, integrates with
   Git for branching and commit-message generation, and is provider-neutral
   — working with Anthropic Claude, OpenAI, Google Gemini, OpenRouter.ai,
-  and a range of open-source models. Plandex Cloud, the project's
-  previously hosted offering, was wound down on October 3, 2025; Plandex
-  is now distributed exclusively as a self-hosted / local-mode product
-  that users run via Docker with their own model-provider API keys.
+  Azure OpenAI, AWS Bedrock, DeepSeek, Perplexity, Ollama, and any
+  OpenAI-compatible custom provider. The Plandex Server exposes a REST
+  management/orchestration API (over 60 endpoints across accounts, orgs,
+  projects, plans, branches, context, conversation, diffs, settings, model
+  packs, and streaming execution) that powers both the CLI/REPL and the
+  hosted Plandex Cloud. Plandex Cloud is winding down as of 2025-10-03;
+  Plandex is now distributed primarily as a Docker-based self-hosted /
+  local-mode product that users run with their own model-provider API keys.
 type: Index
 position: Provider
 access: 3rd-Party
@@ -34,28 +38,245 @@ tags:
   - Go
   - Context Management
   - Plans
+  - Self-Hosted
+  - REST
 url: https://raw.githubusercontent.com/api-evangelist/plandex/refs/heads/main/apis.yml
 created: '2026-05-25'
-modified: '2026-05-25'
+modified: '2026-05-29'
 specificationVersion: '0.20'
-apis: []
+apis:
+  - name: Plandex Server API
+    description: >-
+      Management and orchestration REST API exposed by the Plandex server
+      (open-source, Go) used by the Plandex CLI/REPL to drive long-running
+      coding plans across organizations, projects, plans, branches, context,
+      conversation, model packs, and configuration. The same API powered
+      Plandex Cloud (winding down 2025-10-03) and now powers self-hosted /
+      local-mode deployments via Docker. Default local-mode bind is
+      http://localhost:8099.
+    humanURL: https://docs.plandex.ai/development
+    baseURL: http://localhost:8099
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    tags:
+      - AI Coding Agent
+      - Plans
+      - REST
+      - Self-Hosted
+    properties:
+      - type: Documentation
+        url: https://docs.plandex.ai
+      - type: SourceCode
+        url: https://github.com/plandex-ai/plandex/tree/main/app/server
+      - type: OpenAPI
+        url: https://raw.githubusercontent.com/api-evangelist/plandex/main/openapi/plandex-server-openapi.yml
+      - type: JSONSchema
+        url: https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-plan-schema.json
+      - type: JSONSchema
+        url: https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-context-item-schema.json
+      - type: JSONSchema
+        url: https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-branch-schema.json
+      - type: JSONSchema
+        url: https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-convo-message-schema.json
+      - type: JSONSchema
+        url: https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-model-pack-schema.json
+      - type: JSONSchema
+        url: https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-plan-config-schema.json
+      - type: JSONStructure
+        url: https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-plan-structure.json
+      - type: JSONStructure
+        url: https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-context-item-structure.json
+      - type: JSONStructure
+        url: https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-model-pack-structure.json
+      - type: Example
+        url: https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-plan-example.json
+      - type: Example
+        url: https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-context-item-example.json
+      - type: Example
+        url: https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-convo-message-example.json
+      - type: Example
+        url: https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-model-pack-example.json
+      - type: Example
+        url: https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-plan-config-example.json
+      - type: Authentication
+        url: https://docs.plandex.ai/hosting/self-hosting/local-mode-quickstart
+        description: Bearer token issued by the sign-in flow; CLI handles token persistence.
 common:
   - type: Website
     url: https://plandex.ai
+  - type: Documentation
+    url: https://docs.plandex.ai
+  - type: GettingStarted
+    url: https://docs.plandex.ai/quick-start
+  - type: Quickstart
+    url: https://docs.plandex.ai/hosting/self-hosting/local-mode-quickstart
+  - type: Install
+    url: https://plandex.ai/install.sh
   - type: GitHub
+    url: https://github.com/plandex-ai/plandex
+  - type: GitHubOrganization
+    url: https://github.com/plandex-ai
+  - type: GitHubRepository
     url: https://github.com/plandex-ai/plandex
   - type: SourceCode
     url: https://github.com/plandex-ai/plandex
   - type: License
-    url: https://github.com/plandex-ai/plandex/blob/main/LICENSE.txt
-  - type: Install
-    url: https://plandex.ai/install.sh
+    url: https://github.com/plandex-ai/plandex/blob/main/LICENSE
+  - type: CLI
+    url: https://docs.plandex.ai/cli-reference
+  - type: REPL
+    url: https://docs.plandex.ai/repl
+  - type: Pricing
+    url: https://docs.plandex.ai/hosting/cloud
+  - type: PrivacyPolicy
+    url: https://plandex.ai/privacy
+  - type: TermsOfService
+    url: https://plandex.ai/terms
+  - type: Security
+    url: https://docs.plandex.ai/security
+  - type: Blog
+    url: https://plandex.ai/blog
+  - type: ReleaseNotes
+    url: https://github.com/plandex-ai/plandex/releases
+  - type: ChangeLog
+    url: https://github.com/plandex-ai/plandex/releases
+  - type: Support
+    url: https://github.com/plandex-ai/plandex/issues
   - type: Discord
     url: https://discord.gg/plandex-ai
   - type: Twitter
     url: https://twitter.com/plandex_ai
   - type: YouTube
     url: https://www.youtube.com/@plandex-ai
+  - type: Discussions
+    url: https://github.com/plandex-ai/plandex/discussions
+  - type: Issues
+    url: https://github.com/plandex-ai/plandex/issues
+  - type: Docker
+    url: https://hub.docker.com/r/plandexai/plandex-server
+  - type: DockerCompose
+    url: https://github.com/plandex-ai/plandex/blob/main/app/docker-compose.yml
+  - type: SpectralRules
+    url: https://raw.githubusercontent.com/api-evangelist/plandex/main/rules/plandex-rules.yml
+  - type: Vocabulary
+    url: https://raw.githubusercontent.com/api-evangelist/plandex/main/vocabulary/plandex-vocabulary.yml
+  - type: JSON-LD
+    url: https://raw.githubusercontent.com/api-evangelist/plandex/main/json-ld/plandex-context.jsonld
+  - type: NaftikoCapability
+    url: https://raw.githubusercontent.com/api-evangelist/plandex/main/capabilities/plandex-plan-management.yaml
+  - type: NaftikoCapability
+    url: https://raw.githubusercontent.com/api-evangelist/plandex/main/capabilities/plandex-context-and-diffs.yaml
+  - type: Plans
+    url: https://raw.githubusercontent.com/api-evangelist/plandex/main/plans/plandex-plans-pricing.yml
+  - type: RateLimits
+    url: https://raw.githubusercontent.com/api-evangelist/plandex/main/rate-limits/plandex-rate-limits.yml
+  - type: FinOps
+    url: https://raw.githubusercontent.com/api-evangelist/plandex/main/finops/plandex-finops.yml
+  - type: Features
+    data:
+      - name: 2M-Token Effective Context Window
+        description: Smart context management loads only what's needed per step, enabling reliable work in large projects and files.
+      - name: Tree-Sitter Project Maps
+        description: Fast project map generation and syntax validation across 30+ programming languages. Indexes directories with 20M+ tokens.
+      - name: Cumulative Diff Sandbox
+        description: AI-generated changes are isolated from project files until explicitly applied, with cumulative review and roll-back.
+      - name: Configurable Autonomy
+        description: Five autonomy levels — None, Basic, Plus, Semi-Auto, Full-Auto — selectable per-plan or via CLI flags.
+      - name: Automated Debugging
+        description: Repeatedly runs commands (builds, tests, lints, scripts) and auto-fixes failures with rollback. Also debugs browser apps via Chrome.
+      - name: Model Packs
+        description: Curated combinations of models bound to internal roles (planner, coder, builder, summarizer, verifier, context loader); built-in packs for daily, reasoning, strong, cheap, oss, and planner-specialized variants.
+      - name: Multi-Provider Support
+        description: First-class support for Anthropic, OpenAI, Google AI Studio, Google Vertex AI, Azure OpenAI, AWS Bedrock, DeepSeek, Perplexity, OpenRouter, Ollama, and any OpenAI-compatible custom provider.
+      - name: Claude Pro/Max Subscription
+        description: Plandex can use a Claude Pro or Max subscription as the credential when calling Anthropic models.
+      - name: Context Caching
+        description: Built-in context caching across OpenAI, Anthropic, and Google models reduces latency and cost on multi-step plans.
+      - name: Plan Version Control
+        description: Every plan update is versioned, with branching for exploring multiple paths or comparing different models. Rewind to any prior SHA.
+      - name: Git Integration
+        description: Commit message generation, optional auto-commits, and clean integration with project git history.
+      - name: REPL with Fuzzy Auto-Complete
+        description: "Interactive shell launched by `plandex` (or `pdx`) with fuzzy command and file completion; backslash equivalents (`\\new`, `\\tell`) for every command."
+      - name: One-Line Install
+        description: "Zero-dependency CLI install via `curl -sL https://plandex.ai/install.sh | bash`. Docker compose for the self-hosted server."
+      - name: Background Tasks
+        description: "`--bg` flag runs plans concurrently in the background under separate streams."
+      - name: Smart Context + Auto-Load Context
+        description: Loads only the files needed for each implementation step (smart-context) and uses the project map to choose them (auto-load-context).
+      - name: Streaming Plan Execution
+        description: tell, build, and connect endpoints stream model responses live; clients can reconnect to in-progress plans after disconnects.
+  - type: UseCases
+    data:
+      - name: Large Refactors
+        description: Coordinate refactors that touch dozens of files across a large codebase without losing the thread between steps.
+      - name: Polyglot Project Work
+        description: Work in repositories that span 30+ languages thanks to tree-sitter project maps.
+      - name: Adding Features To Real Projects
+        description: Take a feature from idea through chat mode, into a detailed implementation plan, into reviewed and applied file changes.
+      - name: Automated Debugging
+        description: Wrap a flaky build, test, or browser app in `plandex debug` and let Plandex iteratively repair it.
+      - name: Codebase Onboarding And Q&A
+        description: Use chat mode and the project map to ask questions about an unfamiliar codebase.
+      - name: Multi-Model Comparisons
+        description: Branch a plan to run different model packs against the same context and compare results.
+      - name: Long-Running Background Coding
+        description: Kick off `--bg` plans, switch repos, and reconnect to streaming output later.
+      - name: BYO Subscription Coding Agent
+        description: Use a Claude Pro/Max subscription as the credential for an autonomous coding agent.
+      - name: Self-Hosted AI Coding For Sensitive Codebases
+        description: Run the Plandex server in Docker on-prem with locally-hosted Ollama models or a private custom provider.
+  - type: Integrations
+    data:
+      - name: Anthropic Claude
+        description: Direct Anthropic API integration; also supports Claude Pro/Max subscriptions.
+      - name: OpenAI
+        description: Direct OpenAI API integration via OPENAI_API_KEY.
+      - name: OpenRouter.ai
+        description: Default recommended provider for self-hosted Plandex; also used as a failover route across other configured providers.
+      - name: Google AI Studio
+        description: Gemini models via GEMINI_API_KEY.
+      - name: Google Vertex AI
+        description: Gemini and Anthropic models via Vertex AI credentials.
+      - name: Microsoft Azure OpenAI
+        description: OpenAI models on Azure with deployment-name mapping.
+      - name: AWS Bedrock
+        description: Anthropic models on Bedrock with AWS profile or env-var credentials.
+      - name: DeepSeek
+        description: DeepSeek models via DEEPSEEK_API_KEY.
+      - name: Perplexity
+        description: Perplexity models via PERPLEXITY_API_KEY.
+      - name: Ollama
+        description: Local model hosting via Ollama; no API keys required.
+      - name: Custom Providers
+        description: Any OpenAI-compatible API can be added via a JSON config (`plandex models custom`).
+      - name: Relace
+        description: Instant-apply fallback model used when Plandex cannot apply edits deterministically (Plandex Cloud).
+      - name: Git
+        description: Branching, commit-message generation, optional auto-commits.
+      - name: Chrome
+        description: Automated debugging of browser applications when Chrome is installed.
+      - name: Docker
+        description: Self-hosted server distributed as a Docker image with a published docker-compose stack.
+      - name: Postgres
+        description: Backing database for the Plandex server.
+      - name: LiteLLM Proxy
+        description: Embedded LiteLLM proxy used by the server to talk to model providers uniformly.
+      - name: Stripe
+        description: Payment processing for Plandex Cloud subscriptions and credit purchases.
+      - name: Loops
+        description: Email marketing for Plandex updates (Plandex Cloud).
+      - name: Google Analytics
+        description: Basic usage analytics (Plandex Cloud).
+      - name: Rollbar
+        description: Error tracking (Plandex Cloud).
+  - type: Solutions
+    data:
+      - name: Self-Hosted / Local Mode
+        description: Run Plandex locally with Docker and BYO model-provider keys. MIT-licensed and free.
+      - name: Plandex Cloud — BYO API Key Mode (Historical)
+        description: Hosted Plandex with user-supplied provider keys, $30/month after trial. Winding down 2025-10-03.
+      - name: Plandex Cloud — Integrated Models Mode (Historical)
+        description: Hosted Plandex with integrated credit billing, $45/month including $20/mo of non-expiring credits. Winding down 2025-10-03.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

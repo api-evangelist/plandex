@@ -1,0 +1,13 @@
+{
+  "id": "mps_default_daily",
+  "name": "daily",
+  "description": "Default daily driver pack — balanced capability, cost, and speed across roles.",
+  "planner": "anthropic/claude-sonnet-4",
+  "coder": "anthropic/claude-sonnet-4",
+  "builder": "openai/gpt-4.1",
+  "summarizer": "openai/gpt-4.1-mini",
+  "verifier": "anthropic/claude-haiku-4",
+  "contextLoader": "openai/gpt-4.1-mini",
+  "isBuiltIn": true,
+  "isOpenSource": false
+}
