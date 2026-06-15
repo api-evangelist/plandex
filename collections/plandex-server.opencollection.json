@@ -1,0 +1,1483 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Plandex Server API",
+    "version": "2"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Health",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Server Health",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8099/health"
+          },
+          "docs": "Liveness probe used by load balancers and monitoring."
+        },
+        {
+          "info": {
+            "name": "Get Server Version",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8099/version"
+          },
+          "docs": "Returns the running server version string from version.txt."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Accounts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Email Verification",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8099/accounts/email_verifications"
+          },
+          "docs": "Send an email verification PIN to the supplied address."
+        },
+        {
+          "info": {
+            "name": "Check Email Verification Pin",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8099/accounts/email_verifications/check_pin"
+          },
+          "docs": "Verify the PIN previously emailed to the user."
+        },
+        {
+          "info": {
+            "name": "Create Sign In Code",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8099/accounts/sign_in_codes"
+          },
+          "docs": "Issue a single-use sign-in code (alternative to password flow)."
+        },
+        {
+          "info": {
+            "name": "Sign In",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8099/accounts/sign_in"
+          },
+          "docs": "Authenticate a user and start a session."
+        },
+        {
+          "info": {
+            "name": "Sign Out",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8099/accounts/sign_out"
+          },
+          "docs": "Terminate the active session."
+        },
+        {
+          "info": {
+            "name": "Create Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8099/accounts"
+          },
+          "docs": "Register a new Plandex account."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Orgs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Orgs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8099/orgs"
+          },
+          "docs": "List organizations the authenticated user belongs to."
+        },
+        {
+          "info": {
+            "name": "Create Org",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8099/orgs"
+          },
+          "docs": "Create a new organization."
+        },
+        {
+          "info": {
+            "name": "Get Org Session",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8099/orgs/session"
+          },
+          "docs": "Return the active org session context for the authenticated user."
+        },
+        {
+          "info": {
+            "name": "List Org Roles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8099/orgs/roles"
+          },
+          "docs": "List RBAC roles available within the org."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Delete Org User",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:8099/orgs/users/:userId",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Remove a user from the org."
+        },
+        {
+          "info": {
+            "name": "List Users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8099/users"
+          },
+          "docs": "List users in the current org."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Invites",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Invite User",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8099/invites"
+          },
+          "docs": "Send an invite to add a user to the org."
+        },
+        {
+          "info": {
+            "name": "List Pending Invites",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8099/invites/pending"
+          },
+          "docs": "List invites that have not yet been accepted."
+        },
+        {
+          "info": {
+            "name": "List Accepted Invites",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8099/invites/accepted"
+          },
+          "docs": "List invites that have already been accepted."
+        },
+        {
+          "info": {
+            "name": "List All Invites",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8099/invites/all"
+          },
+          "docs": "List all invites regardless of state."
+        },
+        {
+          "info": {
+            "name": "Delete Invite",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:8099/invites/:inviteId",
+            "params": [
+              {
+                "name": "inviteId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Revoke an outstanding invite."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Projects",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Projects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8099/projects"
+          },
+          "docs": "List projects in the current org."
+        },
+        {
+          "info": {
+            "name": "Create Project",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8099/projects"
+          },
+          "docs": "Create a new project container for plans."
+        },
+        {
+          "info": {
+            "name": "Set Current Plan For Project",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:8099/projects/:projectId/set_plan",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Set the active plan for a project."
+        },
+        {
+          "info": {
+            "name": "Rename Project",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:8099/projects/:projectId/rename",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Rename an existing project."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Plans",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8099/projects/:projectId/plans",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create a new plan inside the given project."
+        },
+        {
+          "info": {
+            "name": "Delete All Plans In Project",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:8099/projects/:projectId/plans",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Bulk delete all plans in the project."
+        },
+        {
+          "info": {
+            "name": "List Plans",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8099/plans"
+          },
+          "docs": "List active plans for the user."
+        },
+        {
+          "info": {
+            "name": "List Archived Plans",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8099/plans/archive"
+          },
+          "docs": "List plans the user has archived."
+        },
+        {
+          "info": {
+            "name": "List Running Plans",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8099/plans/ps"
+          },
+          "docs": "List plans currently executing (analogous to `plandex ps`)."
+        },
+        {
+          "info": {
+            "name": "Get Plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8099/plans/:planId",
+            "params": [
+              {
+                "name": "planId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a single plan."
+        },
+        {
+          "info": {
+            "name": "Delete Plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:8099/plans/:planId",
+            "params": [
+              {
+                "name": "planId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a single plan and its history."
+        },
+        {
+          "info": {
+            "name": "Get Current Plan At Sha",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8099/plans/:planId/current_plan/:sha",
+            "params": [
+              {
+                "name": "planId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "sha",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Snapshot of the current plan state at a specific version SHA."
+        },
+        {
+          "info": {
+            "name": "Get Current Plan On Branch",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8099/plans/:planId/:branch/current_plan",
+            "params": [
+              {
+                "name": "planId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "branch",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Snapshot of the current plan state on the specified branch."
+        },
+        {
+          "info": {
+            "name": "Archive Plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://localhost:8099/plans/:planId/archive",
+            "params": [
+              {
+                "name": "planId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Archive a plan."
+        },
+        {
+          "info": {
+            "name": "Unarchive Plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://localhost:8099/plans/:planId/unarchive",
+            "params": [
+              {
+                "name": "planId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Restore an archived plan."
+        },
+        {
+          "info": {
+            "name": "Rename Plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://localhost:8099/plans/:planId/rename",
+            "params": [
+              {
+                "name": "planId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Rename an existing plan."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Branches",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Current Branches By Plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8099/projects/:projectId/plans/current_branches",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Return the current branch for each of the supplied plan IDs."
+        },
+        {
+          "info": {
+            "name": "List Plan Branches",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8099/plans/:planId/branches",
+            "params": [
+              {
+                "name": "planId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List all branches that exist on the plan."
+        },
+        {
+          "info": {
+            "name": "Delete Plan Branch",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:8099/plans/:planId/branches/:branch",
+            "params": [
+              {
+                "name": "planId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "branch",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete an existing branch from the plan."
+        },
+        {
+          "info": {
+            "name": "Create Plan Branch",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8099/plans/:planId/:branch/branches",
+            "params": [
+              {
+                "name": "planId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "branch",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create a new branch off the specified branch of the plan."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Diffs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Apply Plan Changes",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://localhost:8099/plans/:planId/:branch/apply",
+            "params": [
+              {
+                "name": "planId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "branch",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Apply all pending file changes for the plan on the given branch."
+        },
+        {
+          "info": {
+            "name": "Reject All Plan Changes",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://localhost:8099/plans/:planId/:branch/reject_all",
+            "params": [
+              {
+                "name": "planId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "branch",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Reject every pending file change for the plan on the branch."
+        },
+        {
+          "info": {
+            "name": "Reject Plan File Change",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://localhost:8099/plans/:planId/:branch/reject_file",
+            "params": [
+              {
+                "name": "planId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "branch",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Reject pending changes for a single file."
+        },
+        {
+          "info": {
+            "name": "Reject Multiple File Changes",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://localhost:8099/plans/:planId/:branch/reject_files",
+            "params": [
+              {
+                "name": "planId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "branch",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Reject pending changes for the supplied list of files."
+        },
+        {
+          "info": {
+            "name": "Get Plan Diffs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8099/plans/:planId/:branch/diffs",
+            "params": [
+              {
+                "name": "planId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "branch",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get the unified diff of pending changes for the plan branch."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Context",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Context",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8099/plans/:planId/:branch/context",
+            "params": [
+              {
+                "name": "planId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "branch",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List items currently loaded into the plan's context."
+        },
+        {
+          "info": {
+            "name": "Load Context",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8099/plans/:planId/:branch/context",
+            "params": [
+              {
+                "name": "planId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "branch",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Load files, directories, URLs, notes, or images into the plan context."
+        },
+        {
+          "info": {
+            "name": "Update Context",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:8099/plans/:planId/:branch/context",
+            "params": [
+              {
+                "name": "planId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "branch",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Refresh outdated context items."
+        },
+        {
+          "info": {
+            "name": "Delete Context",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:8099/plans/:planId/:branch/context",
+            "params": [
+              {
+                "name": "planId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "branch",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Remove context items from the plan."
+        },
+        {
+          "info": {
+            "name": "Get Context Body",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8099/plans/:planId/:branch/context/:contextId/body",
+            "params": [
+              {
+                "name": "planId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "branch",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "contextId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Return the raw body of a context item."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Conversation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Conversation Messages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8099/plans/:planId/:branch/convo",
+            "params": [
+              {
+                "name": "planId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "branch",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List prompts and responses in the plan branch conversation."
+        },
+        {
+          "info": {
+            "name": "Rewind Plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://localhost:8099/plans/:planId/:branch/rewind",
+            "params": [
+              {
+                "name": "planId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "branch",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Rewind the plan branch to a previous version SHA."
+        },
+        {
+          "info": {
+            "name": "List Plan Logs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8099/plans/:planId/:branch/logs",
+            "params": [
+              {
+                "name": "planId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "branch",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List log events for the plan branch."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Settings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Plan Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8099/plans/:planId/:branch/settings",
+            "params": [
+              {
+                "name": "planId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "branch",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get the model and execution settings for the plan branch."
+        },
+        {
+          "info": {
+            "name": "Update Plan Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:8099/plans/:planId/:branch/settings",
+            "params": [
+              {
+                "name": "planId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "branch",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update the model and execution settings for the plan branch."
+        },
+        {
+          "info": {
+            "name": "Get Default Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8099/default_settings"
+          },
+          "docs": "Get org-level default model and execution settings."
+        },
+        {
+          "info": {
+            "name": "Update Default Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:8099/default_settings"
+          },
+          "docs": "Update org-level default settings."
+        },
+        {
+          "info": {
+            "name": "Get Plan Config",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8099/plans/:planId/config",
+            "params": [
+              {
+                "name": "planId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get the per-plan configuration (autonomy flags, executor settings)."
+        },
+        {
+          "info": {
+            "name": "Update Plan Config",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:8099/plans/:planId/config",
+            "params": [
+              {
+                "name": "planId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update the per-plan configuration."
+        },
+        {
+          "info": {
+            "name": "Get Default Plan Config",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8099/default_plan_config"
+          },
+          "docs": "Get the org-level default plan config used as a template for new plans."
+        },
+        {
+          "info": {
+            "name": "Update Default Plan Config",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:8099/default_plan_config"
+          },
+          "docs": "Update the org-level default plan config."
+        },
+        {
+          "info": {
+            "name": "Get Org User Config",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8099/org_user_config"
+          },
+          "docs": "Get the per-user configuration scoped to the current org."
+        },
+        {
+          "info": {
+            "name": "Update Org User Config",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:8099/org_user_config"
+          },
+          "docs": "Update the per-user configuration scoped to the current org."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Execution",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Plan Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8099/plans/:planId/:branch/status",
+            "params": [
+              {
+                "name": "planId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "branch",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get the execution status for the plan branch."
+        },
+        {
+          "info": {
+            "name": "Tell Plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8099/plans/:planId/:branch/tell",
+            "params": [
+              {
+                "name": "planId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "branch",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Send a prompt to the plan and stream the model response (streaming endpoint, analogous to `plandex tell`)."
+        },
+        {
+          "info": {
+            "name": "Build Plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://localhost:8099/plans/:planId/:branch/build",
+            "params": [
+              {
+                "name": "planId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "branch",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Build pending changes from the conversation into file updates (streaming endpoint, analogous to `plandex build`)."
+        },
+        {
+          "info": {
+            "name": "Connect To Plan Stream",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://localhost:8099/plans/:planId/:branch/connect",
+            "params": [
+              {
+                "name": "planId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "branch",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Connect (or reconnect) to the live stream of an in-progress plan run."
+        },
+        {
+          "info": {
+            "name": "Stop Plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:8099/plans/:planId/:branch/stop",
+            "params": [
+              {
+                "name": "planId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "branch",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Stop an in-progress plan run."
+        },
+        {
+          "info": {
+            "name": "Respond Missing File",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8099/plans/:planId/:branch/respond_missing_file",
+            "params": [
+              {
+                "name": "planId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "branch",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Reply to a model request for a file the agent could not find."
+        },
+        {
+          "info": {
+            "name": "Auto Load Context",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8099/plans/:planId/:branch/auto_load_context",
+            "params": [
+              {
+                "name": "planId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "branch",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Have the agent automatically load context based on the project map."
+        },
+        {
+          "info": {
+            "name": "Get Build Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8099/plans/:planId/:branch/build_status",
+            "params": [
+              {
+                "name": "planId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "branch",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get build status for the plan branch."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Models",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Custom Models",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8099/custom_models"
+          },
+          "docs": "List user-defined custom models."
+        },
+        {
+          "info": {
+            "name": "Upsert Custom Models",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8099/custom_models"
+          },
+          "docs": "Create or update one or more custom models."
+        },
+        {
+          "info": {
+            "name": "Get Custom Model",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8099/custom_models/:modelId",
+            "params": [
+              {
+                "name": "modelId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a single user-defined custom model."
+        },
+        {
+          "info": {
+            "name": "List Custom Providers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8099/custom_providers"
+          },
+          "docs": "List custom (OpenAI-compatible) model providers."
+        },
+        {
+          "info": {
+            "name": "Get Custom Provider",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8099/custom_providers/:providerId",
+            "params": [
+              {
+                "name": "providerId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a custom provider by ID."
+        },
+        {
+          "info": {
+            "name": "List Model Packs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8099/model_sets"
+          },
+          "docs": "List available model packs (daily, strong, cheap, oss, planner-specific, custom)."
+        },
+        {
+          "info": {
+            "name": "Create Model Pack",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8099/model_sets"
+          },
+          "docs": "Create a new model pack composition."
+        },
+        {
+          "info": {
+            "name": "Update Model Pack",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:8099/model_sets/:setId",
+            "params": [
+              {
+                "name": "setId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update an existing model pack."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "FileMap",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get File Map",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8099/file_map"
+          },
+          "docs": "Generate a tree-sitter file map for the supplied directory or files."
+        },
+        {
+          "info": {
+            "name": "Load Cached File Map",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8099/plans/:planId/:branch/load_cached_file_map",
+            "params": [
+              {
+                "name": "planId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "branch",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Load a cached file map into the plan context."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

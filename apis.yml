@@ -1,26 +1,19 @@
 aid: plandex
 name: Plandex
 description: >-
-  Plandex is an open-source, terminal-based AI coding agent designed to take
-  on large, multi-step software development tasks across many files in real
-  world codebases. Written in Go and released under the MIT license, Plandex
-  builds and executes long-running "plans" — durable, branchable units of
-  work that combine intelligent context management, project maps generated
-  with tree-sitter for 30+ programming languages, an effective 2M-token
-  context window, and a cumulative diff review sandbox that isolates AI
-  edits until a developer explicitly applies them. The tool ships as a CLI
-  with an interactive REPL (fuzzy auto-complete), supports automated
-  debugging of terminal commands and browser applications, integrates with
-  Git for branching and commit-message generation, and is provider-neutral
-  — working with Anthropic Claude, OpenAI, Google Gemini, OpenRouter.ai,
-  Azure OpenAI, AWS Bedrock, DeepSeek, Perplexity, Ollama, and any
-  OpenAI-compatible custom provider. The Plandex Server exposes a REST
-  management/orchestration API (over 60 endpoints across accounts, orgs,
-  projects, plans, branches, context, conversation, diffs, settings, model
-  packs, and streaming execution) that powers both the CLI/REPL and the
-  hosted Plandex Cloud. Plandex Cloud is winding down as of 2025-10-03;
-  Plandex is now distributed primarily as a Docker-based self-hosted /
-  local-mode product that users run with their own model-provider API keys.
+  Plandex is an open-source, terminal-based AI coding agent designed to take on large, multi-step software development
+  tasks across many files in real world codebases. Written in Go and released under the MIT license, Plandex builds and
+  executes long-running "plans" — durable, branchable units of work that combine intelligent context management, project
+  maps generated with tree-sitter for 30+ programming languages, an effective 2M-token context window, and a cumulative
+  diff review sandbox that isolates AI edits until a developer explicitly applies them. The tool ships as a CLI with an
+  interactive REPL (fuzzy auto-complete), supports automated debugging of terminal commands and browser applications,
+  integrates with Git for branching and commit-message generation, and is provider-neutral — working with Anthropic
+  Claude, OpenAI, Google Gemini, OpenRouter.ai, Azure OpenAI, AWS Bedrock, DeepSeek, Perplexity, Ollama, and any
+  OpenAI-compatible custom provider. The Plandex Server exposes a REST management/orchestration API (over 60 endpoints
+  across accounts, orgs, projects, plans, branches, context, conversation, diffs, settings, model packs, and streaming
+  execution) that powers both the CLI/REPL and the hosted Plandex Cloud. Plandex Cloud is winding down as of 2025-10-03;
+  Plandex is now distributed primarily as a Docker-based self-hosted / local-mode product that users run with their own
+  model-provider API keys.
 type: Index
 position: Provider
 access: 3rd-Party
@@ -47,13 +40,10 @@ specificationVersion: '0.20'
 apis:
   - name: Plandex Server API
     description: >-
-      Management and orchestration REST API exposed by the Plandex server
-      (open-source, Go) used by the Plandex CLI/REPL to drive long-running
-      coding plans across organizations, projects, plans, branches, context,
-      conversation, model packs, and configuration. The same API powered
-      Plandex Cloud (winding down 2025-10-03) and now powers self-hosted /
-      local-mode deployments via Docker. Default local-mode bind is
-      http://localhost:8099.
+      Management and orchestration REST API exposed by the Plandex server (open-source, Go) used by the Plandex CLI/REPL
+      to drive long-running coding plans across organizations, projects, plans, branches, context, conversation, model
+      packs, and configuration. The same API powered Plandex Cloud (winding down 2025-10-03) and now powers self-hosted
+      / local-mode deployments via Docker. Default local-mode bind is http://localhost:8099.
     humanURL: https://docs.plandex.ai/development
     baseURL: http://localhost:8099
     image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
@@ -72,27 +62,36 @@ apis:
       - type: JSONSchema
         url: https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-plan-schema.json
       - type: JSONSchema
-        url: https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-context-item-schema.json
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-context-item-schema.json
       - type: JSONSchema
         url: https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-branch-schema.json
       - type: JSONSchema
-        url: https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-convo-message-schema.json
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-convo-message-schema.json
       - type: JSONSchema
-        url: https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-model-pack-schema.json
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-model-pack-schema.json
       - type: JSONSchema
-        url: https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-plan-config-schema.json
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-plan-config-schema.json
       - type: JSONStructure
-        url: https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-plan-structure.json
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-plan-structure.json
       - type: JSONStructure
-        url: https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-context-item-structure.json
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-context-item-structure.json
       - type: JSONStructure
-        url: https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-model-pack-structure.json
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-model-pack-structure.json
       - type: Example
         url: https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-plan-example.json
       - type: Example
-        url: https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-context-item-example.json
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-context-item-example.json
       - type: Example
-        url: https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-convo-message-example.json
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-convo-message-example.json
       - type: Example
         url: https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-model-pack-example.json
       - type: Example
@@ -161,10 +160,6 @@ common:
     url: https://raw.githubusercontent.com/api-evangelist/plandex/main/vocabulary/plandex-vocabulary.yml
   - type: JSON-LD
     url: https://raw.githubusercontent.com/api-evangelist/plandex/main/json-ld/plandex-context.jsonld
-  - type: NaftikoCapability
-    url: https://raw.githubusercontent.com/api-evangelist/plandex/main/capabilities/plandex-plan-management.yaml
-  - type: NaftikoCapability
-    url: https://raw.githubusercontent.com/api-evangelist/plandex/main/capabilities/plandex-context-and-diffs.yaml
   - type: Plans
     url: https://raw.githubusercontent.com/api-evangelist/plandex/main/plans/plandex-plans-pricing.yml
   - type: RateLimits
@@ -174,45 +169,73 @@ common:
   - type: Features
     data:
       - name: 2M-Token Effective Context Window
-        description: Smart context management loads only what's needed per step, enabling reliable work in large projects and files.
+        description: >-
+          Smart context management loads only what's needed per step, enabling reliable work in large projects and
+          files.
       - name: Tree-Sitter Project Maps
-        description: Fast project map generation and syntax validation across 30+ programming languages. Indexes directories with 20M+ tokens.
+        description: >-
+          Fast project map generation and syntax validation across 30+ programming languages. Indexes directories with
+          20M+ tokens.
       - name: Cumulative Diff Sandbox
-        description: AI-generated changes are isolated from project files until explicitly applied, with cumulative review and roll-back.
+        description: >-
+          AI-generated changes are isolated from project files until explicitly applied, with cumulative review and
+          roll-back.
       - name: Configurable Autonomy
         description: Five autonomy levels — None, Basic, Plus, Semi-Auto, Full-Auto — selectable per-plan or via CLI flags.
       - name: Automated Debugging
-        description: Repeatedly runs commands (builds, tests, lints, scripts) and auto-fixes failures with rollback. Also debugs browser apps via Chrome.
+        description: >-
+          Repeatedly runs commands (builds, tests, lints, scripts) and auto-fixes failures with rollback. Also debugs
+          browser apps via Chrome.
       - name: Model Packs
-        description: Curated combinations of models bound to internal roles (planner, coder, builder, summarizer, verifier, context loader); built-in packs for daily, reasoning, strong, cheap, oss, and planner-specialized variants.
+        description: >-
+          Curated combinations of models bound to internal roles (planner, coder, builder, summarizer, verifier, context
+          loader); built-in packs for daily, reasoning, strong, cheap, oss, and planner-specialized variants.
       - name: Multi-Provider Support
-        description: First-class support for Anthropic, OpenAI, Google AI Studio, Google Vertex AI, Azure OpenAI, AWS Bedrock, DeepSeek, Perplexity, OpenRouter, Ollama, and any OpenAI-compatible custom provider.
+        description: >-
+          First-class support for Anthropic, OpenAI, Google AI Studio, Google Vertex AI, Azure OpenAI, AWS Bedrock,
+          DeepSeek, Perplexity, OpenRouter, Ollama, and any OpenAI-compatible custom provider.
       - name: Claude Pro/Max Subscription
         description: Plandex can use a Claude Pro or Max subscription as the credential when calling Anthropic models.
       - name: Context Caching
-        description: Built-in context caching across OpenAI, Anthropic, and Google models reduces latency and cost on multi-step plans.
+        description: >-
+          Built-in context caching across OpenAI, Anthropic, and Google models reduces latency and cost on multi-step
+          plans.
       - name: Plan Version Control
-        description: Every plan update is versioned, with branching for exploring multiple paths or comparing different models. Rewind to any prior SHA.
+        description: >-
+          Every plan update is versioned, with branching for exploring multiple paths or comparing different models.
+          Rewind to any prior SHA.
       - name: Git Integration
         description: Commit message generation, optional auto-commits, and clean integration with project git history.
       - name: REPL with Fuzzy Auto-Complete
-        description: "Interactive shell launched by `plandex` (or `pdx`) with fuzzy command and file completion; backslash equivalents (`\\new`, `\\tell`) for every command."
+        description: >-
+          Interactive shell launched by `plandex` (or `pdx`) with fuzzy command and file completion; backslash
+          equivalents (`\new`, `\tell`) for every command.
       - name: One-Line Install
-        description: "Zero-dependency CLI install via `curl -sL https://plandex.ai/install.sh | bash`. Docker compose for the self-hosted server."
+        description: >-
+          Zero-dependency CLI install via `curl -sL https://plandex.ai/install.sh | bash`. Docker compose for the
+          self-hosted server.
       - name: Background Tasks
-        description: "`--bg` flag runs plans concurrently in the background under separate streams."
+        description: '`--bg` flag runs plans concurrently in the background under separate streams.'
       - name: Smart Context + Auto-Load Context
-        description: Loads only the files needed for each implementation step (smart-context) and uses the project map to choose them (auto-load-context).
+        description: >-
+          Loads only the files needed for each implementation step (smart-context) and uses the project map to choose
+          them (auto-load-context).
       - name: Streaming Plan Execution
-        description: tell, build, and connect endpoints stream model responses live; clients can reconnect to in-progress plans after disconnects.
+        description: >-
+          tell, build, and connect endpoints stream model responses live; clients can reconnect to in-progress plans
+          after disconnects.
   - type: UseCases
     data:
       - name: Large Refactors
-        description: Coordinate refactors that touch dozens of files across a large codebase without losing the thread between steps.
+        description: >-
+          Coordinate refactors that touch dozens of files across a large codebase without losing the thread between
+          steps.
       - name: Polyglot Project Work
         description: Work in repositories that span 30+ languages thanks to tree-sitter project maps.
       - name: Adding Features To Real Projects
-        description: Take a feature from idea through chat mode, into a detailed implementation plan, into reviewed and applied file changes.
+        description: >-
+          Take a feature from idea through chat mode, into a detailed implementation plan, into reviewed and applied
+          file changes.
       - name: Automated Debugging
         description: Wrap a flaky build, test, or browser app in `plandex debug` and let Plandex iteratively repair it.
       - name: Codebase Onboarding And Q&A
@@ -232,7 +255,9 @@ common:
       - name: OpenAI
         description: Direct OpenAI API integration via OPENAI_API_KEY.
       - name: OpenRouter.ai
-        description: Default recommended provider for self-hosted Plandex; also used as a failover route across other configured providers.
+        description: >-
+          Default recommended provider for self-hosted Plandex; also used as a failover route across other configured
+          providers.
       - name: Google AI Studio
         description: Gemini models via GEMINI_API_KEY.
       - name: Google Vertex AI
@@ -276,7 +301,9 @@ common:
       - name: Plandex Cloud — BYO API Key Mode (Historical)
         description: Hosted Plandex with user-supplied provider keys, $30/month after trial. Winding down 2025-10-03.
       - name: Plandex Cloud — Integrated Models Mode (Historical)
-        description: Hosted Plandex with integrated credit billing, $45/month including $20/mo of non-expiring credits. Winding down 2025-10-03.
+        description: >-
+          Hosted Plandex with integrated credit billing, $45/month including $20/mo of non-expiring credits. Winding
+          down 2025-10-03.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
