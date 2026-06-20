@@ -17,7 +17,7 @@ description: >-
 type: Index
 position: Provider
 access: 3rd-Party
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - AI
   - AI Coding Agent
@@ -46,7 +46,7 @@ apis:
       / local-mode deployments via Docker. Default local-mode bind is http://localhost:8099.
     humanURL: https://docs.plandex.ai/development
     baseURL: http://localhost:8099
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     tags:
       - AI Coding Agent
       - Plans
