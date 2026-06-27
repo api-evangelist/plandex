@@ -84,17 +84,17 @@ apis:
       - type: JSONStructure
         url: >-
           https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-model-pack-structure.json
-      - type: Example
+      - type: Examples
         url: https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-plan-example.json
-      - type: Example
+      - type: Examples
         url: >-
           https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-context-item-example.json
-      - type: Example
+      - type: Examples
         url: >-
           https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-convo-message-example.json
-      - type: Example
+      - type: Examples
         url: https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-model-pack-example.json
-      - type: Example
+      - type: Examples
         url: https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-plan-config-example.json
       - type: Authentication
         url: https://docs.plandex.ai/hosting/self-hosting/local-mode-quickstart
@@ -106,7 +106,7 @@ common:
     url: https://docs.plandex.ai
   - type: GettingStarted
     url: https://docs.plandex.ai/quick-start
-  - type: Quickstart
+  - type: GettingStarted
     url: https://docs.plandex.ai/hosting/self-hosting/local-mode-quickstart
   - type: Install
     url: https://plandex.ai/install.sh
@@ -146,7 +146,7 @@ common:
     url: https://twitter.com/plandex_ai
   - type: YouTube
     url: https://www.youtube.com/@plandex-ai
-  - type: Discussions
+  - type: Forums
     url: https://github.com/plandex-ai/plandex/discussions
   - type: Issues
     url: https://github.com/plandex-ai/plandex/issues
@@ -158,7 +158,7 @@ common:
     url: https://raw.githubusercontent.com/api-evangelist/plandex/main/rules/plandex-rules.yml
   - type: Vocabulary
     url: https://raw.githubusercontent.com/api-evangelist/plandex/main/vocabulary/plandex-vocabulary.yml
-  - type: JSON-LD
+  - type: JSONLD
     url: https://raw.githubusercontent.com/api-evangelist/plandex/main/json-ld/plandex-context.jsonld
   - type: Plans
     url: https://raw.githubusercontent.com/api-evangelist/plandex/main/plans/plandex-plans-pricing.yml
