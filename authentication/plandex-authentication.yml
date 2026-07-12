@@ -1,0 +1,15 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/plandex-server-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: BearerAuth
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  description: Bearer token issued by the Plandex server on sign-in. Used by the CLI/REPL for
+    all authenticated API calls.
+  sources:
+  - openapi/plandex-server-openapi.yml
