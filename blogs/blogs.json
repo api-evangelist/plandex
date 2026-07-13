@@ -2,11 +2,10 @@
   "repo": "plandex",
   "feeds": [
     {
-      "source": "https://plandex.ai/blog",
-      "saved": 0,
-      "error": "DNS ENOTFOUND plandex.ai"
+      "source": "https://docs.plandex.ai/security",
+      "error": "URLError"
     }
   ],
-  "fetched": "2026-06-27T13:01:49Z",
+  "fetched": "2026-07-11T11:50:51Z",
   "post_count": 0
 }
