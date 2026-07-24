@@ -1,0 +1,104 @@
+openapi: 3.1.0
+info:
+  title: Plandex Server Accounts Branches API
+  description: Management and orchestration REST API exposed by the Plandex server (open-source, Go) used by the Plandex CLI/REPL to drive long-running coding plans across organizations, projects, plans, branches, context, conversation, model packs, and configuration. The same API powered Plandex Cloud (winding down 2025-10-03) and now powers self-hosted / local-mode deployments via Docker. Default local-mode bind is http://localhost:8099.
+  version: '2'
+  contact:
+    name: Plandex AI
+    url: https://plandex.ai
+  license:
+    name: MIT
+    url: https://github.com/plandex-ai/plandex/blob/main/LICENSE
+  termsOfService: https://plandex.ai/terms
+servers:
+- url: http://localhost:8099
+  description: Default self-hosted / local-mode Plandex server (Docker)
+- url: https://api.plandex.ai
+  description: Plandex Cloud (winding down as of 2025-10-03; no longer accepting new users)
+security:
+- BearerAuth: []
+tags:
+- name: Branches
+  description: Per-plan branches for parallel exploration and diffing.
+paths:
+  /projects/{projectId}/plans/current_branches:
+    post:
+      tags:
+      - Branches
+      summary: Get Current Branches By Plan
+      description: Return the current branch for each of the supplied plan IDs.
+      operationId: getCurrentBranchesByPlanId
+      parameters:
+      - in: path
+        name: projectId
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Current branches.
+  /plans/{planId}/branches:
+    get:
+      tags:
+      - Branches
+      summary: List Plan Branches
+      description: List all branches that exist on the plan.
+      operationId: listBranches
+      parameters:
+      - in: path
+        name: planId
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of branches.
+  /plans/{planId}/branches/{branch}:
+    delete:
+      tags:
+      - Branches
+      summary: Delete Plan Branch
+      description: Delete an existing branch from the plan.
+      operationId: deleteBranch
+      parameters:
+      - in: path
+        name: planId
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: branch
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Branch deleted.
+  /plans/{planId}/{branch}/branches:
+    post:
+      tags:
+      - Branches
+      summary: Create Plan Branch
+      description: Create a new branch off the specified branch of the plan.
+      operationId: createBranch
+      parameters:
+      - in: path
+        name: planId
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: branch
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Branch created.
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Bearer token issued by the Plandex server on sign-in. Used by the CLI/REPL for all authenticated API calls.

@@ -1,0 +1,159 @@
+openapi: 3.1.0
+info:
+  title: Plandex Server Accounts Settings API
+  description: Management and orchestration REST API exposed by the Plandex server (open-source, Go) used by the Plandex CLI/REPL to drive long-running coding plans across organizations, projects, plans, branches, context, conversation, model packs, and configuration. The same API powered Plandex Cloud (winding down 2025-10-03) and now powers self-hosted / local-mode deployments via Docker. Default local-mode bind is http://localhost:8099.
+  version: '2'
+  contact:
+    name: Plandex AI
+    url: https://plandex.ai
+  license:
+    name: MIT
+    url: https://github.com/plandex-ai/plandex/blob/main/LICENSE
+  termsOfService: https://plandex.ai/terms
+servers:
+- url: http://localhost:8099
+  description: Default self-hosted / local-mode Plandex server (Docker)
+- url: https://api.plandex.ai
+  description: Plandex Cloud (winding down as of 2025-10-03; no longer accepting new users)
+security:
+- BearerAuth: []
+tags:
+- name: Settings
+  description: Per-plan model settings, default settings, and org/user config.
+paths:
+  /plans/{planId}/{branch}/settings:
+    get:
+      tags:
+      - Settings
+      summary: Get Plan Settings
+      description: Get the model and execution settings for the plan branch.
+      operationId: getSettings
+      parameters:
+      - in: path
+        name: planId
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: branch
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Settings.
+    put:
+      tags:
+      - Settings
+      summary: Update Plan Settings
+      description: Update the model and execution settings for the plan branch.
+      operationId: updateSettings
+      parameters:
+      - in: path
+        name: planId
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: branch
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Settings updated.
+  /default_settings:
+    get:
+      tags:
+      - Settings
+      summary: Get Default Settings
+      description: Get org-level default model and execution settings.
+      operationId: getDefaultSettings
+      responses:
+        '200':
+          description: Default settings.
+    put:
+      tags:
+      - Settings
+      summary: Update Default Settings
+      description: Update org-level default settings.
+      operationId: updateDefaultSettings
+      responses:
+        '200':
+          description: Default settings updated.
+  /plans/{planId}/config:
+    get:
+      tags:
+      - Settings
+      summary: Get Plan Config
+      description: Get the per-plan configuration (autonomy flags, executor settings).
+      operationId: getPlanConfig
+      parameters:
+      - in: path
+        name: planId
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Plan config.
+    put:
+      tags:
+      - Settings
+      summary: Update Plan Config
+      description: Update the per-plan configuration.
+      operationId: updatePlanConfig
+      parameters:
+      - in: path
+        name: planId
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Plan config updated.
+  /default_plan_config:
+    get:
+      tags:
+      - Settings
+      summary: Get Default Plan Config
+      description: Get the org-level default plan config used as a template for new plans.
+      operationId: getDefaultPlanConfig
+      responses:
+        '200':
+          description: Default plan config.
+    put:
+      tags:
+      - Settings
+      summary: Update Default Plan Config
+      description: Update the org-level default plan config.
+      operationId: updateDefaultPlanConfig
+      responses:
+        '200':
+          description: Default plan config updated.
+  /org_user_config:
+    get:
+      tags:
+      - Settings
+      summary: Get Org User Config
+      description: Get the per-user configuration scoped to the current org.
+      operationId: getOrgUserConfig
+      responses:
+        '200':
+          description: Org user config.
+    put:
+      tags:
+      - Settings
+      summary: Update Org User Config
+      description: Update the per-user configuration scoped to the current org.
+      operationId: updateOrgUserConfig
+      responses:
+        '200':
+          description: Org user config updated.
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Bearer token issued by the Plandex server on sign-in. Used by the CLI/REPL for all authenticated API calls.

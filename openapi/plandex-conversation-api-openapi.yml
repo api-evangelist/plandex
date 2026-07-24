@@ -1,0 +1,93 @@
+openapi: 3.1.0
+info:
+  title: Plandex Server Accounts Conversation API
+  description: Management and orchestration REST API exposed by the Plandex server (open-source, Go) used by the Plandex CLI/REPL to drive long-running coding plans across organizations, projects, plans, branches, context, conversation, model packs, and configuration. The same API powered Plandex Cloud (winding down 2025-10-03) and now powers self-hosted / local-mode deployments via Docker. Default local-mode bind is http://localhost:8099.
+  version: '2'
+  contact:
+    name: Plandex AI
+    url: https://plandex.ai
+  license:
+    name: MIT
+    url: https://github.com/plandex-ai/plandex/blob/main/LICENSE
+  termsOfService: https://plandex.ai/terms
+servers:
+- url: http://localhost:8099
+  description: Default self-hosted / local-mode Plandex server (Docker)
+- url: https://api.plandex.ai
+  description: Plandex Cloud (winding down as of 2025-10-03; no longer accepting new users)
+security:
+- BearerAuth: []
+tags:
+- name: Conversation
+  description: Prompts, responses, and rewind history within a plan branch.
+paths:
+  /plans/{planId}/{branch}/convo:
+    get:
+      tags:
+      - Conversation
+      summary: List Conversation Messages
+      description: List prompts and responses in the plan branch conversation.
+      operationId: listConvo
+      parameters:
+      - in: path
+        name: planId
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: branch
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Conversation messages.
+  /plans/{planId}/{branch}/rewind:
+    patch:
+      tags:
+      - Conversation
+      summary: Rewind Plan
+      description: Rewind the plan branch to a previous version SHA.
+      operationId: rewindPlan
+      parameters:
+      - in: path
+        name: planId
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: branch
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Plan rewound.
+  /plans/{planId}/{branch}/logs:
+    get:
+      tags:
+      - Conversation
+      summary: List Plan Logs
+      description: List log events for the plan branch.
+      operationId: listLogs
+      parameters:
+      - in: path
+        name: planId
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: branch
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Log entries.
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Bearer token issued by the Plandex server on sign-in. Used by the CLI/REPL for all authenticated API calls.

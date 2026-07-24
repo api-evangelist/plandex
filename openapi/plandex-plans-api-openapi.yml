@@ -1,0 +1,212 @@
+openapi: 3.1.0
+info:
+  title: Plandex Server Accounts Plans API
+  description: Management and orchestration REST API exposed by the Plandex server (open-source, Go) used by the Plandex CLI/REPL to drive long-running coding plans across organizations, projects, plans, branches, context, conversation, model packs, and configuration. The same API powered Plandex Cloud (winding down 2025-10-03) and now powers self-hosted / local-mode deployments via Docker. Default local-mode bind is http://localhost:8099.
+  version: '2'
+  contact:
+    name: Plandex AI
+    url: https://plandex.ai
+  license:
+    name: MIT
+    url: https://github.com/plandex-ai/plandex/blob/main/LICENSE
+  termsOfService: https://plandex.ai/terms
+servers:
+- url: http://localhost:8099
+  description: Default self-hosted / local-mode Plandex server (Docker)
+- url: https://api.plandex.ai
+  description: Plandex Cloud (winding down as of 2025-10-03; no longer accepting new users)
+security:
+- BearerAuth: []
+tags:
+- name: Plans
+  description: Long-running, branchable units of AI coding work over loaded context.
+paths:
+  /projects/{projectId}/plans:
+    post:
+      tags:
+      - Plans
+      summary: Create Plan
+      description: Create a new plan inside the given project.
+      operationId: createPlan
+      parameters:
+      - in: path
+        name: projectId
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Plan created.
+    delete:
+      tags:
+      - Plans
+      summary: Delete All Plans In Project
+      description: Bulk delete all plans in the project.
+      operationId: deleteAllPlans
+      parameters:
+      - in: path
+        name: projectId
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Plans deleted.
+  /plans:
+    get:
+      tags:
+      - Plans
+      summary: List Plans
+      description: List active plans for the user.
+      operationId: listPlans
+      responses:
+        '200':
+          description: List of plans.
+  /plans/archive:
+    get:
+      tags:
+      - Plans
+      summary: List Archived Plans
+      description: List plans the user has archived.
+      operationId: listArchivedPlans
+      responses:
+        '200':
+          description: Archived plans.
+  /plans/ps:
+    get:
+      tags:
+      - Plans
+      summary: List Running Plans
+      description: List plans currently executing (analogous to `plandex ps`).
+      operationId: listPlansRunning
+      responses:
+        '200':
+          description: Running plans.
+  /plans/{planId}:
+    get:
+      tags:
+      - Plans
+      summary: Get Plan
+      description: Retrieve a single plan.
+      operationId: getPlan
+      parameters:
+      - in: path
+        name: planId
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Plan details.
+    delete:
+      tags:
+      - Plans
+      summary: Delete Plan
+      description: Delete a single plan and its history.
+      operationId: deletePlan
+      parameters:
+      - in: path
+        name: planId
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Plan deleted.
+  /plans/{planId}/current_plan/{sha}:
+    get:
+      tags:
+      - Plans
+      summary: Get Current Plan At Sha
+      description: Snapshot of the current plan state at a specific version SHA.
+      operationId: getCurrentPlanAtSha
+      parameters:
+      - in: path
+        name: planId
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: sha
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Plan snapshot.
+  /plans/{planId}/{branch}/current_plan:
+    get:
+      tags:
+      - Plans
+      summary: Get Current Plan On Branch
+      description: Snapshot of the current plan state on the specified branch.
+      operationId: getCurrentPlanOnBranch
+      parameters:
+      - in: path
+        name: planId
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: branch
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Plan snapshot on branch.
+  /plans/{planId}/archive:
+    patch:
+      tags:
+      - Plans
+      summary: Archive Plan
+      description: Archive a plan.
+      operationId: archivePlan
+      parameters:
+      - in: path
+        name: planId
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Plan archived.
+  /plans/{planId}/unarchive:
+    patch:
+      tags:
+      - Plans
+      summary: Unarchive Plan
+      description: Restore an archived plan.
+      operationId: unarchivePlan
+      parameters:
+      - in: path
+        name: planId
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Plan unarchived.
+  /plans/{planId}/rename:
+    patch:
+      tags:
+      - Plans
+      summary: Rename Plan
+      description: Rename an existing plan.
+      operationId: renamePlan
+      parameters:
+      - in: path
+        name: planId
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Plan renamed.
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Bearer token issued by the Plandex server on sign-in. Used by the CLI/REPL for all authenticated API calls.

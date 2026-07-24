@@ -1,0 +1,137 @@
+openapi: 3.1.0
+info:
+  title: Plandex Server Accounts Context API
+  description: Management and orchestration REST API exposed by the Plandex server (open-source, Go) used by the Plandex CLI/REPL to drive long-running coding plans across organizations, projects, plans, branches, context, conversation, model packs, and configuration. The same API powered Plandex Cloud (winding down 2025-10-03) and now powers self-hosted / local-mode deployments via Docker. Default local-mode bind is http://localhost:8099.
+  version: '2'
+  contact:
+    name: Plandex AI
+    url: https://plandex.ai
+  license:
+    name: MIT
+    url: https://github.com/plandex-ai/plandex/blob/main/LICENSE
+  termsOfService: https://plandex.ai/terms
+servers:
+- url: http://localhost:8099
+  description: Default self-hosted / local-mode Plandex server (Docker)
+- url: https://api.plandex.ai
+  description: Plandex Cloud (winding down as of 2025-10-03; no longer accepting new users)
+security:
+- BearerAuth: []
+tags:
+- name: Context
+  description: Files, directory trees, URLs, notes, and images loaded into a plan.
+paths:
+  /plans/{planId}/{branch}/context:
+    get:
+      tags:
+      - Context
+      summary: List Context
+      description: List items currently loaded into the plan's context.
+      operationId: listContext
+      parameters:
+      - in: path
+        name: planId
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: branch
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Context items.
+    post:
+      tags:
+      - Context
+      summary: Load Context
+      description: Load files, directories, URLs, notes, or images into the plan context.
+      operationId: loadContext
+      parameters:
+      - in: path
+        name: planId
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: branch
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Context loaded.
+    put:
+      tags:
+      - Context
+      summary: Update Context
+      description: Refresh outdated context items.
+      operationId: updateContext
+      parameters:
+      - in: path
+        name: planId
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: branch
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Context updated.
+    delete:
+      tags:
+      - Context
+      summary: Delete Context
+      description: Remove context items from the plan.
+      operationId: deleteContext
+      parameters:
+      - in: path
+        name: planId
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: branch
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Context removed.
+  /plans/{planId}/{branch}/context/{contextId}/body:
+    get:
+      tags:
+      - Context
+      summary: Get Context Body
+      description: Return the raw body of a context item.
+      operationId: getContextBody
+      parameters:
+      - in: path
+        name: planId
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: branch
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: contextId
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Context body.
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Bearer token issued by the Plandex server on sign-in. Used by the CLI/REPL for all authenticated API calls.

@@ -1,0 +1,86 @@
+openapi: 3.1.0
+info:
+  title: Plandex Server Accounts Invites API
+  description: Management and orchestration REST API exposed by the Plandex server (open-source, Go) used by the Plandex CLI/REPL to drive long-running coding plans across organizations, projects, plans, branches, context, conversation, model packs, and configuration. The same API powered Plandex Cloud (winding down 2025-10-03) and now powers self-hosted / local-mode deployments via Docker. Default local-mode bind is http://localhost:8099.
+  version: '2'
+  contact:
+    name: Plandex AI
+    url: https://plandex.ai
+  license:
+    name: MIT
+    url: https://github.com/plandex-ai/plandex/blob/main/LICENSE
+  termsOfService: https://plandex.ai/terms
+servers:
+- url: http://localhost:8099
+  description: Default self-hosted / local-mode Plandex server (Docker)
+- url: https://api.plandex.ai
+  description: Plandex Cloud (winding down as of 2025-10-03; no longer accepting new users)
+security:
+- BearerAuth: []
+tags:
+- name: Invites
+  description: Invite users into an org and manage pending invites.
+paths:
+  /invites:
+    post:
+      tags:
+      - Invites
+      summary: Invite User
+      description: Send an invite to add a user to the org.
+      operationId: inviteUser
+      responses:
+        '201':
+          description: Invite sent.
+  /invites/pending:
+    get:
+      tags:
+      - Invites
+      summary: List Pending Invites
+      description: List invites that have not yet been accepted.
+      operationId: listPendingInvites
+      responses:
+        '200':
+          description: Pending invites.
+  /invites/accepted:
+    get:
+      tags:
+      - Invites
+      summary: List Accepted Invites
+      description: List invites that have already been accepted.
+      operationId: listAcceptedInvites
+      responses:
+        '200':
+          description: Accepted invites.
+  /invites/all:
+    get:
+      tags:
+      - Invites
+      summary: List All Invites
+      description: List all invites regardless of state.
+      operationId: listAllInvites
+      responses:
+        '200':
+          description: All invites.
+  /invites/{inviteId}:
+    delete:
+      tags:
+      - Invites
+      summary: Delete Invite
+      description: Revoke an outstanding invite.
+      operationId: deleteInvite
+      parameters:
+      - in: path
+        name: inviteId
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Invite revoked.
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Bearer token issued by the Plandex server on sign-in. Used by the CLI/REPL for all authenticated API calls.

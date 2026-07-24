@@ -1,0 +1,198 @@
+openapi: 3.1.0
+info:
+  title: Plandex Server Accounts Execution API
+  description: Management and orchestration REST API exposed by the Plandex server (open-source, Go) used by the Plandex CLI/REPL to drive long-running coding plans across organizations, projects, plans, branches, context, conversation, model packs, and configuration. The same API powered Plandex Cloud (winding down 2025-10-03) and now powers self-hosted / local-mode deployments via Docker. Default local-mode bind is http://localhost:8099.
+  version: '2'
+  contact:
+    name: Plandex AI
+    url: https://plandex.ai
+  license:
+    name: MIT
+    url: https://github.com/plandex-ai/plandex/blob/main/LICENSE
+  termsOfService: https://plandex.ai/terms
+servers:
+- url: http://localhost:8099
+  description: Default self-hosted / local-mode Plandex server (Docker)
+- url: https://api.plandex.ai
+  description: Plandex Cloud (winding down as of 2025-10-03; no longer accepting new users)
+security:
+- BearerAuth: []
+tags:
+- name: Execution
+  description: Streaming connect, build, tell, and stop endpoints for plan execution.
+paths:
+  /plans/{planId}/{branch}/status:
+    get:
+      tags:
+      - Execution
+      summary: Get Plan Status
+      description: Get the execution status for the plan branch.
+      operationId: getPlanStatus
+      parameters:
+      - in: path
+        name: planId
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: branch
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Status payload.
+  /plans/{planId}/{branch}/tell:
+    post:
+      tags:
+      - Execution
+      summary: Tell Plan
+      description: Send a prompt to the plan and stream the model response (streaming endpoint, analogous to `plandex tell`).
+      operationId: tellPlan
+      parameters:
+      - in: path
+        name: planId
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: branch
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Streaming response.
+  /plans/{planId}/{branch}/build:
+    patch:
+      tags:
+      - Execution
+      summary: Build Plan
+      description: Build pending changes from the conversation into file updates (streaming endpoint, analogous to `plandex build`).
+      operationId: buildPlan
+      parameters:
+      - in: path
+        name: planId
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: branch
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Streaming response.
+  /plans/{planId}/{branch}/connect:
+    patch:
+      tags:
+      - Execution
+      summary: Connect To Plan Stream
+      description: Connect (or reconnect) to the live stream of an in-progress plan run.
+      operationId: connectPlan
+      parameters:
+      - in: path
+        name: planId
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: branch
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Streaming response.
+  /plans/{planId}/{branch}/stop:
+    delete:
+      tags:
+      - Execution
+      summary: Stop Plan
+      description: Stop an in-progress plan run.
+      operationId: stopPlan
+      parameters:
+      - in: path
+        name: planId
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: branch
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Plan stopped.
+  /plans/{planId}/{branch}/respond_missing_file:
+    post:
+      tags:
+      - Execution
+      summary: Respond Missing File
+      description: Reply to a model request for a file the agent could not find.
+      operationId: respondMissingFile
+      parameters:
+      - in: path
+        name: planId
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: branch
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Response sent.
+  /plans/{planId}/{branch}/auto_load_context:
+    post:
+      tags:
+      - Execution
+      summary: Auto Load Context
+      description: Have the agent automatically load context based on the project map.
+      operationId: autoLoadContext
+      parameters:
+      - in: path
+        name: planId
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: branch
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Auto-load triggered.
+  /plans/{planId}/{branch}/build_status:
+    get:
+      tags:
+      - Execution
+      summary: Get Build Status
+      description: Get build status for the plan branch.
+      operationId: getBuildStatus
+      parameters:
+      - in: path
+        name: planId
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: branch
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Build status.
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Bearer token issued by the Plandex server on sign-in. Used by the CLI/REPL for all authenticated API calls.

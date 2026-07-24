@@ -1,0 +1,90 @@
+openapi: 3.1.0
+info:
+  title: Plandex Server Accounts API
+  description: Management and orchestration REST API exposed by the Plandex server (open-source, Go) used by the Plandex CLI/REPL to drive long-running coding plans across organizations, projects, plans, branches, context, conversation, model packs, and configuration. The same API powered Plandex Cloud (winding down 2025-10-03) and now powers self-hosted / local-mode deployments via Docker. Default local-mode bind is http://localhost:8099.
+  version: '2'
+  contact:
+    name: Plandex AI
+    url: https://plandex.ai
+  license:
+    name: MIT
+    url: https://github.com/plandex-ai/plandex/blob/main/LICENSE
+  termsOfService: https://plandex.ai/terms
+servers:
+- url: http://localhost:8099
+  description: Default self-hosted / local-mode Plandex server (Docker)
+- url: https://api.plandex.ai
+  description: Plandex Cloud (winding down as of 2025-10-03; no longer accepting new users)
+security:
+- BearerAuth: []
+tags:
+- name: Accounts
+  description: User account, email verification, and authentication operations.
+paths:
+  /accounts/email_verifications:
+    post:
+      tags:
+      - Accounts
+      summary: Create Email Verification
+      description: Send an email verification PIN to the supplied address.
+      operationId: createEmailVerification
+      responses:
+        '200':
+          description: Verification email sent.
+  /accounts/email_verifications/check_pin:
+    post:
+      tags:
+      - Accounts
+      summary: Check Email Verification Pin
+      description: Verify the PIN previously emailed to the user.
+      operationId: checkEmailPin
+      responses:
+        '200':
+          description: PIN verified.
+  /accounts/sign_in_codes:
+    post:
+      tags:
+      - Accounts
+      summary: Create Sign In Code
+      description: Issue a single-use sign-in code (alternative to password flow).
+      operationId: createSignInCode
+      responses:
+        '200':
+          description: Sign-in code created.
+  /accounts/sign_in:
+    post:
+      tags:
+      - Accounts
+      summary: Sign In
+      description: Authenticate a user and start a session.
+      operationId: signIn
+      responses:
+        '200':
+          description: Signed in successfully.
+  /accounts/sign_out:
+    post:
+      tags:
+      - Accounts
+      summary: Sign Out
+      description: Terminate the active session.
+      operationId: signOut
+      responses:
+        '200':
+          description: Signed out.
+  /accounts:
+    post:
+      tags:
+      - Accounts
+      summary: Create Account
+      description: Register a new Plandex account.
+      operationId: createAccount
+      responses:
+        '201':
+          description: Account created.
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Bearer token issued by the Plandex server on sign-in. Used by the CLI/REPL for all authenticated API calls.

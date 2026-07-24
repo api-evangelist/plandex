@@ -1,0 +1,69 @@
+openapi: 3.1.0
+info:
+  title: Plandex Server Accounts Orgs API
+  description: Management and orchestration REST API exposed by the Plandex server (open-source, Go) used by the Plandex CLI/REPL to drive long-running coding plans across organizations, projects, plans, branches, context, conversation, model packs, and configuration. The same API powered Plandex Cloud (winding down 2025-10-03) and now powers self-hosted / local-mode deployments via Docker. Default local-mode bind is http://localhost:8099.
+  version: '2'
+  contact:
+    name: Plandex AI
+    url: https://plandex.ai
+  license:
+    name: MIT
+    url: https://github.com/plandex-ai/plandex/blob/main/LICENSE
+  termsOfService: https://plandex.ai/terms
+servers:
+- url: http://localhost:8099
+  description: Default self-hosted / local-mode Plandex server (Docker)
+- url: https://api.plandex.ai
+  description: Plandex Cloud (winding down as of 2025-10-03; no longer accepting new users)
+security:
+- BearerAuth: []
+tags:
+- name: Orgs
+  description: Organization and role membership management.
+paths:
+  /orgs:
+    get:
+      tags:
+      - Orgs
+      summary: List Orgs
+      description: List organizations the authenticated user belongs to.
+      operationId: listOrgs
+      responses:
+        '200':
+          description: List of orgs.
+    post:
+      tags:
+      - Orgs
+      summary: Create Org
+      description: Create a new organization.
+      operationId: createOrg
+      responses:
+        '201':
+          description: Org created.
+  /orgs/session:
+    get:
+      tags:
+      - Orgs
+      summary: Get Org Session
+      description: Return the active org session context for the authenticated user.
+      operationId: getOrgSession
+      responses:
+        '200':
+          description: Org session details.
+  /orgs/roles:
+    get:
+      tags:
+      - Orgs
+      summary: List Org Roles
+      description: List RBAC roles available within the org.
+      operationId: listOrgRoles
+      responses:
+        '200':
+          description: List of roles.
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Bearer token issued by the Plandex server on sign-in. Used by the CLI/REPL for all authenticated API calls.
