@@ -15,9 +15,22 @@ description: >-
   Plandex is now distributed primarily as a Docker-based self-hosted / local-mode product that users run with their own
   model-provider API keys.
 type: Index
+accessModel:
+  pricing: paid
+  onboarding: self-serve
+  trial: true
+  try_now: true
+  public: false
+  label: Paid (free trial) · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 position: Provider
 access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/plandex.png
 tags:
   - AI
   - AI Coding Agent
@@ -38,68 +51,879 @@ created: '2026-05-25'
 modified: '2026-05-29'
 specificationVersion: '0.20'
 apis:
-  - name: Plandex Server API
-    description: >-
-      Management and orchestration REST API exposed by the Plandex server (open-source, Go) used by the Plandex CLI/REPL
-      to drive long-running coding plans across organizations, projects, plans, branches, context, conversation, model
-      packs, and configuration. The same API powered Plandex Cloud (winding down 2025-10-03) and now powers self-hosted
-      / local-mode deployments via Docker. Default local-mode bind is http://localhost:8099.
-    humanURL: https://docs.plandex.ai/development
-    baseURL: http://localhost:8099
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    tags:
-      - AI Coding Agent
-      - Plans
-      - REST
-      - Self-Hosted
-    properties:
-      - type: Documentation
-        url: https://docs.plandex.ai
-      - type: SourceCode
-        url: https://github.com/plandex-ai/plandex/tree/main/app/server
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/api-evangelist/plandex/main/openapi/plandex-server-openapi.yml
-      - type: JSONSchema
-        url: https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-plan-schema.json
-      - type: JSONSchema
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-context-item-schema.json
-      - type: JSONSchema
-        url: https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-branch-schema.json
-      - type: JSONSchema
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-convo-message-schema.json
-      - type: JSONSchema
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-model-pack-schema.json
-      - type: JSONSchema
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-plan-config-schema.json
-      - type: JSONStructure
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-plan-structure.json
-      - type: JSONStructure
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-context-item-structure.json
-      - type: JSONStructure
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-model-pack-structure.json
-      - type: Examples
-        url: https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-plan-example.json
-      - type: Examples
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-context-item-example.json
-      - type: Examples
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-convo-message-example.json
-      - type: Examples
-        url: https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-model-pack-example.json
-      - type: Examples
-        url: https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-plan-config-example.json
-      - type: Authentication
-        url: https://docs.plandex.ai/hosting/self-hosting/local-mode-quickstart
-        description: Bearer token issued by the sign-in flow; CLI handles token persistence.
+- aid: plandex:plandex-accounts-api
+  name: Plandex Accounts API
+  description: User account, email verification, and authentication operations.
+  humanURL: https://docs.plandex.ai/development
+  baseURL: http://localhost:8099
+  tags:
+  - Accounts
+  properties:
+  - type: OpenAPI
+    url: openapi/plandex-accounts-api-openapi.yml
+  - type: Documentation
+    url: https://docs.plandex.ai
+  - type: SourceCode
+    url: https://github.com/plandex-ai/plandex/tree/main/app/server
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-plan-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-context-item-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-branch-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-convo-message-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-model-pack-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-plan-config-schema.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-plan-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-context-item-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-model-pack-structure.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-plan-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-context-item-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-convo-message-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-model-pack-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-plan-config-example.json
+  - type: Authentication
+    url: https://docs.plandex.ai/hosting/self-hosting/local-mode-quickstart
+- aid: plandex:plandex-branches-api
+  name: Plandex Branches API
+  description: Per-plan branches for parallel exploration and diffing.
+  humanURL: https://docs.plandex.ai/development
+  baseURL: http://localhost:8099
+  tags:
+  - Branches
+  properties:
+  - type: OpenAPI
+    url: openapi/plandex-branches-api-openapi.yml
+  - type: Documentation
+    url: https://docs.plandex.ai
+  - type: SourceCode
+    url: https://github.com/plandex-ai/plandex/tree/main/app/server
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-plan-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-context-item-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-branch-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-convo-message-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-model-pack-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-plan-config-schema.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-plan-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-context-item-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-model-pack-structure.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-plan-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-context-item-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-convo-message-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-model-pack-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-plan-config-example.json
+  - type: Authentication
+    url: https://docs.plandex.ai/hosting/self-hosting/local-mode-quickstart
+- aid: plandex:plandex-context-api
+  name: Plandex Context API
+  description: Files, directory trees, URLs, notes, and images loaded into a plan.
+  humanURL: https://docs.plandex.ai/development
+  baseURL: http://localhost:8099
+  tags:
+  - Context
+  properties:
+  - type: OpenAPI
+    url: openapi/plandex-context-api-openapi.yml
+  - type: Documentation
+    url: https://docs.plandex.ai
+  - type: SourceCode
+    url: https://github.com/plandex-ai/plandex/tree/main/app/server
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-plan-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-context-item-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-branch-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-convo-message-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-model-pack-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-plan-config-schema.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-plan-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-context-item-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-model-pack-structure.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-plan-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-context-item-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-convo-message-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-model-pack-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-plan-config-example.json
+  - type: Authentication
+    url: https://docs.plandex.ai/hosting/self-hosting/local-mode-quickstart
+- aid: plandex:plandex-conversation-api
+  name: Plandex Conversation API
+  description: Prompts, responses, and rewind history within a plan branch.
+  humanURL: https://docs.plandex.ai/development
+  baseURL: http://localhost:8099
+  tags:
+  - Conversation
+  properties:
+  - type: OpenAPI
+    url: openapi/plandex-conversation-api-openapi.yml
+  - type: Documentation
+    url: https://docs.plandex.ai
+  - type: SourceCode
+    url: https://github.com/plandex-ai/plandex/tree/main/app/server
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-plan-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-context-item-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-branch-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-convo-message-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-model-pack-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-plan-config-schema.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-plan-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-context-item-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-model-pack-structure.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-plan-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-context-item-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-convo-message-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-model-pack-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-plan-config-example.json
+  - type: Authentication
+    url: https://docs.plandex.ai/hosting/self-hosting/local-mode-quickstart
+- aid: plandex:plandex-diffs-api
+  name: Plandex Diffs API
+  description: Per-file pending changes, apply, and reject operations.
+  humanURL: https://docs.plandex.ai/development
+  baseURL: http://localhost:8099
+  tags:
+  - Diffs
+  properties:
+  - type: OpenAPI
+    url: openapi/plandex-diffs-api-openapi.yml
+  - type: Documentation
+    url: https://docs.plandex.ai
+  - type: SourceCode
+    url: https://github.com/plandex-ai/plandex/tree/main/app/server
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-plan-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-context-item-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-branch-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-convo-message-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-model-pack-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-plan-config-schema.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-plan-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-context-item-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-model-pack-structure.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-plan-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-context-item-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-convo-message-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-model-pack-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-plan-config-example.json
+  - type: Authentication
+    url: https://docs.plandex.ai/hosting/self-hosting/local-mode-quickstart
+- aid: plandex:plandex-execution-api
+  name: Plandex Execution API
+  description: Streaming connect, build, tell, and stop endpoints for plan execution.
+  humanURL: https://docs.plandex.ai/development
+  baseURL: http://localhost:8099
+  tags:
+  - Execution
+  properties:
+  - type: OpenAPI
+    url: openapi/plandex-execution-api-openapi.yml
+  - type: Documentation
+    url: https://docs.plandex.ai
+  - type: SourceCode
+    url: https://github.com/plandex-ai/plandex/tree/main/app/server
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-plan-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-context-item-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-branch-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-convo-message-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-model-pack-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-plan-config-schema.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-plan-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-context-item-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-model-pack-structure.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-plan-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-context-item-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-convo-message-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-model-pack-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-plan-config-example.json
+  - type: Authentication
+    url: https://docs.plandex.ai/hosting/self-hosting/local-mode-quickstart
+- aid: plandex:plandex-filemap-api
+  name: Plandex FileMap API
+  description: Tree-sitter project map generation and cached map loading.
+  humanURL: https://docs.plandex.ai/development
+  baseURL: http://localhost:8099
+  tags:
+  - FileMap
+  properties:
+  - type: OpenAPI
+    url: openapi/plandex-filemap-api-openapi.yml
+  - type: Documentation
+    url: https://docs.plandex.ai
+  - type: SourceCode
+    url: https://github.com/plandex-ai/plandex/tree/main/app/server
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-plan-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-context-item-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-branch-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-convo-message-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-model-pack-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-plan-config-schema.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-plan-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-context-item-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-model-pack-structure.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-plan-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-context-item-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-convo-message-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-model-pack-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-plan-config-example.json
+  - type: Authentication
+    url: https://docs.plandex.ai/hosting/self-hosting/local-mode-quickstart
+- aid: plandex:plandex-health-api
+  name: Plandex Health API
+  description: Operational health and version endpoints.
+  humanURL: https://docs.plandex.ai/development
+  baseURL: http://localhost:8099
+  tags:
+  - Health
+  properties:
+  - type: OpenAPI
+    url: openapi/plandex-health-api-openapi.yml
+  - type: Documentation
+    url: https://docs.plandex.ai
+  - type: SourceCode
+    url: https://github.com/plandex-ai/plandex/tree/main/app/server
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-plan-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-context-item-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-branch-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-convo-message-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-model-pack-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-plan-config-schema.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-plan-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-context-item-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-model-pack-structure.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-plan-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-context-item-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-convo-message-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-model-pack-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-plan-config-example.json
+  - type: Authentication
+    url: https://docs.plandex.ai/hosting/self-hosting/local-mode-quickstart
+- aid: plandex:plandex-invites-api
+  name: Plandex Invites API
+  description: Invite users into an org and manage pending invites.
+  humanURL: https://docs.plandex.ai/development
+  baseURL: http://localhost:8099
+  tags:
+  - Invites
+  properties:
+  - type: OpenAPI
+    url: openapi/plandex-invites-api-openapi.yml
+  - type: Documentation
+    url: https://docs.plandex.ai
+  - type: SourceCode
+    url: https://github.com/plandex-ai/plandex/tree/main/app/server
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-plan-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-context-item-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-branch-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-convo-message-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-model-pack-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-plan-config-schema.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-plan-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-context-item-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-model-pack-structure.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-plan-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-context-item-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-convo-message-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-model-pack-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-plan-config-example.json
+  - type: Authentication
+    url: https://docs.plandex.ai/hosting/self-hosting/local-mode-quickstart
+- aid: plandex:plandex-models-api
+  name: Plandex Models API
+  description: Model packs, custom models, custom providers, default settings.
+  humanURL: https://docs.plandex.ai/development
+  baseURL: http://localhost:8099
+  tags:
+  - Models
+  properties:
+  - type: OpenAPI
+    url: openapi/plandex-models-api-openapi.yml
+  - type: Documentation
+    url: https://docs.plandex.ai
+  - type: SourceCode
+    url: https://github.com/plandex-ai/plandex/tree/main/app/server
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-plan-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-context-item-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-branch-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-convo-message-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-model-pack-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-plan-config-schema.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-plan-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-context-item-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-model-pack-structure.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-plan-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-context-item-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-convo-message-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-model-pack-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-plan-config-example.json
+  - type: Authentication
+    url: https://docs.plandex.ai/hosting/self-hosting/local-mode-quickstart
+- aid: plandex:plandex-orgs-api
+  name: Plandex Orgs API
+  description: Organization and role membership management.
+  humanURL: https://docs.plandex.ai/development
+  baseURL: http://localhost:8099
+  tags:
+  - Orgs
+  properties:
+  - type: OpenAPI
+    url: openapi/plandex-orgs-api-openapi.yml
+  - type: Documentation
+    url: https://docs.plandex.ai
+  - type: SourceCode
+    url: https://github.com/plandex-ai/plandex/tree/main/app/server
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-plan-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-context-item-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-branch-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-convo-message-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-model-pack-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-plan-config-schema.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-plan-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-context-item-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-model-pack-structure.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-plan-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-context-item-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-convo-message-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-model-pack-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-plan-config-example.json
+  - type: Authentication
+    url: https://docs.plandex.ai/hosting/self-hosting/local-mode-quickstart
+- aid: plandex:plandex-plans-api
+  name: Plandex Plans API
+  description: Long-running, branchable units of AI coding work over loaded context.
+  humanURL: https://docs.plandex.ai/development
+  baseURL: http://localhost:8099
+  tags:
+  - Plans
+  properties:
+  - type: OpenAPI
+    url: openapi/plandex-plans-api-openapi.yml
+  - type: Documentation
+    url: https://docs.plandex.ai
+  - type: SourceCode
+    url: https://github.com/plandex-ai/plandex/tree/main/app/server
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-plan-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-context-item-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-branch-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-convo-message-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-model-pack-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-plan-config-schema.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-plan-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-context-item-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-model-pack-structure.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-plan-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-context-item-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-convo-message-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-model-pack-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-plan-config-example.json
+  - type: Authentication
+    url: https://docs.plandex.ai/hosting/self-hosting/local-mode-quickstart
+- aid: plandex:plandex-projects-api
+  name: Plandex Projects API
+  description: Project containers that group plans, mapped to a working directory.
+  humanURL: https://docs.plandex.ai/development
+  baseURL: http://localhost:8099
+  tags:
+  - Projects
+  properties:
+  - type: OpenAPI
+    url: openapi/plandex-projects-api-openapi.yml
+  - type: Documentation
+    url: https://docs.plandex.ai
+  - type: SourceCode
+    url: https://github.com/plandex-ai/plandex/tree/main/app/server
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-plan-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-context-item-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-branch-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-convo-message-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-model-pack-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-plan-config-schema.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-plan-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-context-item-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-model-pack-structure.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-plan-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-context-item-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-convo-message-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-model-pack-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-plan-config-example.json
+  - type: Authentication
+    url: https://docs.plandex.ai/hosting/self-hosting/local-mode-quickstart
+- aid: plandex:plandex-settings-api
+  name: Plandex Settings API
+  description: Per-plan model settings, default settings, and org/user config.
+  humanURL: https://docs.plandex.ai/development
+  baseURL: http://localhost:8099
+  tags:
+  - Settings
+  properties:
+  - type: OpenAPI
+    url: openapi/plandex-settings-api-openapi.yml
+  - type: Documentation
+    url: https://docs.plandex.ai
+  - type: SourceCode
+    url: https://github.com/plandex-ai/plandex/tree/main/app/server
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-plan-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-context-item-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-branch-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-convo-message-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-model-pack-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-plan-config-schema.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-plan-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-context-item-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-model-pack-structure.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-plan-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-context-item-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-convo-message-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-model-pack-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-plan-config-example.json
+  - type: Authentication
+    url: https://docs.plandex.ai/hosting/self-hosting/local-mode-quickstart
+- aid: plandex:plandex-users-api
+  name: Plandex Users API
+  description: User listing and removal within an org.
+  humanURL: https://docs.plandex.ai/development
+  baseURL: http://localhost:8099
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/plandex-users-api-openapi.yml
+  - type: Documentation
+    url: https://docs.plandex.ai
+  - type: SourceCode
+    url: https://github.com/plandex-ai/plandex/tree/main/app/server
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-plan-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-context-item-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-branch-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-convo-message-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-model-pack-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-plan-config-schema.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-plan-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-context-item-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-model-pack-structure.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-plan-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-context-item-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-convo-message-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-model-pack-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-plan-config-example.json
+  - type: Authentication
+    url: https://docs.plandex.ai/hosting/self-hosting/local-mode-quickstart
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/plandex/overview
   - type: AgenticAccess
     url: agentic-access/plandex-agentic-access.yml
   - type: Authentication
