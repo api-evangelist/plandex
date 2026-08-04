@@ -1,0 +1,336 @@
+{
+  "info": {
+    "_postman_id": "a5410da7-bb90-48c3-802f-3085fa081029",
+    "name": "Plandex Server Accounts Projects API",
+    "description": "Management and orchestration REST API exposed by the Plandex server (open-source, Go) used by the Plandex CLI/REPL to drive long-running coding plans across organizations, projects, plans, branches, context, conversation, model packs, and configuration. The same API powered Plandex Cloud (winding down 2025-10-03) and now powers self-hosted / local-mode deployments via Docker. Default local-mode bind is http://localhost:8099.\n\nContact Support:\n Name: Plandex AI",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:37:39.000Z",
+    "updatedAt": "2026-07-28T02:37:40.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a5410da7-bb90-48c3-802f-3085fa081029"
+  },
+  "item": [
+    {
+      "name": "projects",
+      "item": [
+        {
+          "name": "{projectId}",
+          "item": [
+            {
+              "name": "set_plan",
+              "item": [
+                {
+                  "name": "Set Current Plan For Project",
+                  "id": "1e016f4a-277d-43be-ac29-df79247feb3d",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/projects/:projectId/set_plan",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "projects",
+                        ":projectId",
+                        "set_plan"
+                      ],
+                      "variable": [
+                        {
+                          "id": "c2ea6104-7c8b-4ad1-b115-47f0a8bcbe5f",
+                          "key": "projectId",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Set the active plan for a project."
+                  },
+                  "response": [
+                    {
+                      "id": "9d594589-448f-4c6b-8db5-2665bf038783",
+                      "name": "Active plan set.",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/projects/:projectId/set_plan",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "projects",
+                            ":projectId",
+                            "set_plan"
+                          ],
+                          "variable": [
+                            {
+                              "key": "projectId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:37:40.000Z",
+                      "updatedAt": "2026-07-28T02:37:40.000Z",
+                      "uid": "35240-9d594589-448f-4c6b-8db5-2665bf038783"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:37:40.000Z",
+                  "updatedAt": "2026-07-28T02:37:40.000Z",
+                  "uid": "35240-1e016f4a-277d-43be-ac29-df79247feb3d"
+                }
+              ],
+              "id": "f31da428-79bc-4373-8206-304efd83b050",
+              "createdAt": "2026-07-28T02:37:40.000Z",
+              "updatedAt": "2026-07-28T02:37:40.000Z",
+              "uid": "35240-f31da428-79bc-4373-8206-304efd83b050"
+            },
+            {
+              "name": "rename",
+              "item": [
+                {
+                  "name": "Rename Project",
+                  "id": "bf070506-1c1e-488d-b852-eebafc74a872",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/projects/:projectId/rename",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "projects",
+                        ":projectId",
+                        "rename"
+                      ],
+                      "variable": [
+                        {
+                          "id": "0fec40a0-df59-4455-b313-4282909000cb",
+                          "key": "projectId",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Rename an existing project."
+                  },
+                  "response": [
+                    {
+                      "id": "c25f6e32-c8b7-459c-a4fb-d48dadf04aa4",
+                      "name": "Project renamed.",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/projects/:projectId/rename",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "projects",
+                            ":projectId",
+                            "rename"
+                          ],
+                          "variable": [
+                            {
+                              "key": "projectId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:37:40.000Z",
+                      "updatedAt": "2026-07-28T02:37:40.000Z",
+                      "uid": "35240-c25f6e32-c8b7-459c-a4fb-d48dadf04aa4"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:37:40.000Z",
+                  "updatedAt": "2026-07-28T02:37:40.000Z",
+                  "uid": "35240-bf070506-1c1e-488d-b852-eebafc74a872"
+                }
+              ],
+              "id": "b85443a8-730b-4f70-96d0-e687b92d44b3",
+              "createdAt": "2026-07-28T02:37:40.000Z",
+              "updatedAt": "2026-07-28T02:37:40.000Z",
+              "uid": "35240-b85443a8-730b-4f70-96d0-e687b92d44b3"
+            }
+          ],
+          "id": "bf361dff-ac1f-4278-b687-2ed998d05ee3",
+          "createdAt": "2026-07-28T02:37:40.000Z",
+          "updatedAt": "2026-07-28T02:37:40.000Z",
+          "uid": "35240-bf361dff-ac1f-4278-b687-2ed998d05ee3"
+        },
+        {
+          "name": "List Projects",
+          "id": "924e0022-3595-49f4-9424-6850919d0ae5",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/projects",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "projects"
+              ]
+            },
+            "description": "List projects in the current org."
+          },
+          "response": [
+            {
+              "id": "67c05cce-40e1-4f18-829d-1efb81197aa1",
+              "name": "List of projects.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/projects",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "projects"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:37:40.000Z",
+              "updatedAt": "2026-07-28T02:37:40.000Z",
+              "uid": "35240-67c05cce-40e1-4f18-829d-1efb81197aa1"
+            }
+          ],
+          "createdAt": "2026-07-28T02:37:40.000Z",
+          "updatedAt": "2026-07-28T02:37:40.000Z",
+          "uid": "35240-924e0022-3595-49f4-9424-6850919d0ae5"
+        },
+        {
+          "name": "Create Project",
+          "id": "4911e5a7-d678-4294-b04f-3f1128aaf028",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/projects",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "projects"
+              ]
+            },
+            "description": "Create a new project container for plans."
+          },
+          "response": [
+            {
+              "id": "57132aab-6f47-4bac-a558-a0e481c6cc5a",
+              "name": "Project created.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/projects",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "projects"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:37:40.000Z",
+              "updatedAt": "2026-07-28T02:37:40.000Z",
+              "uid": "35240-57132aab-6f47-4bac-a558-a0e481c6cc5a"
+            }
+          ],
+          "createdAt": "2026-07-28T02:37:40.000Z",
+          "updatedAt": "2026-07-28T02:37:40.000Z",
+          "uid": "35240-4911e5a7-d678-4294-b04f-3f1128aaf028"
+        }
+      ],
+      "id": "da9d4db3-5a93-4dec-9131-88d11872624c",
+      "createdAt": "2026-07-28T02:37:40.000Z",
+      "updatedAt": "2026-07-28T02:37:40.000Z",
+      "uid": "35240-da9d4db3-5a93-4dec-9131-88d11872624c"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8099"
+    }
+  ]
+}

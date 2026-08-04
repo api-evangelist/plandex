@@ -1,0 +1,450 @@
+{
+  "info": {
+    "_postman_id": "82a329cc-ae9f-4f86-9eee-aa75eb34cb3a",
+    "name": "Plandex Server Accounts API",
+    "description": "Management and orchestration REST API exposed by the Plandex server (open-source, Go) used by the Plandex CLI/REPL to drive long-running coding plans across organizations, projects, plans, branches, context, conversation, model packs, and configuration. The same API powered Plandex Cloud (winding down 2025-10-03) and now powers self-hosted / local-mode deployments via Docker. Default local-mode bind is http://localhost:8099.\n\nContact Support:\n Name: Plandex AI",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:37:26.000Z",
+    "updatedAt": "2026-07-28T02:37:26.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-82a329cc-ae9f-4f86-9eee-aa75eb34cb3a"
+  },
+  "item": [
+    {
+      "name": "accounts",
+      "item": [
+        {
+          "name": "email_verifications",
+          "item": [
+            {
+              "name": "check_pin",
+              "item": [
+                {
+                  "name": "Check Email Verification Pin",
+                  "id": "c88cbf86-0e47-46fd-a118-4b52dc1ada0f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/email_verifications/check_pin",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        "email_verifications",
+                        "check_pin"
+                      ]
+                    },
+                    "description": "Verify the PIN previously emailed to the user."
+                  },
+                  "response": [
+                    {
+                      "id": "3d2ddcac-646c-4407-a33f-69788a10368e",
+                      "name": "PIN verified.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/email_verifications/check_pin",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            "email_verifications",
+                            "check_pin"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:37:26.000Z",
+                      "updatedAt": "2026-07-28T02:37:26.000Z",
+                      "uid": "35240-3d2ddcac-646c-4407-a33f-69788a10368e"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:37:26.000Z",
+                  "updatedAt": "2026-07-28T02:37:26.000Z",
+                  "uid": "35240-c88cbf86-0e47-46fd-a118-4b52dc1ada0f"
+                }
+              ],
+              "id": "8dd955eb-25c3-411c-a307-27a8b3954cd9",
+              "createdAt": "2026-07-28T02:37:26.000Z",
+              "updatedAt": "2026-07-28T02:37:26.000Z",
+              "uid": "35240-8dd955eb-25c3-411c-a307-27a8b3954cd9"
+            },
+            {
+              "name": "Create Email Verification",
+              "id": "5da8c064-69e0-4f7f-82bd-d8d28e97fbd7",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/accounts/email_verifications",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "accounts",
+                    "email_verifications"
+                  ]
+                },
+                "description": "Send an email verification PIN to the supplied address."
+              },
+              "response": [
+                {
+                  "id": "fac39bb1-962d-43af-8492-45646063cb3b",
+                  "name": "Verification email sent.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/email_verifications",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        "email_verifications"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:37:26.000Z",
+                  "updatedAt": "2026-07-28T02:37:26.000Z",
+                  "uid": "35240-fac39bb1-962d-43af-8492-45646063cb3b"
+                }
+              ],
+              "createdAt": "2026-07-28T02:37:26.000Z",
+              "updatedAt": "2026-07-28T02:37:26.000Z",
+              "uid": "35240-5da8c064-69e0-4f7f-82bd-d8d28e97fbd7"
+            }
+          ],
+          "id": "2dbe6b2a-930b-446f-b313-027d196d7528",
+          "createdAt": "2026-07-28T02:37:26.000Z",
+          "updatedAt": "2026-07-28T02:37:26.000Z",
+          "uid": "35240-2dbe6b2a-930b-446f-b313-027d196d7528"
+        },
+        {
+          "name": "sign_in_codes",
+          "item": [
+            {
+              "name": "Create Sign In Code",
+              "id": "16b0d46f-e83a-44e2-9956-fe559e9b9a72",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/accounts/sign_in_codes",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "accounts",
+                    "sign_in_codes"
+                  ]
+                },
+                "description": "Issue a single-use sign-in code (alternative to password flow)."
+              },
+              "response": [
+                {
+                  "id": "96a55074-418f-4778-9f58-8b60bc24cc53",
+                  "name": "Sign-in code created.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/sign_in_codes",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        "sign_in_codes"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:37:26.000Z",
+                  "updatedAt": "2026-07-28T02:37:26.000Z",
+                  "uid": "35240-96a55074-418f-4778-9f58-8b60bc24cc53"
+                }
+              ],
+              "createdAt": "2026-07-28T02:37:26.000Z",
+              "updatedAt": "2026-07-28T02:37:26.000Z",
+              "uid": "35240-16b0d46f-e83a-44e2-9956-fe559e9b9a72"
+            }
+          ],
+          "id": "3017f5d7-ca58-4265-ab7b-83795605df3f",
+          "createdAt": "2026-07-28T02:37:26.000Z",
+          "updatedAt": "2026-07-28T02:37:26.000Z",
+          "uid": "35240-3017f5d7-ca58-4265-ab7b-83795605df3f"
+        },
+        {
+          "name": "sign_in",
+          "item": [
+            {
+              "name": "Sign In",
+              "id": "555e000d-f7b4-4cf8-af05-245264a8a17a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/accounts/sign_in",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "accounts",
+                    "sign_in"
+                  ]
+                },
+                "description": "Authenticate a user and start a session."
+              },
+              "response": [
+                {
+                  "id": "8749d42a-159f-4c64-a455-3b9ec9762aec",
+                  "name": "Signed in successfully.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/sign_in",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        "sign_in"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:37:26.000Z",
+                  "updatedAt": "2026-07-28T02:37:26.000Z",
+                  "uid": "35240-8749d42a-159f-4c64-a455-3b9ec9762aec"
+                }
+              ],
+              "createdAt": "2026-07-28T02:37:26.000Z",
+              "updatedAt": "2026-07-28T02:37:26.000Z",
+              "uid": "35240-555e000d-f7b4-4cf8-af05-245264a8a17a"
+            }
+          ],
+          "id": "f3adfd66-dd83-496a-93a1-f318a9f5e386",
+          "createdAt": "2026-07-28T02:37:26.000Z",
+          "updatedAt": "2026-07-28T02:37:26.000Z",
+          "uid": "35240-f3adfd66-dd83-496a-93a1-f318a9f5e386"
+        },
+        {
+          "name": "sign_out",
+          "item": [
+            {
+              "name": "Sign Out",
+              "id": "6d27a901-bcaa-4bea-b0c7-2699a6c4090c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/accounts/sign_out",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "accounts",
+                    "sign_out"
+                  ]
+                },
+                "description": "Terminate the active session."
+              },
+              "response": [
+                {
+                  "id": "c9b7a0be-7823-4c1c-9650-36740a09b85e",
+                  "name": "Signed out.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/sign_out",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        "sign_out"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:37:26.000Z",
+                  "updatedAt": "2026-07-28T02:37:26.000Z",
+                  "uid": "35240-c9b7a0be-7823-4c1c-9650-36740a09b85e"
+                }
+              ],
+              "createdAt": "2026-07-28T02:37:26.000Z",
+              "updatedAt": "2026-07-28T02:37:26.000Z",
+              "uid": "35240-6d27a901-bcaa-4bea-b0c7-2699a6c4090c"
+            }
+          ],
+          "id": "3e59abbf-1aed-4b3a-8fc5-9dda0ea90f64",
+          "createdAt": "2026-07-28T02:37:26.000Z",
+          "updatedAt": "2026-07-28T02:37:26.000Z",
+          "uid": "35240-3e59abbf-1aed-4b3a-8fc5-9dda0ea90f64"
+        },
+        {
+          "name": "Create Account",
+          "id": "3c3ba3f5-4499-4326-8d16-139e7381d36f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/accounts",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "accounts"
+              ]
+            },
+            "description": "Register a new Plandex account."
+          },
+          "response": [
+            {
+              "id": "ece82f7d-35bc-41c9-8b26-83e42e657dc3",
+              "name": "Account created.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/accounts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "accounts"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:37:26.000Z",
+              "updatedAt": "2026-07-28T02:37:26.000Z",
+              "uid": "35240-ece82f7d-35bc-41c9-8b26-83e42e657dc3"
+            }
+          ],
+          "createdAt": "2026-07-28T02:37:26.000Z",
+          "updatedAt": "2026-07-28T02:37:26.000Z",
+          "uid": "35240-3c3ba3f5-4499-4326-8d16-139e7381d36f"
+        }
+      ],
+      "id": "c1b3b8d3-a5f7-47b1-897a-18b8b7142ed9",
+      "createdAt": "2026-07-28T02:37:26.000Z",
+      "updatedAt": "2026-07-28T02:37:26.000Z",
+      "uid": "35240-c1b3b8d3-a5f7-47b1-897a-18b8b7142ed9"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8099"
+    }
+  ]
+}

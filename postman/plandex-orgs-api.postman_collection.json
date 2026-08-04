@@ -1,0 +1,297 @@
+{
+  "info": {
+    "_postman_id": "e7ad4a53-400d-4ae4-b90f-4e4fc6bd97a8",
+    "name": "Plandex Server Accounts Orgs API",
+    "description": "Management and orchestration REST API exposed by the Plandex server (open-source, Go) used by the Plandex CLI/REPL to drive long-running coding plans across organizations, projects, plans, branches, context, conversation, model packs, and configuration. The same API powered Plandex Cloud (winding down 2025-10-03) and now powers self-hosted / local-mode deployments via Docker. Default local-mode bind is http://localhost:8099.\n\nContact Support:\n Name: Plandex AI",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:37:38.000Z",
+    "updatedAt": "2026-07-28T02:37:38.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e7ad4a53-400d-4ae4-b90f-4e4fc6bd97a8"
+  },
+  "item": [
+    {
+      "name": "orgs",
+      "item": [
+        {
+          "name": "session",
+          "item": [
+            {
+              "name": "Get Org Session",
+              "id": "359dd453-7fa9-4369-b619-fafeee8e6d05",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/orgs/session",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "orgs",
+                    "session"
+                  ]
+                },
+                "description": "Return the active org session context for the authenticated user."
+              },
+              "response": [
+                {
+                  "id": "7a586645-eea8-4ea0-82af-161188690b8d",
+                  "name": "Org session details.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/orgs/session",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "orgs",
+                        "session"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:37:38.000Z",
+                  "updatedAt": "2026-07-28T02:37:38.000Z",
+                  "uid": "35240-7a586645-eea8-4ea0-82af-161188690b8d"
+                }
+              ],
+              "createdAt": "2026-07-28T02:37:38.000Z",
+              "updatedAt": "2026-07-28T02:37:38.000Z",
+              "uid": "35240-359dd453-7fa9-4369-b619-fafeee8e6d05"
+            }
+          ],
+          "id": "c47cb016-8521-413d-b689-9207b024e26c",
+          "createdAt": "2026-07-28T02:37:38.000Z",
+          "updatedAt": "2026-07-28T02:37:38.000Z",
+          "uid": "35240-c47cb016-8521-413d-b689-9207b024e26c"
+        },
+        {
+          "name": "roles",
+          "item": [
+            {
+              "name": "List Org Roles",
+              "id": "32f06416-8609-40b0-8c86-c4f13f0bf538",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/orgs/roles",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "orgs",
+                    "roles"
+                  ]
+                },
+                "description": "List RBAC roles available within the org."
+              },
+              "response": [
+                {
+                  "id": "2a0f8cbf-5dd1-4228-b516-73533b58d279",
+                  "name": "List of roles.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/orgs/roles",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "orgs",
+                        "roles"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:37:38.000Z",
+                  "updatedAt": "2026-07-28T02:37:38.000Z",
+                  "uid": "35240-2a0f8cbf-5dd1-4228-b516-73533b58d279"
+                }
+              ],
+              "createdAt": "2026-07-28T02:37:38.000Z",
+              "updatedAt": "2026-07-28T02:37:38.000Z",
+              "uid": "35240-32f06416-8609-40b0-8c86-c4f13f0bf538"
+            }
+          ],
+          "id": "82c988f6-8090-470f-9371-773e1239b917",
+          "createdAt": "2026-07-28T02:37:38.000Z",
+          "updatedAt": "2026-07-28T02:37:38.000Z",
+          "uid": "35240-82c988f6-8090-470f-9371-773e1239b917"
+        },
+        {
+          "name": "List Orgs",
+          "id": "77d67b72-2c83-44a5-a081-37ef4dc5ef33",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/orgs",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "orgs"
+              ]
+            },
+            "description": "List organizations the authenticated user belongs to."
+          },
+          "response": [
+            {
+              "id": "ab15e10f-4310-447e-b972-9e6ac79ef41a",
+              "name": "List of orgs.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/orgs",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "orgs"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:37:38.000Z",
+              "updatedAt": "2026-07-28T02:37:38.000Z",
+              "uid": "35240-ab15e10f-4310-447e-b972-9e6ac79ef41a"
+            }
+          ],
+          "createdAt": "2026-07-28T02:37:38.000Z",
+          "updatedAt": "2026-07-28T02:37:38.000Z",
+          "uid": "35240-77d67b72-2c83-44a5-a081-37ef4dc5ef33"
+        },
+        {
+          "name": "Create Org",
+          "id": "3b1dab64-69a2-4ff5-9a5e-75cdc6dee04f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/orgs",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "orgs"
+              ]
+            },
+            "description": "Create a new organization."
+          },
+          "response": [
+            {
+              "id": "c3c8ec27-e308-466d-a485-18bf58c09096",
+              "name": "Org created.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/orgs",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "orgs"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:37:38.000Z",
+              "updatedAt": "2026-07-28T02:37:38.000Z",
+              "uid": "35240-c3c8ec27-e308-466d-a485-18bf58c09096"
+            }
+          ],
+          "createdAt": "2026-07-28T02:37:38.000Z",
+          "updatedAt": "2026-07-28T02:37:38.000Z",
+          "uid": "35240-3b1dab64-69a2-4ff5-9a5e-75cdc6dee04f"
+        }
+      ],
+      "id": "e590876d-4e80-4b5b-bbab-55ddf549b1c5",
+      "createdAt": "2026-07-28T02:37:38.000Z",
+      "updatedAt": "2026-07-28T02:37:38.000Z",
+      "uid": "35240-e590876d-4e80-4b5b-bbab-55ddf549b1c5"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8099"
+    }
+  ]
+}

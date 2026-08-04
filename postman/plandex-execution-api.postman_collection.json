@@ -1,0 +1,825 @@
+{
+  "info": {
+    "_postman_id": "9b67c4a9-433c-4de5-883e-bbc0b4cb674b",
+    "name": "Plandex Server Accounts Execution API",
+    "description": "Management and orchestration REST API exposed by the Plandex server (open-source, Go) used by the Plandex CLI/REPL to drive long-running coding plans across organizations, projects, plans, branches, context, conversation, model packs, and configuration. The same API powered Plandex Cloud (winding down 2025-10-03) and now powers self-hosted / local-mode deployments via Docker. Default local-mode bind is http://localhost:8099.\n\nContact Support:\n Name: Plandex AI",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:37:31.000Z",
+    "updatedAt": "2026-07-28T02:37:31.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-9b67c4a9-433c-4de5-883e-bbc0b4cb674b"
+  },
+  "item": [
+    {
+      "name": "plans",
+      "item": [
+        {
+          "name": "{planId}",
+          "item": [
+            {
+              "name": "{branch}",
+              "item": [
+                {
+                  "name": "status",
+                  "item": [
+                    {
+                      "name": "Get Plan Status",
+                      "id": "e604842d-7186-4ff3-8009-1e9cdaf30522",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/plans/:planId/:branch/status",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "plans",
+                            ":planId",
+                            ":branch",
+                            "status"
+                          ],
+                          "variable": [
+                            {
+                              "id": "708b3359-6973-4bb0-aef3-abfd01c99f4d",
+                              "key": "planId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            },
+                            {
+                              "id": "54230631-ab3b-49c1-a9f8-702ae4276c40",
+                              "key": "branch",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Get the execution status for the plan branch."
+                      },
+                      "response": [
+                        {
+                          "id": "96fc49c2-5b18-4a5c-92c6-9dc96ff41b04",
+                          "name": "Status payload.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/plans/:planId/:branch/status",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "plans",
+                                ":planId",
+                                ":branch",
+                                "status"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "planId"
+                                },
+                                {
+                                  "key": "branch"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:37:31.000Z",
+                          "updatedAt": "2026-07-28T02:37:31.000Z",
+                          "uid": "35240-96fc49c2-5b18-4a5c-92c6-9dc96ff41b04"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:37:31.000Z",
+                      "updatedAt": "2026-07-28T02:37:31.000Z",
+                      "uid": "35240-e604842d-7186-4ff3-8009-1e9cdaf30522"
+                    }
+                  ],
+                  "id": "08f38da7-a5d1-4c43-a3bc-b9d00c213612",
+                  "createdAt": "2026-07-28T02:37:31.000Z",
+                  "updatedAt": "2026-07-28T02:37:31.000Z",
+                  "uid": "35240-08f38da7-a5d1-4c43-a3bc-b9d00c213612"
+                },
+                {
+                  "name": "tell",
+                  "item": [
+                    {
+                      "name": "Tell Plan",
+                      "id": "2723983f-4bb3-4bc1-8768-d20303a3f3e5",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/plans/:planId/:branch/tell",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "plans",
+                            ":planId",
+                            ":branch",
+                            "tell"
+                          ],
+                          "variable": [
+                            {
+                              "id": "9fa2b2a5-64ca-4ab6-abe0-c402c045dc4a",
+                              "key": "planId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            },
+                            {
+                              "id": "220ba942-dcce-4e63-b38a-ef4836f65581",
+                              "key": "branch",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Send a prompt to the plan and stream the model response (streaming endpoint, analogous to `plandex tell`)."
+                      },
+                      "response": [
+                        {
+                          "id": "cc33e3b3-4aba-4578-9d5f-8b2c9104ddf0",
+                          "name": "Streaming response.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/plans/:planId/:branch/tell",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "plans",
+                                ":planId",
+                                ":branch",
+                                "tell"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "planId"
+                                },
+                                {
+                                  "key": "branch"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:37:31.000Z",
+                          "updatedAt": "2026-07-28T02:37:31.000Z",
+                          "uid": "35240-cc33e3b3-4aba-4578-9d5f-8b2c9104ddf0"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:37:31.000Z",
+                      "updatedAt": "2026-07-28T02:37:31.000Z",
+                      "uid": "35240-2723983f-4bb3-4bc1-8768-d20303a3f3e5"
+                    }
+                  ],
+                  "id": "ce5fa7a9-9a2e-4330-ad58-80886deec950",
+                  "createdAt": "2026-07-28T02:37:31.000Z",
+                  "updatedAt": "2026-07-28T02:37:31.000Z",
+                  "uid": "35240-ce5fa7a9-9a2e-4330-ad58-80886deec950"
+                },
+                {
+                  "name": "build",
+                  "item": [
+                    {
+                      "name": "Build Plan",
+                      "id": "c1d9f85f-9187-45f5-83f4-64bb06d0200e",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PATCH",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/plans/:planId/:branch/build",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "plans",
+                            ":planId",
+                            ":branch",
+                            "build"
+                          ],
+                          "variable": [
+                            {
+                              "id": "30ba4e3d-5f5a-4780-ac16-95ac5b0c88f3",
+                              "key": "planId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            },
+                            {
+                              "id": "8bf7aa5e-01f0-4b83-a372-66194e4510c6",
+                              "key": "branch",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Build pending changes from the conversation into file updates (streaming endpoint, analogous to `plandex build`)."
+                      },
+                      "response": [
+                        {
+                          "id": "99c75072-1098-4275-a31b-37eb81fadac5",
+                          "name": "Streaming response.",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/plans/:planId/:branch/build",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "plans",
+                                ":planId",
+                                ":branch",
+                                "build"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "planId"
+                                },
+                                {
+                                  "key": "branch"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:37:31.000Z",
+                          "updatedAt": "2026-07-28T02:37:31.000Z",
+                          "uid": "35240-99c75072-1098-4275-a31b-37eb81fadac5"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:37:31.000Z",
+                      "updatedAt": "2026-07-28T02:37:31.000Z",
+                      "uid": "35240-c1d9f85f-9187-45f5-83f4-64bb06d0200e"
+                    }
+                  ],
+                  "id": "0af3d7e3-9e99-421a-9a71-05ed3ad73fe9",
+                  "createdAt": "2026-07-28T02:37:31.000Z",
+                  "updatedAt": "2026-07-28T02:37:31.000Z",
+                  "uid": "35240-0af3d7e3-9e99-421a-9a71-05ed3ad73fe9"
+                },
+                {
+                  "name": "connect",
+                  "item": [
+                    {
+                      "name": "Connect To Plan Stream",
+                      "id": "20cd6158-7a00-4c09-9460-b70f55159207",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PATCH",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/plans/:planId/:branch/connect",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "plans",
+                            ":planId",
+                            ":branch",
+                            "connect"
+                          ],
+                          "variable": [
+                            {
+                              "id": "e309a2e0-dd4b-4a29-9412-fcd46832b127",
+                              "key": "planId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            },
+                            {
+                              "id": "97632e04-822f-4e8f-a5d4-81eaa86d282b",
+                              "key": "branch",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Connect (or reconnect) to the live stream of an in-progress plan run."
+                      },
+                      "response": [
+                        {
+                          "id": "0c76de22-0037-4076-b662-7582db2defb8",
+                          "name": "Streaming response.",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/plans/:planId/:branch/connect",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "plans",
+                                ":planId",
+                                ":branch",
+                                "connect"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "planId"
+                                },
+                                {
+                                  "key": "branch"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:37:31.000Z",
+                          "updatedAt": "2026-07-28T02:37:31.000Z",
+                          "uid": "35240-0c76de22-0037-4076-b662-7582db2defb8"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:37:31.000Z",
+                      "updatedAt": "2026-07-28T02:37:31.000Z",
+                      "uid": "35240-20cd6158-7a00-4c09-9460-b70f55159207"
+                    }
+                  ],
+                  "id": "6546376b-bad4-438b-8d5f-ca583e71764e",
+                  "createdAt": "2026-07-28T02:37:31.000Z",
+                  "updatedAt": "2026-07-28T02:37:31.000Z",
+                  "uid": "35240-6546376b-bad4-438b-8d5f-ca583e71764e"
+                },
+                {
+                  "name": "stop",
+                  "item": [
+                    {
+                      "name": "Stop Plan",
+                      "id": "4bff6ba6-337d-4f3f-8e41-a0dca3b7ff8e",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/plans/:planId/:branch/stop",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "plans",
+                            ":planId",
+                            ":branch",
+                            "stop"
+                          ],
+                          "variable": [
+                            {
+                              "id": "50aff8aa-23dc-48fb-bd92-7f787d1ff364",
+                              "key": "planId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            },
+                            {
+                              "id": "9394af51-814c-447a-8cea-301b799020cd",
+                              "key": "branch",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Stop an in-progress plan run."
+                      },
+                      "response": [
+                        {
+                          "id": "5e2013ed-a457-4f7f-962b-f1a5c8820fc3",
+                          "name": "Plan stopped.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/plans/:planId/:branch/stop",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "plans",
+                                ":planId",
+                                ":branch",
+                                "stop"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "planId"
+                                },
+                                {
+                                  "key": "branch"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:37:31.000Z",
+                          "updatedAt": "2026-07-28T02:37:31.000Z",
+                          "uid": "35240-5e2013ed-a457-4f7f-962b-f1a5c8820fc3"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:37:31.000Z",
+                      "updatedAt": "2026-07-28T02:37:31.000Z",
+                      "uid": "35240-4bff6ba6-337d-4f3f-8e41-a0dca3b7ff8e"
+                    }
+                  ],
+                  "id": "1e5da934-1261-4db1-9c2a-d8f3b60021ee",
+                  "createdAt": "2026-07-28T02:37:31.000Z",
+                  "updatedAt": "2026-07-28T02:37:31.000Z",
+                  "uid": "35240-1e5da934-1261-4db1-9c2a-d8f3b60021ee"
+                },
+                {
+                  "name": "respond_missing_file",
+                  "item": [
+                    {
+                      "name": "Respond Missing File",
+                      "id": "8a472155-4040-4a82-b62f-040e00c43dd8",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/plans/:planId/:branch/respond_missing_file",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "plans",
+                            ":planId",
+                            ":branch",
+                            "respond_missing_file"
+                          ],
+                          "variable": [
+                            {
+                              "id": "3086c625-fe4c-481a-9438-95117e8dd64c",
+                              "key": "planId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            },
+                            {
+                              "id": "056bf6df-36a9-4baf-848b-520eafa0ddfe",
+                              "key": "branch",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Reply to a model request for a file the agent could not find."
+                      },
+                      "response": [
+                        {
+                          "id": "0c8f6416-0cdc-4af6-b548-2e39fd87ad66",
+                          "name": "Response sent.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/plans/:planId/:branch/respond_missing_file",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "plans",
+                                ":planId",
+                                ":branch",
+                                "respond_missing_file"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "planId"
+                                },
+                                {
+                                  "key": "branch"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:37:31.000Z",
+                          "updatedAt": "2026-07-28T02:37:31.000Z",
+                          "uid": "35240-0c8f6416-0cdc-4af6-b548-2e39fd87ad66"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:37:31.000Z",
+                      "updatedAt": "2026-07-28T02:37:31.000Z",
+                      "uid": "35240-8a472155-4040-4a82-b62f-040e00c43dd8"
+                    }
+                  ],
+                  "id": "239a167e-c07b-4c5a-afb0-e66b63511ac3",
+                  "createdAt": "2026-07-28T02:37:31.000Z",
+                  "updatedAt": "2026-07-28T02:37:31.000Z",
+                  "uid": "35240-239a167e-c07b-4c5a-afb0-e66b63511ac3"
+                },
+                {
+                  "name": "auto_load_context",
+                  "item": [
+                    {
+                      "name": "Auto Load Context",
+                      "id": "d996d0d9-5009-4dde-9537-e8b95d1a2fd5",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/plans/:planId/:branch/auto_load_context",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "plans",
+                            ":planId",
+                            ":branch",
+                            "auto_load_context"
+                          ],
+                          "variable": [
+                            {
+                              "id": "9e7dd832-ec5a-4066-aef2-1593e6669be1",
+                              "key": "planId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            },
+                            {
+                              "id": "c0f8cf58-293a-45c9-adf5-29d27f4114ba",
+                              "key": "branch",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Have the agent automatically load context based on the project map."
+                      },
+                      "response": [
+                        {
+                          "id": "57ff6f39-9d6b-4f45-99a8-44dd8f044ddd",
+                          "name": "Auto-load triggered.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/plans/:planId/:branch/auto_load_context",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "plans",
+                                ":planId",
+                                ":branch",
+                                "auto_load_context"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "planId"
+                                },
+                                {
+                                  "key": "branch"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:37:31.000Z",
+                          "updatedAt": "2026-07-28T02:37:31.000Z",
+                          "uid": "35240-57ff6f39-9d6b-4f45-99a8-44dd8f044ddd"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:37:31.000Z",
+                      "updatedAt": "2026-07-28T02:37:31.000Z",
+                      "uid": "35240-d996d0d9-5009-4dde-9537-e8b95d1a2fd5"
+                    }
+                  ],
+                  "id": "1cf04d8f-6a74-4440-82bc-eefa304baafd",
+                  "createdAt": "2026-07-28T02:37:31.000Z",
+                  "updatedAt": "2026-07-28T02:37:31.000Z",
+                  "uid": "35240-1cf04d8f-6a74-4440-82bc-eefa304baafd"
+                },
+                {
+                  "name": "build_status",
+                  "item": [
+                    {
+                      "name": "Get Build Status",
+                      "id": "43dd9f0c-edd8-4ed3-804a-ca6e25c4bfde",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/plans/:planId/:branch/build_status",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "plans",
+                            ":planId",
+                            ":branch",
+                            "build_status"
+                          ],
+                          "variable": [
+                            {
+                              "id": "a812fdde-cc8b-483a-8290-254852bb61fb",
+                              "key": "planId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            },
+                            {
+                              "id": "480ef0eb-71d7-4c13-b8a4-8be3083220a9",
+                              "key": "branch",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Get build status for the plan branch."
+                      },
+                      "response": [
+                        {
+                          "id": "227a0b49-f628-4fa6-9e5f-8a6bdeb1fcf2",
+                          "name": "Build status.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/plans/:planId/:branch/build_status",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "plans",
+                                ":planId",
+                                ":branch",
+                                "build_status"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "planId"
+                                },
+                                {
+                                  "key": "branch"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:37:31.000Z",
+                          "updatedAt": "2026-07-28T02:37:31.000Z",
+                          "uid": "35240-227a0b49-f628-4fa6-9e5f-8a6bdeb1fcf2"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:37:31.000Z",
+                      "updatedAt": "2026-07-28T02:37:31.000Z",
+                      "uid": "35240-43dd9f0c-edd8-4ed3-804a-ca6e25c4bfde"
+                    }
+                  ],
+                  "id": "f6de5cc7-1519-45bf-96eb-1a519f02f1a4",
+                  "createdAt": "2026-07-28T02:37:31.000Z",
+                  "updatedAt": "2026-07-28T02:37:31.000Z",
+                  "uid": "35240-f6de5cc7-1519-45bf-96eb-1a519f02f1a4"
+                }
+              ],
+              "id": "e1c1b311-9b40-4460-8f21-e2a94c253ead",
+              "createdAt": "2026-07-28T02:37:31.000Z",
+              "updatedAt": "2026-07-28T02:37:31.000Z",
+              "uid": "35240-e1c1b311-9b40-4460-8f21-e2a94c253ead"
+            }
+          ],
+          "id": "87910de8-b92c-40f2-b7bb-3bbc6cb9a007",
+          "createdAt": "2026-07-28T02:37:31.000Z",
+          "updatedAt": "2026-07-28T02:37:31.000Z",
+          "uid": "35240-87910de8-b92c-40f2-b7bb-3bbc6cb9a007"
+        }
+      ],
+      "id": "af2bc6dc-f8fe-4dfc-ad05-f5f401e2a8de",
+      "createdAt": "2026-07-28T02:37:31.000Z",
+      "updatedAt": "2026-07-28T02:37:31.000Z",
+      "uid": "35240-af2bc6dc-f8fe-4dfc-ad05-f5f401e2a8de"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8099"
+    }
+  ]
+}

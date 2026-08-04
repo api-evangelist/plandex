@@ -1,0 +1,221 @@
+{
+  "info": {
+    "_postman_id": "5eaf8a2d-d921-4f61-a842-50146fa709a4",
+    "name": "Plandex Server Accounts FileMap API",
+    "description": "Management and orchestration REST API exposed by the Plandex server (open-source, Go) used by the Plandex CLI/REPL to drive long-running coding plans across organizations, projects, plans, branches, context, conversation, model packs, and configuration. The same API powered Plandex Cloud (winding down 2025-10-03) and now powers self-hosted / local-mode deployments via Docker. Default local-mode bind is http://localhost:8099.\n\nContact Support:\n Name: Plandex AI",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:37:34.000Z",
+    "updatedAt": "2026-07-28T02:37:34.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-5eaf8a2d-d921-4f61-a842-50146fa709a4"
+  },
+  "item": [
+    {
+      "name": "file_map",
+      "item": [
+        {
+          "name": "Get File Map",
+          "id": "d76bb4cd-e988-4263-a1a0-16d4311ead4e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/file_map",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "file_map"
+              ]
+            },
+            "description": "Generate a tree-sitter file map for the supplied directory or files."
+          },
+          "response": [
+            {
+              "id": "7f8f9caf-41bc-4325-860b-8f6823d2d53c",
+              "name": "File map.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/file_map",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "file_map"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:37:34.000Z",
+              "updatedAt": "2026-07-28T02:37:34.000Z",
+              "uid": "35240-7f8f9caf-41bc-4325-860b-8f6823d2d53c"
+            }
+          ],
+          "createdAt": "2026-07-28T02:37:34.000Z",
+          "updatedAt": "2026-07-28T02:37:34.000Z",
+          "uid": "35240-d76bb4cd-e988-4263-a1a0-16d4311ead4e"
+        }
+      ],
+      "id": "aca298e5-453b-4729-aeac-603a619d7181",
+      "createdAt": "2026-07-28T02:37:34.000Z",
+      "updatedAt": "2026-07-28T02:37:34.000Z",
+      "uid": "35240-aca298e5-453b-4729-aeac-603a619d7181"
+    },
+    {
+      "name": "plans",
+      "item": [
+        {
+          "name": "{planId}",
+          "item": [
+            {
+              "name": "{branch}",
+              "item": [
+                {
+                  "name": "load_cached_file_map",
+                  "item": [
+                    {
+                      "name": "Load Cached File Map",
+                      "id": "41b53933-2d1e-46b2-b420-1ac5c295a5f7",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/plans/:planId/:branch/load_cached_file_map",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "plans",
+                            ":planId",
+                            ":branch",
+                            "load_cached_file_map"
+                          ],
+                          "variable": [
+                            {
+                              "id": "61b55a75-bb50-421b-955d-e5b887157f18",
+                              "key": "planId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            },
+                            {
+                              "id": "4e0fca8b-4fcb-45f6-b913-1b83a2e3917c",
+                              "key": "branch",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Load a cached file map into the plan context."
+                      },
+                      "response": [
+                        {
+                          "id": "c8b51f32-1af4-47d8-84a3-a243a3dc41a3",
+                          "name": "File map loaded.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/plans/:planId/:branch/load_cached_file_map",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "plans",
+                                ":planId",
+                                ":branch",
+                                "load_cached_file_map"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "planId"
+                                },
+                                {
+                                  "key": "branch"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:37:34.000Z",
+                          "updatedAt": "2026-07-28T02:37:34.000Z",
+                          "uid": "35240-c8b51f32-1af4-47d8-84a3-a243a3dc41a3"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:37:34.000Z",
+                      "updatedAt": "2026-07-28T02:37:34.000Z",
+                      "uid": "35240-41b53933-2d1e-46b2-b420-1ac5c295a5f7"
+                    }
+                  ],
+                  "id": "be747b7d-856f-4d4c-ae96-4e1ea74ba05b",
+                  "createdAt": "2026-07-28T02:37:34.000Z",
+                  "updatedAt": "2026-07-28T02:37:34.000Z",
+                  "uid": "35240-be747b7d-856f-4d4c-ae96-4e1ea74ba05b"
+                }
+              ],
+              "id": "8abbb0df-be40-4883-b7e8-5ed71eb464f6",
+              "createdAt": "2026-07-28T02:37:34.000Z",
+              "updatedAt": "2026-07-28T02:37:34.000Z",
+              "uid": "35240-8abbb0df-be40-4883-b7e8-5ed71eb464f6"
+            }
+          ],
+          "id": "a19e2608-7ede-4ce5-832b-cae78244b48e",
+          "createdAt": "2026-07-28T02:37:34.000Z",
+          "updatedAt": "2026-07-28T02:37:34.000Z",
+          "uid": "35240-a19e2608-7ede-4ce5-832b-cae78244b48e"
+        }
+      ],
+      "id": "77a753c4-28a8-495f-afbd-27c97c129bb5",
+      "createdAt": "2026-07-28T02:37:34.000Z",
+      "updatedAt": "2026-07-28T02:37:34.000Z",
+      "uid": "35240-77a753c4-28a8-495f-afbd-27c97c129bb5"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8099"
+    }
+  ]
+}

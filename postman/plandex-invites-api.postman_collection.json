@@ -1,0 +1,391 @@
+{
+  "info": {
+    "_postman_id": "c2d82a9b-7d6c-4024-8ba7-3897df7de89c",
+    "name": "Plandex Server Accounts Invites API",
+    "description": "Management and orchestration REST API exposed by the Plandex server (open-source, Go) used by the Plandex CLI/REPL to drive long-running coding plans across organizations, projects, plans, branches, context, conversation, model packs, and configuration. The same API powered Plandex Cloud (winding down 2025-10-03) and now powers self-hosted / local-mode deployments via Docker. Default local-mode bind is http://localhost:8099.\n\nContact Support:\n Name: Plandex AI",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:37:35.000Z",
+    "updatedAt": "2026-07-28T02:37:36.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-c2d82a9b-7d6c-4024-8ba7-3897df7de89c"
+  },
+  "item": [
+    {
+      "name": "invites",
+      "item": [
+        {
+          "name": "pending",
+          "item": [
+            {
+              "name": "List Pending Invites",
+              "id": "cb23108c-6111-4710-a6c7-f09b66ddcba8",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/invites/pending",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "invites",
+                    "pending"
+                  ]
+                },
+                "description": "List invites that have not yet been accepted."
+              },
+              "response": [
+                {
+                  "id": "32a15037-2802-411d-96f3-0a7942671b0e",
+                  "name": "Pending invites.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/invites/pending",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "invites",
+                        "pending"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:37:36.000Z",
+                  "updatedAt": "2026-07-28T02:37:36.000Z",
+                  "uid": "35240-32a15037-2802-411d-96f3-0a7942671b0e"
+                }
+              ],
+              "createdAt": "2026-07-28T02:37:36.000Z",
+              "updatedAt": "2026-07-28T02:37:36.000Z",
+              "uid": "35240-cb23108c-6111-4710-a6c7-f09b66ddcba8"
+            }
+          ],
+          "id": "7d60c10b-ede1-40f4-9b10-e7aad90fe81e",
+          "createdAt": "2026-07-28T02:37:36.000Z",
+          "updatedAt": "2026-07-28T02:37:36.000Z",
+          "uid": "35240-7d60c10b-ede1-40f4-9b10-e7aad90fe81e"
+        },
+        {
+          "name": "accepted",
+          "item": [
+            {
+              "name": "List Accepted Invites",
+              "id": "8186117d-2a9e-4937-a3ab-9ea5e6d81416",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/invites/accepted",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "invites",
+                    "accepted"
+                  ]
+                },
+                "description": "List invites that have already been accepted."
+              },
+              "response": [
+                {
+                  "id": "9355099e-b2ca-4bc4-90a6-f6f3498d704f",
+                  "name": "Accepted invites.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/invites/accepted",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "invites",
+                        "accepted"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:37:36.000Z",
+                  "updatedAt": "2026-07-28T02:37:36.000Z",
+                  "uid": "35240-9355099e-b2ca-4bc4-90a6-f6f3498d704f"
+                }
+              ],
+              "createdAt": "2026-07-28T02:37:36.000Z",
+              "updatedAt": "2026-07-28T02:37:36.000Z",
+              "uid": "35240-8186117d-2a9e-4937-a3ab-9ea5e6d81416"
+            }
+          ],
+          "id": "5dde453b-76f7-4220-9022-cea5773790c7",
+          "createdAt": "2026-07-28T02:37:36.000Z",
+          "updatedAt": "2026-07-28T02:37:36.000Z",
+          "uid": "35240-5dde453b-76f7-4220-9022-cea5773790c7"
+        },
+        {
+          "name": "all",
+          "item": [
+            {
+              "name": "List All Invites",
+              "id": "33394ff9-59f6-41fc-91ff-a95c827e6788",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/invites/all",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "invites",
+                    "all"
+                  ]
+                },
+                "description": "List all invites regardless of state."
+              },
+              "response": [
+                {
+                  "id": "19fdd822-fdbd-4563-b903-1805d8fdd073",
+                  "name": "All invites.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/invites/all",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "invites",
+                        "all"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:37:36.000Z",
+                  "updatedAt": "2026-07-28T02:37:36.000Z",
+                  "uid": "35240-19fdd822-fdbd-4563-b903-1805d8fdd073"
+                }
+              ],
+              "createdAt": "2026-07-28T02:37:36.000Z",
+              "updatedAt": "2026-07-28T02:37:36.000Z",
+              "uid": "35240-33394ff9-59f6-41fc-91ff-a95c827e6788"
+            }
+          ],
+          "id": "69a25d1f-4efa-455b-8b3c-135689104e24",
+          "createdAt": "2026-07-28T02:37:36.000Z",
+          "updatedAt": "2026-07-28T02:37:36.000Z",
+          "uid": "35240-69a25d1f-4efa-455b-8b3c-135689104e24"
+        },
+        {
+          "name": "{inviteId}",
+          "item": [
+            {
+              "name": "Delete Invite",
+              "id": "5ac0b94c-6391-4c3a-9892-a3de51db6577",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/invites/:inviteId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "invites",
+                    ":inviteId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "2a452759-4868-4bd1-85f0-e54b96b01c0a",
+                      "key": "inviteId",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Revoke an outstanding invite."
+              },
+              "response": [
+                {
+                  "id": "de5049d6-0dde-4473-aee3-a7e41a27d7ff",
+                  "name": "Invite revoked.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/invites/:inviteId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "invites",
+                        ":inviteId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "inviteId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:37:36.000Z",
+                  "updatedAt": "2026-07-28T02:37:36.000Z",
+                  "uid": "35240-de5049d6-0dde-4473-aee3-a7e41a27d7ff"
+                }
+              ],
+              "createdAt": "2026-07-28T02:37:36.000Z",
+              "updatedAt": "2026-07-28T02:37:36.000Z",
+              "uid": "35240-5ac0b94c-6391-4c3a-9892-a3de51db6577"
+            }
+          ],
+          "id": "6b30795e-2f9d-4b53-82cd-780031191cbb",
+          "createdAt": "2026-07-28T02:37:36.000Z",
+          "updatedAt": "2026-07-28T02:37:36.000Z",
+          "uid": "35240-6b30795e-2f9d-4b53-82cd-780031191cbb"
+        },
+        {
+          "name": "Invite User",
+          "id": "11f3ac0d-74a1-4c36-bd33-93644b3c0779",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/invites",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "invites"
+              ]
+            },
+            "description": "Send an invite to add a user to the org."
+          },
+          "response": [
+            {
+              "id": "673642d8-69ed-4123-b646-e5606d7af5dd",
+              "name": "Invite sent.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/invites",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "invites"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:37:36.000Z",
+              "updatedAt": "2026-07-28T02:37:36.000Z",
+              "uid": "35240-673642d8-69ed-4123-b646-e5606d7af5dd"
+            }
+          ],
+          "createdAt": "2026-07-28T02:37:36.000Z",
+          "updatedAt": "2026-07-28T02:37:36.000Z",
+          "uid": "35240-11f3ac0d-74a1-4c36-bd33-93644b3c0779"
+        }
+      ],
+      "id": "80ed3703-7549-4f35-9131-132a35005afa",
+      "createdAt": "2026-07-28T02:37:36.000Z",
+      "updatedAt": "2026-07-28T02:37:36.000Z",
+      "uid": "35240-80ed3703-7549-4f35-9131-132a35005afa"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8099"
+    }
+  ]
+}

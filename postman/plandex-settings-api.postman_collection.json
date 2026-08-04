@@ -1,0 +1,782 @@
+{
+  "info": {
+    "_postman_id": "94504657-5a51-4d20-a89f-31fae22ce1c9",
+    "name": "Plandex Server Accounts Settings API",
+    "description": "Management and orchestration REST API exposed by the Plandex server (open-source, Go) used by the Plandex CLI/REPL to drive long-running coding plans across organizations, projects, plans, branches, context, conversation, model packs, and configuration. The same API powered Plandex Cloud (winding down 2025-10-03) and now powers self-hosted / local-mode deployments via Docker. Default local-mode bind is http://localhost:8099.\n\nContact Support:\n Name: Plandex AI",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:37:40.000Z",
+    "updatedAt": "2026-07-28T02:37:41.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-94504657-5a51-4d20-a89f-31fae22ce1c9"
+  },
+  "item": [
+    {
+      "name": "plans",
+      "item": [
+        {
+          "name": "{planId}",
+          "item": [
+            {
+              "name": "{branch}",
+              "item": [
+                {
+                  "name": "settings",
+                  "item": [
+                    {
+                      "name": "Get Plan Settings",
+                      "id": "0d89fb6f-897d-4599-81c7-179326c3472c",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/plans/:planId/:branch/settings",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "plans",
+                            ":planId",
+                            ":branch",
+                            "settings"
+                          ],
+                          "variable": [
+                            {
+                              "id": "f7deaf69-a007-4914-bb00-cbb59b09b144",
+                              "key": "planId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            },
+                            {
+                              "id": "1febf293-bede-4922-84ae-343704c9dfc7",
+                              "key": "branch",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Get the model and execution settings for the plan branch."
+                      },
+                      "response": [
+                        {
+                          "id": "4c0033b8-9a3e-4f96-afad-23cda5caf6ef",
+                          "name": "Settings.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/plans/:planId/:branch/settings",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "plans",
+                                ":planId",
+                                ":branch",
+                                "settings"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "planId"
+                                },
+                                {
+                                  "key": "branch"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:37:41.000Z",
+                          "updatedAt": "2026-07-28T02:37:41.000Z",
+                          "uid": "35240-4c0033b8-9a3e-4f96-afad-23cda5caf6ef"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:37:41.000Z",
+                      "updatedAt": "2026-07-28T02:37:41.000Z",
+                      "uid": "35240-0d89fb6f-897d-4599-81c7-179326c3472c"
+                    },
+                    {
+                      "name": "Update Plan Settings",
+                      "id": "ffed8747-70ec-4173-a865-26e56e6c5f65",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/plans/:planId/:branch/settings",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "plans",
+                            ":planId",
+                            ":branch",
+                            "settings"
+                          ],
+                          "variable": [
+                            {
+                              "id": "d3e0b869-0900-45e0-bdad-d13721e8c7ed",
+                              "key": "planId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            },
+                            {
+                              "id": "28d8470f-8e1f-435c-8586-799990aaff0e",
+                              "key": "branch",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Update the model and execution settings for the plan branch."
+                      },
+                      "response": [
+                        {
+                          "id": "ce831e54-7058-489a-b98d-c9a2e503acff",
+                          "name": "Settings updated.",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/plans/:planId/:branch/settings",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "plans",
+                                ":planId",
+                                ":branch",
+                                "settings"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "planId"
+                                },
+                                {
+                                  "key": "branch"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:37:41.000Z",
+                          "updatedAt": "2026-07-28T02:37:41.000Z",
+                          "uid": "35240-ce831e54-7058-489a-b98d-c9a2e503acff"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:37:41.000Z",
+                      "updatedAt": "2026-07-28T02:37:41.000Z",
+                      "uid": "35240-ffed8747-70ec-4173-a865-26e56e6c5f65"
+                    }
+                  ],
+                  "id": "20481adb-fc41-4525-8c9f-4cc6e1e5df76",
+                  "createdAt": "2026-07-28T02:37:41.000Z",
+                  "updatedAt": "2026-07-28T02:37:41.000Z",
+                  "uid": "35240-20481adb-fc41-4525-8c9f-4cc6e1e5df76"
+                }
+              ],
+              "id": "555acf69-000f-4749-b2f6-400824eb12a6",
+              "createdAt": "2026-07-28T02:37:41.000Z",
+              "updatedAt": "2026-07-28T02:37:41.000Z",
+              "uid": "35240-555acf69-000f-4749-b2f6-400824eb12a6"
+            },
+            {
+              "name": "config",
+              "item": [
+                {
+                  "name": "Get Plan Config",
+                  "id": "8d7ad2fe-21d3-4223-b1a7-5d21b14cdc7c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/plans/:planId/config",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "plans",
+                        ":planId",
+                        "config"
+                      ],
+                      "variable": [
+                        {
+                          "id": "4663ab98-e0b8-442d-a8a8-528e3b7eb045",
+                          "key": "planId",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Get the per-plan configuration (autonomy flags, executor settings)."
+                  },
+                  "response": [
+                    {
+                      "id": "664925f5-e105-4d2c-bbab-daa92f71f004",
+                      "name": "Plan config.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/plans/:planId/config",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "plans",
+                            ":planId",
+                            "config"
+                          ],
+                          "variable": [
+                            {
+                              "key": "planId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:37:41.000Z",
+                      "updatedAt": "2026-07-28T02:37:41.000Z",
+                      "uid": "35240-664925f5-e105-4d2c-bbab-daa92f71f004"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:37:41.000Z",
+                  "updatedAt": "2026-07-28T02:37:41.000Z",
+                  "uid": "35240-8d7ad2fe-21d3-4223-b1a7-5d21b14cdc7c"
+                },
+                {
+                  "name": "Update Plan Config",
+                  "id": "a8ef1d5b-849b-4907-a68e-62050b944e81",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/plans/:planId/config",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "plans",
+                        ":planId",
+                        "config"
+                      ],
+                      "variable": [
+                        {
+                          "id": "b09e23d5-0ce6-4d56-a5c3-80e8b41e0ae4",
+                          "key": "planId",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Update the per-plan configuration."
+                  },
+                  "response": [
+                    {
+                      "id": "c20fed1f-2ee1-4e7c-9e02-e2cb0dd08081",
+                      "name": "Plan config updated.",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/plans/:planId/config",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "plans",
+                            ":planId",
+                            "config"
+                          ],
+                          "variable": [
+                            {
+                              "key": "planId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:37:41.000Z",
+                      "updatedAt": "2026-07-28T02:37:41.000Z",
+                      "uid": "35240-c20fed1f-2ee1-4e7c-9e02-e2cb0dd08081"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:37:41.000Z",
+                  "updatedAt": "2026-07-28T02:37:41.000Z",
+                  "uid": "35240-a8ef1d5b-849b-4907-a68e-62050b944e81"
+                }
+              ],
+              "id": "8db6fa0e-1373-473d-8a6c-bfcb662d7588",
+              "createdAt": "2026-07-28T02:37:41.000Z",
+              "updatedAt": "2026-07-28T02:37:41.000Z",
+              "uid": "35240-8db6fa0e-1373-473d-8a6c-bfcb662d7588"
+            }
+          ],
+          "id": "1df38f33-c479-4820-a552-6032b2c458ba",
+          "createdAt": "2026-07-28T02:37:41.000Z",
+          "updatedAt": "2026-07-28T02:37:41.000Z",
+          "uid": "35240-1df38f33-c479-4820-a552-6032b2c458ba"
+        }
+      ],
+      "id": "e6f2a47a-da0e-4124-9ea8-ae7ff4a16e16",
+      "createdAt": "2026-07-28T02:37:41.000Z",
+      "updatedAt": "2026-07-28T02:37:41.000Z",
+      "uid": "35240-e6f2a47a-da0e-4124-9ea8-ae7ff4a16e16"
+    },
+    {
+      "name": "default_settings",
+      "item": [
+        {
+          "name": "Get Default Settings",
+          "id": "757d5aa3-0cc9-41bf-9021-03940635f78a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/default_settings",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "default_settings"
+              ]
+            },
+            "description": "Get org-level default model and execution settings."
+          },
+          "response": [
+            {
+              "id": "b10175f6-b2a9-4f44-843a-b56341a5abc7",
+              "name": "Default settings.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/default_settings",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "default_settings"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:37:41.000Z",
+              "updatedAt": "2026-07-28T02:37:41.000Z",
+              "uid": "35240-b10175f6-b2a9-4f44-843a-b56341a5abc7"
+            }
+          ],
+          "createdAt": "2026-07-28T02:37:41.000Z",
+          "updatedAt": "2026-07-28T02:37:41.000Z",
+          "uid": "35240-757d5aa3-0cc9-41bf-9021-03940635f78a"
+        },
+        {
+          "name": "Update Default Settings",
+          "id": "a61c8493-5581-4b66-a00a-24340bc4152b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/default_settings",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "default_settings"
+              ]
+            },
+            "description": "Update org-level default settings."
+          },
+          "response": [
+            {
+              "id": "28806335-1e67-4996-bce2-129e7b462274",
+              "name": "Default settings updated.",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/default_settings",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "default_settings"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:37:41.000Z",
+              "updatedAt": "2026-07-28T02:37:41.000Z",
+              "uid": "35240-28806335-1e67-4996-bce2-129e7b462274"
+            }
+          ],
+          "createdAt": "2026-07-28T02:37:41.000Z",
+          "updatedAt": "2026-07-28T02:37:41.000Z",
+          "uid": "35240-a61c8493-5581-4b66-a00a-24340bc4152b"
+        }
+      ],
+      "id": "bd11552b-f1ae-47d9-814e-44dd6d44dcbd",
+      "createdAt": "2026-07-28T02:37:41.000Z",
+      "updatedAt": "2026-07-28T02:37:41.000Z",
+      "uid": "35240-bd11552b-f1ae-47d9-814e-44dd6d44dcbd"
+    },
+    {
+      "name": "default_plan_config",
+      "item": [
+        {
+          "name": "Get Default Plan Config",
+          "id": "5eda3fc2-4c12-4d68-ad88-5aa571446dbb",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/default_plan_config",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "default_plan_config"
+              ]
+            },
+            "description": "Get the org-level default plan config used as a template for new plans."
+          },
+          "response": [
+            {
+              "id": "a9407fa8-2d8e-439f-9daf-452711531f57",
+              "name": "Default plan config.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/default_plan_config",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "default_plan_config"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:37:41.000Z",
+              "updatedAt": "2026-07-28T02:37:41.000Z",
+              "uid": "35240-a9407fa8-2d8e-439f-9daf-452711531f57"
+            }
+          ],
+          "createdAt": "2026-07-28T02:37:41.000Z",
+          "updatedAt": "2026-07-28T02:37:41.000Z",
+          "uid": "35240-5eda3fc2-4c12-4d68-ad88-5aa571446dbb"
+        },
+        {
+          "name": "Update Default Plan Config",
+          "id": "00e29a8d-c2e1-4fcb-9ac0-10bd89cd3497",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/default_plan_config",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "default_plan_config"
+              ]
+            },
+            "description": "Update the org-level default plan config."
+          },
+          "response": [
+            {
+              "id": "62940e64-3e05-4dab-bc5c-6092f272335b",
+              "name": "Default plan config updated.",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/default_plan_config",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "default_plan_config"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:37:41.000Z",
+              "updatedAt": "2026-07-28T02:37:41.000Z",
+              "uid": "35240-62940e64-3e05-4dab-bc5c-6092f272335b"
+            }
+          ],
+          "createdAt": "2026-07-28T02:37:41.000Z",
+          "updatedAt": "2026-07-28T02:37:41.000Z",
+          "uid": "35240-00e29a8d-c2e1-4fcb-9ac0-10bd89cd3497"
+        }
+      ],
+      "id": "280cc4a4-d711-400f-a7f7-db3a469e40ae",
+      "createdAt": "2026-07-28T02:37:41.000Z",
+      "updatedAt": "2026-07-28T02:37:41.000Z",
+      "uid": "35240-280cc4a4-d711-400f-a7f7-db3a469e40ae"
+    },
+    {
+      "name": "org_user_config",
+      "item": [
+        {
+          "name": "Get Org User Config",
+          "id": "a75ba336-7ad0-4a58-bb36-9d89abe48ea1",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/org_user_config",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "org_user_config"
+              ]
+            },
+            "description": "Get the per-user configuration scoped to the current org."
+          },
+          "response": [
+            {
+              "id": "2e2fc869-8b46-44ac-a180-62c40c9032db",
+              "name": "Org user config.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/org_user_config",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "org_user_config"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:37:41.000Z",
+              "updatedAt": "2026-07-28T02:37:41.000Z",
+              "uid": "35240-2e2fc869-8b46-44ac-a180-62c40c9032db"
+            }
+          ],
+          "createdAt": "2026-07-28T02:37:41.000Z",
+          "updatedAt": "2026-07-28T02:37:41.000Z",
+          "uid": "35240-a75ba336-7ad0-4a58-bb36-9d89abe48ea1"
+        },
+        {
+          "name": "Update Org User Config",
+          "id": "ef85c289-77c3-4c74-8fd5-b30551e5f7d0",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/org_user_config",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "org_user_config"
+              ]
+            },
+            "description": "Update the per-user configuration scoped to the current org."
+          },
+          "response": [
+            {
+              "id": "ab96c223-784a-434d-92e8-3a195e8f7cfb",
+              "name": "Org user config updated.",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/org_user_config",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "org_user_config"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:37:41.000Z",
+              "updatedAt": "2026-07-28T02:37:41.000Z",
+              "uid": "35240-ab96c223-784a-434d-92e8-3a195e8f7cfb"
+            }
+          ],
+          "createdAt": "2026-07-28T02:37:41.000Z",
+          "updatedAt": "2026-07-28T02:37:41.000Z",
+          "uid": "35240-ef85c289-77c3-4c74-8fd5-b30551e5f7d0"
+        }
+      ],
+      "id": "56a27d22-e249-4a02-92bc-9839b03bad0b",
+      "createdAt": "2026-07-28T02:37:41.000Z",
+      "updatedAt": "2026-07-28T02:37:41.000Z",
+      "uid": "35240-56a27d22-e249-4a02-92bc-9839b03bad0b"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8099"
+    }
+  ]
+}

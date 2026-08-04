@@ -1,0 +1,194 @@
+{
+  "info": {
+    "_postman_id": "db1b9bbb-cbc7-43de-9510-83c6c1fb1a86",
+    "name": "Plandex Server Accounts Health API",
+    "description": "Management and orchestration REST API exposed by the Plandex server (open-source, Go) used by the Plandex CLI/REPL to drive long-running coding plans across organizations, projects, plans, branches, context, conversation, model packs, and configuration. The same API powered Plandex Cloud (winding down 2025-10-03) and now powers self-hosted / local-mode deployments via Docker. Default local-mode bind is http://localhost:8099.\n\nContact Support:\n Name: Plandex AI",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:37:35.000Z",
+    "updatedAt": "2026-07-28T02:37:35.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-db1b9bbb-cbc7-43de-9510-83c6c1fb1a86"
+  },
+  "item": [
+    {
+      "name": "health",
+      "item": [
+        {
+          "name": "Get Server Health",
+          "id": "0548b8d5-2e89-4cfc-9b9c-905731a2da91",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/health",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "health"
+              ]
+            },
+            "description": "Liveness probe used by load balancers and monitoring."
+          },
+          "response": [
+            {
+              "id": "04db62d9-ade1-4122-a01e-e8026b6696ec",
+              "name": "Server is healthy.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/health",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "health"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<string>",
+              "createdAt": "2026-07-28T02:37:35.000Z",
+              "updatedAt": "2026-07-28T02:37:35.000Z",
+              "uid": "35240-04db62d9-ade1-4122-a01e-e8026b6696ec"
+            }
+          ],
+          "createdAt": "2026-07-28T02:37:35.000Z",
+          "updatedAt": "2026-07-28T02:37:35.000Z",
+          "uid": "35240-0548b8d5-2e89-4cfc-9b9c-905731a2da91"
+        }
+      ],
+      "id": "d7348080-bfca-4310-8db0-5ab85841d51f",
+      "createdAt": "2026-07-28T02:37:35.000Z",
+      "updatedAt": "2026-07-28T02:37:35.000Z",
+      "uid": "35240-d7348080-bfca-4310-8db0-5ab85841d51f"
+    },
+    {
+      "name": "version",
+      "item": [
+        {
+          "name": "Get Server Version",
+          "id": "c1e1241d-7cb2-43ba-b508-5ff89974930c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/version",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "version"
+              ]
+            },
+            "description": "Returns the running server version string from version.txt."
+          },
+          "response": [
+            {
+              "id": "fd16743b-2182-423c-ba65-3df87de99df6",
+              "name": "Version string.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/version",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "version"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<string>",
+              "createdAt": "2026-07-28T02:37:35.000Z",
+              "updatedAt": "2026-07-28T02:37:35.000Z",
+              "uid": "35240-fd16743b-2182-423c-ba65-3df87de99df6"
+            }
+          ],
+          "createdAt": "2026-07-28T02:37:35.000Z",
+          "updatedAt": "2026-07-28T02:37:35.000Z",
+          "uid": "35240-c1e1241d-7cb2-43ba-b508-5ff89974930c"
+        }
+      ],
+      "id": "2fa7ff7e-455d-4ea2-b3a0-87dd833d4ea1",
+      "createdAt": "2026-07-28T02:37:35.000Z",
+      "updatedAt": "2026-07-28T02:37:35.000Z",
+      "uid": "35240-2fa7ff7e-455d-4ea2-b3a0-87dd833d4ea1"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8099"
+    }
+  ]
+}

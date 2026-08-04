@@ -1,0 +1,42 @@
+{
+  "provider": "plandex",
+  "sources": [
+    "plandex-accounts-api-openapi.yml",
+    "plandex-branches-api-openapi.yml",
+    "plandex-context-api-openapi.yml",
+    "plandex-conversation-api-openapi.yml",
+    "plandex-diffs-api-openapi.yml",
+    "plandex-execution-api-openapi.yml",
+    "plandex-filemap-api-openapi.yml",
+    "plandex-health-api-openapi.yml",
+    "plandex-invites-api-openapi.yml",
+    "plandex-models-api-openapi.yml",
+    "plandex-orgs-api-openapi.yml",
+    "plandex-plans-api-openapi.yml",
+    "plandex-projects-api-openapi.yml",
+    "plandex-settings-api-openapi.yml",
+    "plandex-users-api-openapi.yml"
+  ],
+  "outputs": [
+    "plandex-accounts-api-openapi.yml",
+    "plandex-branches-api-openapi.yml",
+    "plandex-context-api-openapi.yml",
+    "plandex-conversation-api-openapi.yml",
+    "plandex-diffs-api-openapi.yml",
+    "plandex-execution-api-openapi.yml",
+    "plandex-filemap-api-openapi.yml",
+    "plandex-health-api-openapi.yml",
+    "plandex-invites-api-openapi.yml",
+    "plandex-models-api-openapi.yml",
+    "plandex-orgs-api-openapi.yml",
+    "plandex-plans-api-openapi.yml",
+    "plandex-projects-api-openapi.yml",
+    "plandex-settings-api-openapi.yml",
+    "plandex-users-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

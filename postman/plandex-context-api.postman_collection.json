@@ -1,0 +1,532 @@
+{
+  "info": {
+    "_postman_id": "ec52a8ef-5db7-47ff-a3a8-30afdcd142c1",
+    "name": "Plandex Server Accounts Context API",
+    "description": "Management and orchestration REST API exposed by the Plandex server (open-source, Go) used by the Plandex CLI/REPL to drive long-running coding plans across organizations, projects, plans, branches, context, conversation, model packs, and configuration. The same API powered Plandex Cloud (winding down 2025-10-03) and now powers self-hosted / local-mode deployments via Docker. Default local-mode bind is http://localhost:8099.\n\nContact Support:\n Name: Plandex AI",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:37:27.000Z",
+    "updatedAt": "2026-07-28T02:37:28.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-ec52a8ef-5db7-47ff-a3a8-30afdcd142c1"
+  },
+  "item": [
+    {
+      "name": "plans",
+      "item": [
+        {
+          "name": "{planId}",
+          "item": [
+            {
+              "name": "{branch}",
+              "item": [
+                {
+                  "name": "context",
+                  "item": [
+                    {
+                      "name": "{contextId}",
+                      "item": [
+                        {
+                          "name": "body",
+                          "item": [
+                            {
+                              "name": "Get Context Body",
+                              "id": "b36ce7e2-ed7d-4e2c-9c92-5122a952f6cd",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/plans/:planId/:branch/context/:contextId/body",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "plans",
+                                    ":planId",
+                                    ":branch",
+                                    "context",
+                                    ":contextId",
+                                    "body"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "084762a0-e099-4c1b-a908-85cba52d5b08",
+                                      "key": "planId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "cbfc6f59-6b7b-4e58-9438-b51252378be5",
+                                      "key": "branch",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "20a6613b-30e8-47a0-9ec7-2304382b0884",
+                                      "key": "contextId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    }
+                                  ]
+                                },
+                                "description": "Return the raw body of a context item."
+                              },
+                              "response": [
+                                {
+                                  "id": "5f28b720-dfd8-489c-a43f-aae3fcb6580d",
+                                  "name": "Context body.",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/plans/:planId/:branch/context/:contextId/body",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "plans",
+                                        ":planId",
+                                        ":branch",
+                                        "context",
+                                        ":contextId",
+                                        "body"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "planId"
+                                        },
+                                        {
+                                          "key": "branch"
+                                        },
+                                        {
+                                          "key": "contextId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T02:37:28.000Z",
+                                  "updatedAt": "2026-07-28T02:37:28.000Z",
+                                  "uid": "35240-5f28b720-dfd8-489c-a43f-aae3fcb6580d"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T02:37:28.000Z",
+                              "updatedAt": "2026-07-28T02:37:28.000Z",
+                              "uid": "35240-b36ce7e2-ed7d-4e2c-9c92-5122a952f6cd"
+                            }
+                          ],
+                          "id": "7dc03b11-5c21-4053-9492-181e2eaae317",
+                          "createdAt": "2026-07-28T02:37:28.000Z",
+                          "updatedAt": "2026-07-28T02:37:28.000Z",
+                          "uid": "35240-7dc03b11-5c21-4053-9492-181e2eaae317"
+                        }
+                      ],
+                      "id": "df524847-613a-421a-a3b1-be9433e43155",
+                      "createdAt": "2026-07-28T02:37:28.000Z",
+                      "updatedAt": "2026-07-28T02:37:28.000Z",
+                      "uid": "35240-df524847-613a-421a-a3b1-be9433e43155"
+                    },
+                    {
+                      "name": "List Context",
+                      "id": "a4925501-4f3b-45a3-893a-761fe3e9eaaf",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/plans/:planId/:branch/context",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "plans",
+                            ":planId",
+                            ":branch",
+                            "context"
+                          ],
+                          "variable": [
+                            {
+                              "id": "a9787c9e-a80c-4212-9856-82356e8468b1",
+                              "key": "planId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            },
+                            {
+                              "id": "0a2009fc-471a-4712-802c-2f8f5a404097",
+                              "key": "branch",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "List items currently loaded into the plan's context."
+                      },
+                      "response": [
+                        {
+                          "id": "7034d537-24a0-41b2-a7f7-a14fa9404aa6",
+                          "name": "Context items.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/plans/:planId/:branch/context",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "plans",
+                                ":planId",
+                                ":branch",
+                                "context"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "planId"
+                                },
+                                {
+                                  "key": "branch"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:37:28.000Z",
+                          "updatedAt": "2026-07-28T02:37:28.000Z",
+                          "uid": "35240-7034d537-24a0-41b2-a7f7-a14fa9404aa6"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:37:28.000Z",
+                      "updatedAt": "2026-07-28T02:37:28.000Z",
+                      "uid": "35240-a4925501-4f3b-45a3-893a-761fe3e9eaaf"
+                    },
+                    {
+                      "name": "Load Context",
+                      "id": "b4219058-4b3f-4be9-8c5f-ebbf9798d90e",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/plans/:planId/:branch/context",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "plans",
+                            ":planId",
+                            ":branch",
+                            "context"
+                          ],
+                          "variable": [
+                            {
+                              "id": "ae348060-697a-469e-9994-d0448f4f5807",
+                              "key": "planId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            },
+                            {
+                              "id": "bcdd1a29-1b57-41cb-9876-a09cc8be1079",
+                              "key": "branch",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Load files, directories, URLs, notes, or images into the plan context."
+                      },
+                      "response": [
+                        {
+                          "id": "0da6bebe-6a24-48f1-a80d-377c3198ccd1",
+                          "name": "Context loaded.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/plans/:planId/:branch/context",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "plans",
+                                ":planId",
+                                ":branch",
+                                "context"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "planId"
+                                },
+                                {
+                                  "key": "branch"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Created",
+                          "code": 201,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:37:28.000Z",
+                          "updatedAt": "2026-07-28T02:37:28.000Z",
+                          "uid": "35240-0da6bebe-6a24-48f1-a80d-377c3198ccd1"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:37:28.000Z",
+                      "updatedAt": "2026-07-28T02:37:28.000Z",
+                      "uid": "35240-b4219058-4b3f-4be9-8c5f-ebbf9798d90e"
+                    },
+                    {
+                      "name": "Update Context",
+                      "id": "a372d13f-5e10-403f-8c8a-9ba90e1a25ac",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/plans/:planId/:branch/context",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "plans",
+                            ":planId",
+                            ":branch",
+                            "context"
+                          ],
+                          "variable": [
+                            {
+                              "id": "8623696c-b161-4908-8045-3adb6b4ee724",
+                              "key": "planId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            },
+                            {
+                              "id": "a9fd2f69-d072-41fa-a010-1ddf32ddef5c",
+                              "key": "branch",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Refresh outdated context items."
+                      },
+                      "response": [
+                        {
+                          "id": "a9b49c2b-adf1-467e-8c4a-48af057e5a5e",
+                          "name": "Context updated.",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/plans/:planId/:branch/context",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "plans",
+                                ":planId",
+                                ":branch",
+                                "context"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "planId"
+                                },
+                                {
+                                  "key": "branch"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:37:28.000Z",
+                          "updatedAt": "2026-07-28T02:37:28.000Z",
+                          "uid": "35240-a9b49c2b-adf1-467e-8c4a-48af057e5a5e"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:37:28.000Z",
+                      "updatedAt": "2026-07-28T02:37:28.000Z",
+                      "uid": "35240-a372d13f-5e10-403f-8c8a-9ba90e1a25ac"
+                    },
+                    {
+                      "name": "Delete Context",
+                      "id": "782a0be9-2da9-4684-a017-16d2fd3ba3b2",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/plans/:planId/:branch/context",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "plans",
+                            ":planId",
+                            ":branch",
+                            "context"
+                          ],
+                          "variable": [
+                            {
+                              "id": "fcc75a7e-c2d9-4d66-b627-83a3ad92489c",
+                              "key": "planId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            },
+                            {
+                              "id": "10188557-1c8a-4688-a39b-7fa7305a4e85",
+                              "key": "branch",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Remove context items from the plan."
+                      },
+                      "response": [
+                        {
+                          "id": "5e6bde5b-07e0-47d3-9bd7-520efbb5971f",
+                          "name": "Context removed.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/plans/:planId/:branch/context",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "plans",
+                                ":planId",
+                                ":branch",
+                                "context"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "planId"
+                                },
+                                {
+                                  "key": "branch"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:37:28.000Z",
+                          "updatedAt": "2026-07-28T02:37:28.000Z",
+                          "uid": "35240-5e6bde5b-07e0-47d3-9bd7-520efbb5971f"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:37:28.000Z",
+                      "updatedAt": "2026-07-28T02:37:28.000Z",
+                      "uid": "35240-782a0be9-2da9-4684-a017-16d2fd3ba3b2"
+                    }
+                  ],
+                  "id": "3d194d62-73ae-44ea-9855-5179876d8c8c",
+                  "createdAt": "2026-07-28T02:37:28.000Z",
+                  "updatedAt": "2026-07-28T02:37:28.000Z",
+                  "uid": "35240-3d194d62-73ae-44ea-9855-5179876d8c8c"
+                }
+              ],
+              "id": "92ae2a0e-9efd-42bc-a8e6-40bfabc36ee5",
+              "createdAt": "2026-07-28T02:37:28.000Z",
+              "updatedAt": "2026-07-28T02:37:28.000Z",
+              "uid": "35240-92ae2a0e-9efd-42bc-a8e6-40bfabc36ee5"
+            }
+          ],
+          "id": "0d15427f-9a4a-4e1c-9bb3-bc5bb8ff8a35",
+          "createdAt": "2026-07-28T02:37:28.000Z",
+          "updatedAt": "2026-07-28T02:37:28.000Z",
+          "uid": "35240-0d15427f-9a4a-4e1c-9bb3-bc5bb8ff8a35"
+        }
+      ],
+      "id": "e6990588-dc81-44b2-8430-79cdb5ed345b",
+      "createdAt": "2026-07-28T02:37:28.000Z",
+      "updatedAt": "2026-07-28T02:37:28.000Z",
+      "uid": "35240-e6990588-dc81-44b2-8430-79cdb5ed345b"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8099"
+    }
+  ]
+}

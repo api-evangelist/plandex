@@ -1,0 +1,201 @@
+{
+  "info": {
+    "_postman_id": "2c1f52e6-b1c9-45ce-9afd-d237e10237a8",
+    "name": "Plandex Server Accounts Users API",
+    "description": "Management and orchestration REST API exposed by the Plandex server (open-source, Go) used by the Plandex CLI/REPL to drive long-running coding plans across organizations, projects, plans, branches, context, conversation, model packs, and configuration. The same API powered Plandex Cloud (winding down 2025-10-03) and now powers self-hosted / local-mode deployments via Docker. Default local-mode bind is http://localhost:8099.\n\nContact Support:\n Name: Plandex AI",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:37:41.000Z",
+    "updatedAt": "2026-07-28T02:37:42.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-2c1f52e6-b1c9-45ce-9afd-d237e10237a8"
+  },
+  "item": [
+    {
+      "name": "orgs",
+      "item": [
+        {
+          "name": "users",
+          "item": [
+            {
+              "name": "{userId}",
+              "item": [
+                {
+                  "name": "Delete Org User",
+                  "id": "4b0f0fbf-efe4-4fcd-9157-66297ae2886f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/orgs/users/:userId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "orgs",
+                        "users",
+                        ":userId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "bd2a7b07-337e-4051-882b-4bebdc7eb94c",
+                          "key": "userId",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Remove a user from the org."
+                  },
+                  "response": [
+                    {
+                      "id": "7dc0299b-83a9-4ba0-8fce-d9ad7ecf7c41",
+                      "name": "User removed.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/orgs/users/:userId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "orgs",
+                            "users",
+                            ":userId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "userId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:37:42.000Z",
+                      "updatedAt": "2026-07-28T02:37:42.000Z",
+                      "uid": "35240-7dc0299b-83a9-4ba0-8fce-d9ad7ecf7c41"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:37:42.000Z",
+                  "updatedAt": "2026-07-28T02:37:42.000Z",
+                  "uid": "35240-4b0f0fbf-efe4-4fcd-9157-66297ae2886f"
+                }
+              ],
+              "id": "d208fed1-0599-43e6-a207-b8d0d41e96ed",
+              "createdAt": "2026-07-28T02:37:42.000Z",
+              "updatedAt": "2026-07-28T02:37:42.000Z",
+              "uid": "35240-d208fed1-0599-43e6-a207-b8d0d41e96ed"
+            }
+          ],
+          "id": "9f0ab2c2-dae3-46b4-9249-95fbe8cff4c4",
+          "createdAt": "2026-07-28T02:37:42.000Z",
+          "updatedAt": "2026-07-28T02:37:42.000Z",
+          "uid": "35240-9f0ab2c2-dae3-46b4-9249-95fbe8cff4c4"
+        }
+      ],
+      "id": "8836ad0b-1e45-43c4-a3f8-242c3dc13977",
+      "createdAt": "2026-07-28T02:37:42.000Z",
+      "updatedAt": "2026-07-28T02:37:42.000Z",
+      "uid": "35240-8836ad0b-1e45-43c4-a3f8-242c3dc13977"
+    },
+    {
+      "name": "users",
+      "item": [
+        {
+          "name": "List Users",
+          "id": "ad1551f6-3caa-4ec3-b77a-b9b78bfda665",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/users",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users"
+              ]
+            },
+            "description": "List users in the current org."
+          },
+          "response": [
+            {
+              "id": "bb47082e-c116-4772-8fea-69dd5f2c9ac7",
+              "name": "List of users.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/users",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:37:42.000Z",
+              "updatedAt": "2026-07-28T02:37:42.000Z",
+              "uid": "35240-bb47082e-c116-4772-8fea-69dd5f2c9ac7"
+            }
+          ],
+          "createdAt": "2026-07-28T02:37:42.000Z",
+          "updatedAt": "2026-07-28T02:37:42.000Z",
+          "uid": "35240-ad1551f6-3caa-4ec3-b77a-b9b78bfda665"
+        }
+      ],
+      "id": "e0a2994c-21b2-4744-8e82-7f3fe452087e",
+      "createdAt": "2026-07-28T02:37:42.000Z",
+      "updatedAt": "2026-07-28T02:37:42.000Z",
+      "uid": "35240-e0a2994c-21b2-4744-8e82-7f3fe452087e"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8099"
+    }
+  ]
+}

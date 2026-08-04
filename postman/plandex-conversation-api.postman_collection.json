@@ -1,0 +1,345 @@
+{
+  "info": {
+    "_postman_id": "b5aacde5-3353-4b3d-b820-b29974831eb8",
+    "name": "Plandex Server Accounts Conversation API",
+    "description": "Management and orchestration REST API exposed by the Plandex server (open-source, Go) used by the Plandex CLI/REPL to drive long-running coding plans across organizations, projects, plans, branches, context, conversation, model packs, and configuration. The same API powered Plandex Cloud (winding down 2025-10-03) and now powers self-hosted / local-mode deployments via Docker. Default local-mode bind is http://localhost:8099.\n\nContact Support:\n Name: Plandex AI",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:37:28.000Z",
+    "updatedAt": "2026-07-28T02:37:29.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-b5aacde5-3353-4b3d-b820-b29974831eb8"
+  },
+  "item": [
+    {
+      "name": "plans",
+      "item": [
+        {
+          "name": "{planId}",
+          "item": [
+            {
+              "name": "{branch}",
+              "item": [
+                {
+                  "name": "convo",
+                  "item": [
+                    {
+                      "name": "List Conversation Messages",
+                      "id": "27e625f7-f952-4e58-9aaa-304c5e9c1b0e",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/plans/:planId/:branch/convo",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "plans",
+                            ":planId",
+                            ":branch",
+                            "convo"
+                          ],
+                          "variable": [
+                            {
+                              "id": "fe4f6e33-11c1-4b0c-bf2b-f788bc01147e",
+                              "key": "planId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            },
+                            {
+                              "id": "39990bbf-0ff7-435f-a63e-2ffb667f179b",
+                              "key": "branch",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "List prompts and responses in the plan branch conversation."
+                      },
+                      "response": [
+                        {
+                          "id": "e696865a-52b4-427c-bb48-92d447ed9d20",
+                          "name": "Conversation messages.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/plans/:planId/:branch/convo",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "plans",
+                                ":planId",
+                                ":branch",
+                                "convo"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "planId"
+                                },
+                                {
+                                  "key": "branch"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:37:29.000Z",
+                          "updatedAt": "2026-07-28T02:37:29.000Z",
+                          "uid": "35240-e696865a-52b4-427c-bb48-92d447ed9d20"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:37:29.000Z",
+                      "updatedAt": "2026-07-28T02:37:29.000Z",
+                      "uid": "35240-27e625f7-f952-4e58-9aaa-304c5e9c1b0e"
+                    }
+                  ],
+                  "id": "2b1111e0-39be-4b60-8666-fdae27884668",
+                  "createdAt": "2026-07-28T02:37:29.000Z",
+                  "updatedAt": "2026-07-28T02:37:29.000Z",
+                  "uid": "35240-2b1111e0-39be-4b60-8666-fdae27884668"
+                },
+                {
+                  "name": "rewind",
+                  "item": [
+                    {
+                      "name": "Rewind Plan",
+                      "id": "da01ceac-1bde-49c3-8d51-13774af0a9b6",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PATCH",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/plans/:planId/:branch/rewind",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "plans",
+                            ":planId",
+                            ":branch",
+                            "rewind"
+                          ],
+                          "variable": [
+                            {
+                              "id": "9cb8a826-e1aa-40fb-94b7-a47e5f245480",
+                              "key": "planId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            },
+                            {
+                              "id": "bddbffbd-42cc-4552-b9c8-62237e8e6fae",
+                              "key": "branch",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Rewind the plan branch to a previous version SHA."
+                      },
+                      "response": [
+                        {
+                          "id": "9b44d973-8e95-4543-8417-7aea79f9bb24",
+                          "name": "Plan rewound.",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/plans/:planId/:branch/rewind",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "plans",
+                                ":planId",
+                                ":branch",
+                                "rewind"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "planId"
+                                },
+                                {
+                                  "key": "branch"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:37:29.000Z",
+                          "updatedAt": "2026-07-28T02:37:29.000Z",
+                          "uid": "35240-9b44d973-8e95-4543-8417-7aea79f9bb24"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:37:29.000Z",
+                      "updatedAt": "2026-07-28T02:37:29.000Z",
+                      "uid": "35240-da01ceac-1bde-49c3-8d51-13774af0a9b6"
+                    }
+                  ],
+                  "id": "de19eb5f-4412-4d52-a3de-a96dfd0f8112",
+                  "createdAt": "2026-07-28T02:37:29.000Z",
+                  "updatedAt": "2026-07-28T02:37:29.000Z",
+                  "uid": "35240-de19eb5f-4412-4d52-a3de-a96dfd0f8112"
+                },
+                {
+                  "name": "logs",
+                  "item": [
+                    {
+                      "name": "List Plan Logs",
+                      "id": "6598bab5-0fa6-483c-893d-db652fd671d2",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/plans/:planId/:branch/logs",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "plans",
+                            ":planId",
+                            ":branch",
+                            "logs"
+                          ],
+                          "variable": [
+                            {
+                              "id": "b6f97c6c-66d8-4a6c-bd8a-947993dcdced",
+                              "key": "planId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            },
+                            {
+                              "id": "9dca288b-0544-41d6-a90e-c44cf5c5d8c7",
+                              "key": "branch",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "List log events for the plan branch."
+                      },
+                      "response": [
+                        {
+                          "id": "a8a721ea-4b61-4606-93b2-376584b653c1",
+                          "name": "Log entries.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/plans/:planId/:branch/logs",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "plans",
+                                ":planId",
+                                ":branch",
+                                "logs"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "planId"
+                                },
+                                {
+                                  "key": "branch"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:37:29.000Z",
+                          "updatedAt": "2026-07-28T02:37:29.000Z",
+                          "uid": "35240-a8a721ea-4b61-4606-93b2-376584b653c1"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:37:29.000Z",
+                      "updatedAt": "2026-07-28T02:37:29.000Z",
+                      "uid": "35240-6598bab5-0fa6-483c-893d-db652fd671d2"
+                    }
+                  ],
+                  "id": "052e9098-6fe4-4ff6-83ff-9e744987f7e6",
+                  "createdAt": "2026-07-28T02:37:29.000Z",
+                  "updatedAt": "2026-07-28T02:37:29.000Z",
+                  "uid": "35240-052e9098-6fe4-4ff6-83ff-9e744987f7e6"
+                }
+              ],
+              "id": "27bb7f64-66c9-4ed1-b345-83abc5b5e4d5",
+              "createdAt": "2026-07-28T02:37:29.000Z",
+              "updatedAt": "2026-07-28T02:37:29.000Z",
+              "uid": "35240-27bb7f64-66c9-4ed1-b345-83abc5b5e4d5"
+            }
+          ],
+          "id": "2eafa86f-2d5e-48bb-a137-e11cd5cf5fdc",
+          "createdAt": "2026-07-28T02:37:29.000Z",
+          "updatedAt": "2026-07-28T02:37:29.000Z",
+          "uid": "35240-2eafa86f-2d5e-48bb-a137-e11cd5cf5fdc"
+        }
+      ],
+      "id": "32f47f7e-289b-49b2-b40c-b68d723ab750",
+      "createdAt": "2026-07-28T02:37:29.000Z",
+      "updatedAt": "2026-07-28T02:37:29.000Z",
+      "uid": "35240-32f47f7e-289b-49b2-b40c-b68d723ab750"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8099"
+    }
+  ]
+}

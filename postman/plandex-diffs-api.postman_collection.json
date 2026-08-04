@@ -1,0 +1,537 @@
+{
+  "info": {
+    "_postman_id": "6da16766-2f84-4621-af78-afdee5309cc5",
+    "name": "Plandex Server Accounts Diffs API",
+    "description": "Management and orchestration REST API exposed by the Plandex server (open-source, Go) used by the Plandex CLI/REPL to drive long-running coding plans across organizations, projects, plans, branches, context, conversation, model packs, and configuration. The same API powered Plandex Cloud (winding down 2025-10-03) and now powers self-hosted / local-mode deployments via Docker. Default local-mode bind is http://localhost:8099.\n\nContact Support:\n Name: Plandex AI",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:37:30.000Z",
+    "updatedAt": "2026-07-28T02:37:30.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-6da16766-2f84-4621-af78-afdee5309cc5"
+  },
+  "item": [
+    {
+      "name": "plans",
+      "item": [
+        {
+          "name": "{planId}",
+          "item": [
+            {
+              "name": "{branch}",
+              "item": [
+                {
+                  "name": "apply",
+                  "item": [
+                    {
+                      "name": "Apply Plan Changes",
+                      "id": "98d8f13e-2073-4a64-8671-1bdc11a31791",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PATCH",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/plans/:planId/:branch/apply",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "plans",
+                            ":planId",
+                            ":branch",
+                            "apply"
+                          ],
+                          "variable": [
+                            {
+                              "id": "901e716c-71a0-4573-a348-a8fa1efe7ddf",
+                              "key": "planId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            },
+                            {
+                              "id": "88c84151-0c3d-4880-9ab7-fec968f2a94b",
+                              "key": "branch",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Apply all pending file changes for the plan on the given branch."
+                      },
+                      "response": [
+                        {
+                          "id": "188db585-4e71-49ef-9fa0-072349143565",
+                          "name": "Changes applied.",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/plans/:planId/:branch/apply",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "plans",
+                                ":planId",
+                                ":branch",
+                                "apply"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "planId"
+                                },
+                                {
+                                  "key": "branch"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:37:31.000Z",
+                          "updatedAt": "2026-07-28T02:37:31.000Z",
+                          "uid": "35240-188db585-4e71-49ef-9fa0-072349143565"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:37:31.000Z",
+                      "updatedAt": "2026-07-28T02:37:31.000Z",
+                      "uid": "35240-98d8f13e-2073-4a64-8671-1bdc11a31791"
+                    }
+                  ],
+                  "id": "4530657c-034b-4a40-a45c-6f362d3b1a9b",
+                  "createdAt": "2026-07-28T02:37:31.000Z",
+                  "updatedAt": "2026-07-28T02:37:31.000Z",
+                  "uid": "35240-4530657c-034b-4a40-a45c-6f362d3b1a9b"
+                },
+                {
+                  "name": "reject_all",
+                  "item": [
+                    {
+                      "name": "Reject All Plan Changes",
+                      "id": "42721333-3d1d-4d6a-bc04-ea3e3228db00",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PATCH",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/plans/:planId/:branch/reject_all",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "plans",
+                            ":planId",
+                            ":branch",
+                            "reject_all"
+                          ],
+                          "variable": [
+                            {
+                              "id": "06a2fc14-8e92-4036-ac99-42f8ed30bb57",
+                              "key": "planId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            },
+                            {
+                              "id": "772082bc-f79c-415b-8453-e365002ad5c2",
+                              "key": "branch",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Reject every pending file change for the plan on the branch."
+                      },
+                      "response": [
+                        {
+                          "id": "41c1991e-b48b-4bd9-a93b-cdedd1b5a816",
+                          "name": "Changes rejected.",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/plans/:planId/:branch/reject_all",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "plans",
+                                ":planId",
+                                ":branch",
+                                "reject_all"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "planId"
+                                },
+                                {
+                                  "key": "branch"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:37:31.000Z",
+                          "updatedAt": "2026-07-28T02:37:31.000Z",
+                          "uid": "35240-41c1991e-b48b-4bd9-a93b-cdedd1b5a816"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:37:31.000Z",
+                      "updatedAt": "2026-07-28T02:37:31.000Z",
+                      "uid": "35240-42721333-3d1d-4d6a-bc04-ea3e3228db00"
+                    }
+                  ],
+                  "id": "970adf04-72fa-4f54-894b-2369474eb9bb",
+                  "createdAt": "2026-07-28T02:37:31.000Z",
+                  "updatedAt": "2026-07-28T02:37:31.000Z",
+                  "uid": "35240-970adf04-72fa-4f54-894b-2369474eb9bb"
+                },
+                {
+                  "name": "reject_file",
+                  "item": [
+                    {
+                      "name": "Reject Plan File Change",
+                      "id": "340af7f2-2cb0-4c2e-9bdc-4ffdb86c792a",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PATCH",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/plans/:planId/:branch/reject_file",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "plans",
+                            ":planId",
+                            ":branch",
+                            "reject_file"
+                          ],
+                          "variable": [
+                            {
+                              "id": "48b9d052-719c-4914-a342-90ea144bbcac",
+                              "key": "planId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            },
+                            {
+                              "id": "33ab0fc5-7cb3-472a-9b03-3f8c93cf37a5",
+                              "key": "branch",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Reject pending changes for a single file."
+                      },
+                      "response": [
+                        {
+                          "id": "1971e081-c6c8-48b8-ae18-4df2588289e0",
+                          "name": "File change rejected.",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/plans/:planId/:branch/reject_file",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "plans",
+                                ":planId",
+                                ":branch",
+                                "reject_file"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "planId"
+                                },
+                                {
+                                  "key": "branch"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:37:31.000Z",
+                          "updatedAt": "2026-07-28T02:37:31.000Z",
+                          "uid": "35240-1971e081-c6c8-48b8-ae18-4df2588289e0"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:37:31.000Z",
+                      "updatedAt": "2026-07-28T02:37:31.000Z",
+                      "uid": "35240-340af7f2-2cb0-4c2e-9bdc-4ffdb86c792a"
+                    }
+                  ],
+                  "id": "158c0383-04ed-4bb2-a31a-1156bb1c1305",
+                  "createdAt": "2026-07-28T02:37:31.000Z",
+                  "updatedAt": "2026-07-28T02:37:31.000Z",
+                  "uid": "35240-158c0383-04ed-4bb2-a31a-1156bb1c1305"
+                },
+                {
+                  "name": "reject_files",
+                  "item": [
+                    {
+                      "name": "Reject Multiple File Changes",
+                      "id": "cad83048-ca62-44c8-93c5-2db037eea87d",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PATCH",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/plans/:planId/:branch/reject_files",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "plans",
+                            ":planId",
+                            ":branch",
+                            "reject_files"
+                          ],
+                          "variable": [
+                            {
+                              "id": "001bf9f0-dd3d-4047-b154-f9e1b2ffe21d",
+                              "key": "planId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            },
+                            {
+                              "id": "1557a156-7e96-42c0-ac45-9e3b4795e689",
+                              "key": "branch",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Reject pending changes for the supplied list of files."
+                      },
+                      "response": [
+                        {
+                          "id": "93281b80-02d1-4392-8d21-8589969454e8",
+                          "name": "File changes rejected.",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/plans/:planId/:branch/reject_files",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "plans",
+                                ":planId",
+                                ":branch",
+                                "reject_files"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "planId"
+                                },
+                                {
+                                  "key": "branch"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:37:31.000Z",
+                          "updatedAt": "2026-07-28T02:37:31.000Z",
+                          "uid": "35240-93281b80-02d1-4392-8d21-8589969454e8"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:37:31.000Z",
+                      "updatedAt": "2026-07-28T02:37:31.000Z",
+                      "uid": "35240-cad83048-ca62-44c8-93c5-2db037eea87d"
+                    }
+                  ],
+                  "id": "17637e19-f1f5-4326-8b97-44d8912ca7bb",
+                  "createdAt": "2026-07-28T02:37:31.000Z",
+                  "updatedAt": "2026-07-28T02:37:31.000Z",
+                  "uid": "35240-17637e19-f1f5-4326-8b97-44d8912ca7bb"
+                },
+                {
+                  "name": "diffs",
+                  "item": [
+                    {
+                      "name": "Get Plan Diffs",
+                      "id": "7831bcb0-c65f-4162-b6dc-1006a557d231",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/plans/:planId/:branch/diffs",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "plans",
+                            ":planId",
+                            ":branch",
+                            "diffs"
+                          ],
+                          "variable": [
+                            {
+                              "id": "e9a7a0a2-43a7-484a-af02-45c441309390",
+                              "key": "planId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            },
+                            {
+                              "id": "9d85332e-ce85-4542-8478-ba3a806696d3",
+                              "key": "branch",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Get the unified diff of pending changes for the plan branch."
+                      },
+                      "response": [
+                        {
+                          "id": "8213f4a6-2991-4417-99d3-766fba28d78a",
+                          "name": "Diff payload.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/plans/:planId/:branch/diffs",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "plans",
+                                ":planId",
+                                ":branch",
+                                "diffs"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "planId"
+                                },
+                                {
+                                  "key": "branch"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:37:31.000Z",
+                          "updatedAt": "2026-07-28T02:37:31.000Z",
+                          "uid": "35240-8213f4a6-2991-4417-99d3-766fba28d78a"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:37:31.000Z",
+                      "updatedAt": "2026-07-28T02:37:31.000Z",
+                      "uid": "35240-7831bcb0-c65f-4162-b6dc-1006a557d231"
+                    }
+                  ],
+                  "id": "d8ec1fdb-15c8-48a6-b3a3-7662b8af9843",
+                  "createdAt": "2026-07-28T02:37:31.000Z",
+                  "updatedAt": "2026-07-28T02:37:31.000Z",
+                  "uid": "35240-d8ec1fdb-15c8-48a6-b3a3-7662b8af9843"
+                }
+              ],
+              "id": "96ce47dc-a52d-48c5-b4ce-7738f338e3ff",
+              "createdAt": "2026-07-28T02:37:31.000Z",
+              "updatedAt": "2026-07-28T02:37:31.000Z",
+              "uid": "35240-96ce47dc-a52d-48c5-b4ce-7738f338e3ff"
+            }
+          ],
+          "id": "f9b397fa-d585-4828-8e80-329a291553f3",
+          "createdAt": "2026-07-28T02:37:31.000Z",
+          "updatedAt": "2026-07-28T02:37:31.000Z",
+          "uid": "35240-f9b397fa-d585-4828-8e80-329a291553f3"
+        }
+      ],
+      "id": "e9a43184-e3a4-49f0-9568-fc3caa6015ea",
+      "createdAt": "2026-07-28T02:37:31.000Z",
+      "updatedAt": "2026-07-28T02:37:31.000Z",
+      "uid": "35240-e9a43184-e3a4-49f0-9568-fc3caa6015ea"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8099"
+    }
+  ]
+}

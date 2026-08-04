@@ -1,0 +1,1039 @@
+{
+  "info": {
+    "_postman_id": "8a82fb27-6aa7-4a39-91f5-f81017540c64",
+    "name": "Plandex Server Accounts Plans API",
+    "description": "Management and orchestration REST API exposed by the Plandex server (open-source, Go) used by the Plandex CLI/REPL to drive long-running coding plans across organizations, projects, plans, branches, context, conversation, model packs, and configuration. The same API powered Plandex Cloud (winding down 2025-10-03) and now powers self-hosted / local-mode deployments via Docker. Default local-mode bind is http://localhost:8099.\n\nContact Support:\n Name: Plandex AI",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:37:38.000Z",
+    "updatedAt": "2026-07-28T02:37:39.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8a82fb27-6aa7-4a39-91f5-f81017540c64"
+  },
+  "item": [
+    {
+      "name": "projects",
+      "item": [
+        {
+          "name": "{projectId}",
+          "item": [
+            {
+              "name": "plans",
+              "item": [
+                {
+                  "name": "Create Plan",
+                  "id": "f308101c-6ec4-4c5b-9547-c2f4634c8060",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/projects/:projectId/plans",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "projects",
+                        ":projectId",
+                        "plans"
+                      ],
+                      "variable": [
+                        {
+                          "id": "2d868e32-7c54-4d13-a142-9a73d525a3ee",
+                          "key": "projectId",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Create a new plan inside the given project."
+                  },
+                  "response": [
+                    {
+                      "id": "b5ea8af5-662d-495e-9f7f-e4183d45e2cb",
+                      "name": "Plan created.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/projects/:projectId/plans",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "projects",
+                            ":projectId",
+                            "plans"
+                          ],
+                          "variable": [
+                            {
+                              "key": "projectId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:37:39.000Z",
+                      "updatedAt": "2026-07-28T02:37:39.000Z",
+                      "uid": "35240-b5ea8af5-662d-495e-9f7f-e4183d45e2cb"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:37:39.000Z",
+                  "updatedAt": "2026-07-28T02:37:39.000Z",
+                  "uid": "35240-f308101c-6ec4-4c5b-9547-c2f4634c8060"
+                },
+                {
+                  "name": "Delete All Plans In Project",
+                  "id": "19785b2d-9ce3-46b4-ad3b-2e6d38b2c3ac",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/projects/:projectId/plans",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "projects",
+                        ":projectId",
+                        "plans"
+                      ],
+                      "variable": [
+                        {
+                          "id": "3ab5da1c-61ed-42d0-a264-567d67e6997b",
+                          "key": "projectId",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Bulk delete all plans in the project."
+                  },
+                  "response": [
+                    {
+                      "id": "e1e0b680-9658-4d22-a358-d11402b09349",
+                      "name": "Plans deleted.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/projects/:projectId/plans",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "projects",
+                            ":projectId",
+                            "plans"
+                          ],
+                          "variable": [
+                            {
+                              "key": "projectId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:37:39.000Z",
+                      "updatedAt": "2026-07-28T02:37:39.000Z",
+                      "uid": "35240-e1e0b680-9658-4d22-a358-d11402b09349"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:37:39.000Z",
+                  "updatedAt": "2026-07-28T02:37:39.000Z",
+                  "uid": "35240-19785b2d-9ce3-46b4-ad3b-2e6d38b2c3ac"
+                }
+              ],
+              "id": "a14852ca-aa27-4dcc-a323-233b4a767232",
+              "createdAt": "2026-07-28T02:37:39.000Z",
+              "updatedAt": "2026-07-28T02:37:39.000Z",
+              "uid": "35240-a14852ca-aa27-4dcc-a323-233b4a767232"
+            }
+          ],
+          "id": "b81cf404-a0d1-4951-b449-7f4202fb32ba",
+          "createdAt": "2026-07-28T02:37:39.000Z",
+          "updatedAt": "2026-07-28T02:37:39.000Z",
+          "uid": "35240-b81cf404-a0d1-4951-b449-7f4202fb32ba"
+        }
+      ],
+      "id": "4fdc261a-094d-46e0-b08b-e5bef850a214",
+      "createdAt": "2026-07-28T02:37:39.000Z",
+      "updatedAt": "2026-07-28T02:37:39.000Z",
+      "uid": "35240-4fdc261a-094d-46e0-b08b-e5bef850a214"
+    },
+    {
+      "name": "plans",
+      "item": [
+        {
+          "name": "archive",
+          "item": [
+            {
+              "name": "List Archived Plans",
+              "id": "0c6e5b98-f0a7-4304-911f-5c2d4c805362",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/plans/archive",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "plans",
+                    "archive"
+                  ]
+                },
+                "description": "List plans the user has archived."
+              },
+              "response": [
+                {
+                  "id": "0cdde5d8-d3db-4b1c-a4aa-b05e58758877",
+                  "name": "Archived plans.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/plans/archive",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "plans",
+                        "archive"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:37:39.000Z",
+                  "updatedAt": "2026-07-28T02:37:39.000Z",
+                  "uid": "35240-0cdde5d8-d3db-4b1c-a4aa-b05e58758877"
+                }
+              ],
+              "createdAt": "2026-07-28T02:37:39.000Z",
+              "updatedAt": "2026-07-28T02:37:39.000Z",
+              "uid": "35240-0c6e5b98-f0a7-4304-911f-5c2d4c805362"
+            }
+          ],
+          "id": "7caadad5-a8b3-401a-831e-7e1277cf33cd",
+          "createdAt": "2026-07-28T02:37:39.000Z",
+          "updatedAt": "2026-07-28T02:37:39.000Z",
+          "uid": "35240-7caadad5-a8b3-401a-831e-7e1277cf33cd"
+        },
+        {
+          "name": "ps",
+          "item": [
+            {
+              "name": "List Running Plans",
+              "id": "3a1e0f2f-db46-47d7-aa7e-8abbbe7833ed",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/plans/ps",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "plans",
+                    "ps"
+                  ]
+                },
+                "description": "List plans currently executing (analogous to `plandex ps`)."
+              },
+              "response": [
+                {
+                  "id": "17186fb2-afb5-4c85-828f-c2ba13b60f2f",
+                  "name": "Running plans.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/plans/ps",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "plans",
+                        "ps"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:37:39.000Z",
+                  "updatedAt": "2026-07-28T02:37:39.000Z",
+                  "uid": "35240-17186fb2-afb5-4c85-828f-c2ba13b60f2f"
+                }
+              ],
+              "createdAt": "2026-07-28T02:37:39.000Z",
+              "updatedAt": "2026-07-28T02:37:39.000Z",
+              "uid": "35240-3a1e0f2f-db46-47d7-aa7e-8abbbe7833ed"
+            }
+          ],
+          "id": "94288fcc-4e61-4298-b67f-a0ce3bc2031e",
+          "createdAt": "2026-07-28T02:37:39.000Z",
+          "updatedAt": "2026-07-28T02:37:39.000Z",
+          "uid": "35240-94288fcc-4e61-4298-b67f-a0ce3bc2031e"
+        },
+        {
+          "name": "{planId}",
+          "item": [
+            {
+              "name": "current_plan",
+              "item": [
+                {
+                  "name": "{sha}",
+                  "item": [
+                    {
+                      "name": "Get Current Plan At Sha",
+                      "id": "42c03a60-69f1-4709-a00b-afd2169149f1",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/plans/:planId/current_plan/:sha",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "plans",
+                            ":planId",
+                            "current_plan",
+                            ":sha"
+                          ],
+                          "variable": [
+                            {
+                              "id": "62292e65-ca6f-45b4-b7d8-fedb497d5629",
+                              "key": "planId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            },
+                            {
+                              "id": "a9ca4853-cee3-4327-9f2e-782eef7442c4",
+                              "key": "sha",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Snapshot of the current plan state at a specific version SHA."
+                      },
+                      "response": [
+                        {
+                          "id": "a9d65d4d-c4df-4161-9c89-b0043856e67e",
+                          "name": "Plan snapshot.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/plans/:planId/current_plan/:sha",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "plans",
+                                ":planId",
+                                "current_plan",
+                                ":sha"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "planId"
+                                },
+                                {
+                                  "key": "sha"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:37:39.000Z",
+                          "updatedAt": "2026-07-28T02:37:39.000Z",
+                          "uid": "35240-a9d65d4d-c4df-4161-9c89-b0043856e67e"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:37:39.000Z",
+                      "updatedAt": "2026-07-28T02:37:39.000Z",
+                      "uid": "35240-42c03a60-69f1-4709-a00b-afd2169149f1"
+                    }
+                  ],
+                  "id": "2a473481-eb3d-40cd-a7a2-1508d31cf819",
+                  "createdAt": "2026-07-28T02:37:39.000Z",
+                  "updatedAt": "2026-07-28T02:37:39.000Z",
+                  "uid": "35240-2a473481-eb3d-40cd-a7a2-1508d31cf819"
+                }
+              ],
+              "id": "95b00942-2408-4e28-ad25-04a0bb55775d",
+              "createdAt": "2026-07-28T02:37:39.000Z",
+              "updatedAt": "2026-07-28T02:37:39.000Z",
+              "uid": "35240-95b00942-2408-4e28-ad25-04a0bb55775d"
+            },
+            {
+              "name": "{branch}",
+              "item": [
+                {
+                  "name": "current_plan",
+                  "item": [
+                    {
+                      "name": "Get Current Plan On Branch",
+                      "id": "19d9eb9f-98a8-4025-b47a-ac07efaa2c2f",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/plans/:planId/:branch/current_plan",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "plans",
+                            ":planId",
+                            ":branch",
+                            "current_plan"
+                          ],
+                          "variable": [
+                            {
+                              "id": "e99f9bba-5834-4304-a532-d3b277c253f9",
+                              "key": "planId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            },
+                            {
+                              "id": "b67a8232-699f-4ebd-a88a-631d8de3fa55",
+                              "key": "branch",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Snapshot of the current plan state on the specified branch."
+                      },
+                      "response": [
+                        {
+                          "id": "9384eea2-86b7-4b4a-90b0-da2052fad445",
+                          "name": "Plan snapshot on branch.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/plans/:planId/:branch/current_plan",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "plans",
+                                ":planId",
+                                ":branch",
+                                "current_plan"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "planId"
+                                },
+                                {
+                                  "key": "branch"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:37:39.000Z",
+                          "updatedAt": "2026-07-28T02:37:39.000Z",
+                          "uid": "35240-9384eea2-86b7-4b4a-90b0-da2052fad445"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:37:39.000Z",
+                      "updatedAt": "2026-07-28T02:37:39.000Z",
+                      "uid": "35240-19d9eb9f-98a8-4025-b47a-ac07efaa2c2f"
+                    }
+                  ],
+                  "id": "65274bfe-5f93-4d27-a3f4-d8573ae919f8",
+                  "createdAt": "2026-07-28T02:37:39.000Z",
+                  "updatedAt": "2026-07-28T02:37:39.000Z",
+                  "uid": "35240-65274bfe-5f93-4d27-a3f4-d8573ae919f8"
+                }
+              ],
+              "id": "000dd010-7424-4f89-ac7d-70d2dcf9df8e",
+              "createdAt": "2026-07-28T02:37:39.000Z",
+              "updatedAt": "2026-07-28T02:37:39.000Z",
+              "uid": "35240-000dd010-7424-4f89-ac7d-70d2dcf9df8e"
+            },
+            {
+              "name": "archive",
+              "item": [
+                {
+                  "name": "Archive Plan",
+                  "id": "7758ebfd-7b00-42bd-8529-6879f9e3f253",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PATCH",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/plans/:planId/archive",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "plans",
+                        ":planId",
+                        "archive"
+                      ],
+                      "variable": [
+                        {
+                          "id": "57b7afe8-0b39-4b57-866e-d5616727d594",
+                          "key": "planId",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Archive a plan."
+                  },
+                  "response": [
+                    {
+                      "id": "ca3f7324-d718-49b5-abf3-2d19b9d6de6e",
+                      "name": "Plan archived.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/plans/:planId/archive",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "plans",
+                            ":planId",
+                            "archive"
+                          ],
+                          "variable": [
+                            {
+                              "key": "planId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:37:39.000Z",
+                      "updatedAt": "2026-07-28T02:37:39.000Z",
+                      "uid": "35240-ca3f7324-d718-49b5-abf3-2d19b9d6de6e"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:37:39.000Z",
+                  "updatedAt": "2026-07-28T02:37:39.000Z",
+                  "uid": "35240-7758ebfd-7b00-42bd-8529-6879f9e3f253"
+                }
+              ],
+              "id": "169e67a0-8090-40f0-9583-026421ff0339",
+              "createdAt": "2026-07-28T02:37:39.000Z",
+              "updatedAt": "2026-07-28T02:37:39.000Z",
+              "uid": "35240-169e67a0-8090-40f0-9583-026421ff0339"
+            },
+            {
+              "name": "unarchive",
+              "item": [
+                {
+                  "name": "Unarchive Plan",
+                  "id": "9c266e88-aaf0-4745-9d8c-24cda6544861",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PATCH",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/plans/:planId/unarchive",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "plans",
+                        ":planId",
+                        "unarchive"
+                      ],
+                      "variable": [
+                        {
+                          "id": "b3561ed9-78bd-4344-8925-f8de699ca55d",
+                          "key": "planId",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Restore an archived plan."
+                  },
+                  "response": [
+                    {
+                      "id": "8ddda94c-a3ef-40d5-b6c3-7b0fa4115804",
+                      "name": "Plan unarchived.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/plans/:planId/unarchive",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "plans",
+                            ":planId",
+                            "unarchive"
+                          ],
+                          "variable": [
+                            {
+                              "key": "planId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:37:39.000Z",
+                      "updatedAt": "2026-07-28T02:37:39.000Z",
+                      "uid": "35240-8ddda94c-a3ef-40d5-b6c3-7b0fa4115804"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:37:39.000Z",
+                  "updatedAt": "2026-07-28T02:37:39.000Z",
+                  "uid": "35240-9c266e88-aaf0-4745-9d8c-24cda6544861"
+                }
+              ],
+              "id": "53592827-1be6-4eeb-9c22-7d4cf2e223da",
+              "createdAt": "2026-07-28T02:37:39.000Z",
+              "updatedAt": "2026-07-28T02:37:39.000Z",
+              "uid": "35240-53592827-1be6-4eeb-9c22-7d4cf2e223da"
+            },
+            {
+              "name": "rename",
+              "item": [
+                {
+                  "name": "Rename Plan",
+                  "id": "82048241-0db1-4cc2-832d-2380f4dae890",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PATCH",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/plans/:planId/rename",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "plans",
+                        ":planId",
+                        "rename"
+                      ],
+                      "variable": [
+                        {
+                          "id": "21f35e6e-3a05-401d-ad1c-73e3430329e9",
+                          "key": "planId",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Rename an existing plan."
+                  },
+                  "response": [
+                    {
+                      "id": "fdbfc892-2500-4e8f-8841-7d1e9aa32321",
+                      "name": "Plan renamed.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/plans/:planId/rename",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "plans",
+                            ":planId",
+                            "rename"
+                          ],
+                          "variable": [
+                            {
+                              "key": "planId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:37:39.000Z",
+                      "updatedAt": "2026-07-28T02:37:39.000Z",
+                      "uid": "35240-fdbfc892-2500-4e8f-8841-7d1e9aa32321"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:37:39.000Z",
+                  "updatedAt": "2026-07-28T02:37:39.000Z",
+                  "uid": "35240-82048241-0db1-4cc2-832d-2380f4dae890"
+                }
+              ],
+              "id": "768ef34e-d185-46b9-a951-e1d5122352dc",
+              "createdAt": "2026-07-28T02:37:39.000Z",
+              "updatedAt": "2026-07-28T02:37:39.000Z",
+              "uid": "35240-768ef34e-d185-46b9-a951-e1d5122352dc"
+            },
+            {
+              "name": "Get Plan",
+              "id": "5e9dcc08-6bc3-44cb-8449-744d33e1fe2b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/plans/:planId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "plans",
+                    ":planId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "dc251df7-c154-428b-842e-8ee9ef056d22",
+                      "key": "planId",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Retrieve a single plan."
+              },
+              "response": [
+                {
+                  "id": "f2a318d5-8265-4052-bdc4-e84d7dc76dad",
+                  "name": "Plan details.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/plans/:planId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "plans",
+                        ":planId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "planId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:37:39.000Z",
+                  "updatedAt": "2026-07-28T02:37:39.000Z",
+                  "uid": "35240-f2a318d5-8265-4052-bdc4-e84d7dc76dad"
+                }
+              ],
+              "createdAt": "2026-07-28T02:37:39.000Z",
+              "updatedAt": "2026-07-28T02:37:39.000Z",
+              "uid": "35240-5e9dcc08-6bc3-44cb-8449-744d33e1fe2b"
+            },
+            {
+              "name": "Delete Plan",
+              "id": "6896d1c2-445c-4b1c-8bf5-c69153989f16",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/plans/:planId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "plans",
+                    ":planId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "0a940598-24f1-48b2-9601-54e38646aa89",
+                      "key": "planId",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Delete a single plan and its history."
+              },
+              "response": [
+                {
+                  "id": "e8d072c6-6520-4e7a-8f29-1419f2dc927f",
+                  "name": "Plan deleted.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/plans/:planId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "plans",
+                        ":planId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "planId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:37:39.000Z",
+                  "updatedAt": "2026-07-28T02:37:39.000Z",
+                  "uid": "35240-e8d072c6-6520-4e7a-8f29-1419f2dc927f"
+                }
+              ],
+              "createdAt": "2026-07-28T02:37:39.000Z",
+              "updatedAt": "2026-07-28T02:37:39.000Z",
+              "uid": "35240-6896d1c2-445c-4b1c-8bf5-c69153989f16"
+            }
+          ],
+          "id": "f8fe40b0-5344-4155-aeaa-60c252d33dc1",
+          "createdAt": "2026-07-28T02:37:39.000Z",
+          "updatedAt": "2026-07-28T02:37:39.000Z",
+          "uid": "35240-f8fe40b0-5344-4155-aeaa-60c252d33dc1"
+        },
+        {
+          "name": "List Plans",
+          "id": "8c3a6147-e980-4d02-9540-686e2cb97081",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/plans",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "plans"
+              ]
+            },
+            "description": "List active plans for the user."
+          },
+          "response": [
+            {
+              "id": "c6a0b5aa-4352-4e9e-be7f-7ed641402544",
+              "name": "List of plans.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/plans",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "plans"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:37:39.000Z",
+              "updatedAt": "2026-07-28T02:37:39.000Z",
+              "uid": "35240-c6a0b5aa-4352-4e9e-be7f-7ed641402544"
+            }
+          ],
+          "createdAt": "2026-07-28T02:37:39.000Z",
+          "updatedAt": "2026-07-28T02:37:39.000Z",
+          "uid": "35240-8c3a6147-e980-4d02-9540-686e2cb97081"
+        }
+      ],
+      "id": "6f8e552f-2cf3-4f7a-8128-d868adf3bef3",
+      "createdAt": "2026-07-28T02:37:39.000Z",
+      "updatedAt": "2026-07-28T02:37:39.000Z",
+      "uid": "35240-6f8e552f-2cf3-4f7a-8128-d868adf3bef3"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8099"
+    }
+  ]
+}

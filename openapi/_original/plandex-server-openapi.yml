@@ -1,0 +1,1442 @@
+openapi: 3.1.0
+info:
+  title: Plandex Server API
+  description: >-
+    Management and orchestration REST API exposed by the Plandex server (open-source,
+    Go) used by the Plandex CLI/REPL to drive long-running coding plans across organizations,
+    projects, plans, branches, context, conversation, model packs, and configuration. The
+    same API powered Plandex Cloud (winding down 2025-10-03) and now powers self-hosted /
+    local-mode deployments via Docker. Default local-mode bind is http://localhost:8099.
+  version: '2'
+  contact:
+    name: Plandex AI
+    url: https://plandex.ai
+  license:
+    name: MIT
+    url: https://github.com/plandex-ai/plandex/blob/main/LICENSE
+  termsOfService: https://plandex.ai/terms
+servers:
+  - url: http://localhost:8099
+    description: Default self-hosted / local-mode Plandex server (Docker)
+  - url: https://api.plandex.ai
+    description: Plandex Cloud (winding down as of 2025-10-03; no longer accepting new users)
+tags:
+  - name: Accounts
+    description: User account, email verification, and authentication operations.
+  - name: Orgs
+    description: Organization and role membership management.
+  - name: Users
+    description: User listing and removal within an org.
+  - name: Invites
+    description: Invite users into an org and manage pending invites.
+  - name: Projects
+    description: Project containers that group plans, mapped to a working directory.
+  - name: Plans
+    description: Long-running, branchable units of AI coding work over loaded context.
+  - name: Context
+    description: Files, directory trees, URLs, notes, and images loaded into a plan.
+  - name: Conversation
+    description: Prompts, responses, and rewind history within a plan branch.
+  - name: Branches
+    description: Per-plan branches for parallel exploration and diffing.
+  - name: Diffs
+    description: Per-file pending changes, apply, and reject operations.
+  - name: Settings
+    description: Per-plan model settings, default settings, and org/user config.
+  - name: Models
+    description: Model packs, custom models, custom providers, default settings.
+  - name: FileMap
+    description: Tree-sitter project map generation and cached map loading.
+  - name: Execution
+    description: Streaming connect, build, tell, and stop endpoints for plan execution.
+  - name: Health
+    description: Operational health and version endpoints.
+paths:
+  /health:
+    get:
+      tags:
+        - Health
+      summary: Get Server Health
+      description: Liveness probe used by load balancers and monitoring.
+      operationId: getHealth
+      responses:
+        '200':
+          description: Server is healthy.
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: OK
+  /version:
+    get:
+      tags:
+        - Health
+      summary: Get Server Version
+      description: Returns the running server version string from version.txt.
+      operationId: getVersion
+      responses:
+        '200':
+          description: Version string.
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: 2.2.3
+  /accounts/email_verifications:
+    post:
+      tags:
+        - Accounts
+      summary: Create Email Verification
+      description: Send an email verification PIN to the supplied address.
+      operationId: createEmailVerification
+      responses:
+        '200':
+          description: Verification email sent.
+  /accounts/email_verifications/check_pin:
+    post:
+      tags:
+        - Accounts
+      summary: Check Email Verification Pin
+      description: Verify the PIN previously emailed to the user.
+      operationId: checkEmailPin
+      responses:
+        '200':
+          description: PIN verified.
+  /accounts/sign_in_codes:
+    post:
+      tags:
+        - Accounts
+      summary: Create Sign In Code
+      description: Issue a single-use sign-in code (alternative to password flow).
+      operationId: createSignInCode
+      responses:
+        '200':
+          description: Sign-in code created.
+  /accounts/sign_in:
+    post:
+      tags:
+        - Accounts
+      summary: Sign In
+      description: Authenticate a user and start a session.
+      operationId: signIn
+      responses:
+        '200':
+          description: Signed in successfully.
+  /accounts/sign_out:
+    post:
+      tags:
+        - Accounts
+      summary: Sign Out
+      description: Terminate the active session.
+      operationId: signOut
+      responses:
+        '200':
+          description: Signed out.
+  /accounts:
+    post:
+      tags:
+        - Accounts
+      summary: Create Account
+      description: Register a new Plandex account.
+      operationId: createAccount
+      responses:
+        '201':
+          description: Account created.
+  /orgs:
+    get:
+      tags:
+        - Orgs
+      summary: List Orgs
+      description: List organizations the authenticated user belongs to.
+      operationId: listOrgs
+      responses:
+        '200':
+          description: List of orgs.
+    post:
+      tags:
+        - Orgs
+      summary: Create Org
+      description: Create a new organization.
+      operationId: createOrg
+      responses:
+        '201':
+          description: Org created.
+  /orgs/session:
+    get:
+      tags:
+        - Orgs
+      summary: Get Org Session
+      description: Return the active org session context for the authenticated user.
+      operationId: getOrgSession
+      responses:
+        '200':
+          description: Org session details.
+  /orgs/roles:
+    get:
+      tags:
+        - Orgs
+      summary: List Org Roles
+      description: List RBAC roles available within the org.
+      operationId: listOrgRoles
+      responses:
+        '200':
+          description: List of roles.
+  /orgs/users/{userId}:
+    delete:
+      tags:
+        - Users
+      summary: Delete Org User
+      description: Remove a user from the org.
+      operationId: deleteOrgUser
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: User removed.
+  /users:
+    get:
+      tags:
+        - Users
+      summary: List Users
+      description: List users in the current org.
+      operationId: listUsers
+      responses:
+        '200':
+          description: List of users.
+  /invites:
+    post:
+      tags:
+        - Invites
+      summary: Invite User
+      description: Send an invite to add a user to the org.
+      operationId: inviteUser
+      responses:
+        '201':
+          description: Invite sent.
+  /invites/pending:
+    get:
+      tags:
+        - Invites
+      summary: List Pending Invites
+      description: List invites that have not yet been accepted.
+      operationId: listPendingInvites
+      responses:
+        '200':
+          description: Pending invites.
+  /invites/accepted:
+    get:
+      tags:
+        - Invites
+      summary: List Accepted Invites
+      description: List invites that have already been accepted.
+      operationId: listAcceptedInvites
+      responses:
+        '200':
+          description: Accepted invites.
+  /invites/all:
+    get:
+      tags:
+        - Invites
+      summary: List All Invites
+      description: List all invites regardless of state.
+      operationId: listAllInvites
+      responses:
+        '200':
+          description: All invites.
+  /invites/{inviteId}:
+    delete:
+      tags:
+        - Invites
+      summary: Delete Invite
+      description: Revoke an outstanding invite.
+      operationId: deleteInvite
+      parameters:
+        - in: path
+          name: inviteId
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Invite revoked.
+  /projects:
+    get:
+      tags:
+        - Projects
+      summary: List Projects
+      description: List projects in the current org.
+      operationId: listProjects
+      responses:
+        '200':
+          description: List of projects.
+    post:
+      tags:
+        - Projects
+      summary: Create Project
+      description: Create a new project container for plans.
+      operationId: createProject
+      responses:
+        '201':
+          description: Project created.
+  /projects/{projectId}/set_plan:
+    put:
+      tags:
+        - Projects
+      summary: Set Current Plan For Project
+      description: Set the active plan for a project.
+      operationId: projectSetPlan
+      parameters:
+        - in: path
+          name: projectId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Active plan set.
+  /projects/{projectId}/rename:
+    put:
+      tags:
+        - Projects
+      summary: Rename Project
+      description: Rename an existing project.
+      operationId: renameProject
+      parameters:
+        - in: path
+          name: projectId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Project renamed.
+  /projects/{projectId}/plans:
+    post:
+      tags:
+        - Plans
+      summary: Create Plan
+      description: Create a new plan inside the given project.
+      operationId: createPlan
+      parameters:
+        - in: path
+          name: projectId
+          required: true
+          schema:
+            type: string
+      responses:
+        '201':
+          description: Plan created.
+    delete:
+      tags:
+        - Plans
+      summary: Delete All Plans In Project
+      description: Bulk delete all plans in the project.
+      operationId: deleteAllPlans
+      parameters:
+        - in: path
+          name: projectId
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Plans deleted.
+  /projects/{projectId}/plans/current_branches:
+    post:
+      tags:
+        - Branches
+      summary: Get Current Branches By Plan
+      description: Return the current branch for each of the supplied plan IDs.
+      operationId: getCurrentBranchesByPlanId
+      parameters:
+        - in: path
+          name: projectId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Current branches.
+  /plans:
+    get:
+      tags:
+        - Plans
+      summary: List Plans
+      description: List active plans for the user.
+      operationId: listPlans
+      responses:
+        '200':
+          description: List of plans.
+  /plans/archive:
+    get:
+      tags:
+        - Plans
+      summary: List Archived Plans
+      description: List plans the user has archived.
+      operationId: listArchivedPlans
+      responses:
+        '200':
+          description: Archived plans.
+  /plans/ps:
+    get:
+      tags:
+        - Plans
+      summary: List Running Plans
+      description: List plans currently executing (analogous to `plandex ps`).
+      operationId: listPlansRunning
+      responses:
+        '200':
+          description: Running plans.
+  /plans/{planId}:
+    get:
+      tags:
+        - Plans
+      summary: Get Plan
+      description: Retrieve a single plan.
+      operationId: getPlan
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Plan details.
+    delete:
+      tags:
+        - Plans
+      summary: Delete Plan
+      description: Delete a single plan and its history.
+      operationId: deletePlan
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Plan deleted.
+  /plans/{planId}/current_plan/{sha}:
+    get:
+      tags:
+        - Plans
+      summary: Get Current Plan At Sha
+      description: Snapshot of the current plan state at a specific version SHA.
+      operationId: getCurrentPlanAtSha
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: sha
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Plan snapshot.
+  /plans/{planId}/{branch}/current_plan:
+    get:
+      tags:
+        - Plans
+      summary: Get Current Plan On Branch
+      description: Snapshot of the current plan state on the specified branch.
+      operationId: getCurrentPlanOnBranch
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: branch
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Plan snapshot on branch.
+  /plans/{planId}/{branch}/apply:
+    patch:
+      tags:
+        - Diffs
+      summary: Apply Plan Changes
+      description: Apply all pending file changes for the plan on the given branch.
+      operationId: applyPlan
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: branch
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Changes applied.
+  /plans/{planId}/archive:
+    patch:
+      tags:
+        - Plans
+      summary: Archive Plan
+      description: Archive a plan.
+      operationId: archivePlan
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Plan archived.
+  /plans/{planId}/unarchive:
+    patch:
+      tags:
+        - Plans
+      summary: Unarchive Plan
+      description: Restore an archived plan.
+      operationId: unarchivePlan
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Plan unarchived.
+  /plans/{planId}/rename:
+    patch:
+      tags:
+        - Plans
+      summary: Rename Plan
+      description: Rename an existing plan.
+      operationId: renamePlan
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Plan renamed.
+  /plans/{planId}/{branch}/reject_all:
+    patch:
+      tags:
+        - Diffs
+      summary: Reject All Plan Changes
+      description: Reject every pending file change for the plan on the branch.
+      operationId: rejectAllChanges
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: branch
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Changes rejected.
+  /plans/{planId}/{branch}/reject_file:
+    patch:
+      tags:
+        - Diffs
+      summary: Reject Plan File Change
+      description: Reject pending changes for a single file.
+      operationId: rejectFile
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: branch
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: File change rejected.
+  /plans/{planId}/{branch}/reject_files:
+    patch:
+      tags:
+        - Diffs
+      summary: Reject Multiple File Changes
+      description: Reject pending changes for the supplied list of files.
+      operationId: rejectFiles
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: branch
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: File changes rejected.
+  /plans/{planId}/{branch}/diffs:
+    get:
+      tags:
+        - Diffs
+      summary: Get Plan Diffs
+      description: Get the unified diff of pending changes for the plan branch.
+      operationId: getPlanDiffs
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: branch
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Diff payload.
+  /plans/{planId}/{branch}/context:
+    get:
+      tags:
+        - Context
+      summary: List Context
+      description: List items currently loaded into the plan's context.
+      operationId: listContext
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: branch
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Context items.
+    post:
+      tags:
+        - Context
+      summary: Load Context
+      description: Load files, directories, URLs, notes, or images into the plan context.
+      operationId: loadContext
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: branch
+          required: true
+          schema:
+            type: string
+      responses:
+        '201':
+          description: Context loaded.
+    put:
+      tags:
+        - Context
+      summary: Update Context
+      description: Refresh outdated context items.
+      operationId: updateContext
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: branch
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Context updated.
+    delete:
+      tags:
+        - Context
+      summary: Delete Context
+      description: Remove context items from the plan.
+      operationId: deleteContext
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: branch
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Context removed.
+  /plans/{planId}/{branch}/context/{contextId}/body:
+    get:
+      tags:
+        - Context
+      summary: Get Context Body
+      description: Return the raw body of a context item.
+      operationId: getContextBody
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: branch
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: contextId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Context body.
+  /plans/{planId}/{branch}/convo:
+    get:
+      tags:
+        - Conversation
+      summary: List Conversation Messages
+      description: List prompts and responses in the plan branch conversation.
+      operationId: listConvo
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: branch
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Conversation messages.
+  /plans/{planId}/{branch}/rewind:
+    patch:
+      tags:
+        - Conversation
+      summary: Rewind Plan
+      description: Rewind the plan branch to a previous version SHA.
+      operationId: rewindPlan
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: branch
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Plan rewound.
+  /plans/{planId}/{branch}/logs:
+    get:
+      tags:
+        - Conversation
+      summary: List Plan Logs
+      description: List log events for the plan branch.
+      operationId: listLogs
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: branch
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Log entries.
+  /plans/{planId}/branches:
+    get:
+      tags:
+        - Branches
+      summary: List Plan Branches
+      description: List all branches that exist on the plan.
+      operationId: listBranches
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of branches.
+  /plans/{planId}/branches/{branch}:
+    delete:
+      tags:
+        - Branches
+      summary: Delete Plan Branch
+      description: Delete an existing branch from the plan.
+      operationId: deleteBranch
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: branch
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Branch deleted.
+  /plans/{planId}/{branch}/branches:
+    post:
+      tags:
+        - Branches
+      summary: Create Plan Branch
+      description: Create a new branch off the specified branch of the plan.
+      operationId: createBranch
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: branch
+          required: true
+          schema:
+            type: string
+      responses:
+        '201':
+          description: Branch created.
+  /plans/{planId}/{branch}/settings:
+    get:
+      tags:
+        - Settings
+      summary: Get Plan Settings
+      description: Get the model and execution settings for the plan branch.
+      operationId: getSettings
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: branch
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Settings.
+    put:
+      tags:
+        - Settings
+      summary: Update Plan Settings
+      description: Update the model and execution settings for the plan branch.
+      operationId: updateSettings
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: branch
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Settings updated.
+  /plans/{planId}/{branch}/status:
+    get:
+      tags:
+        - Execution
+      summary: Get Plan Status
+      description: Get the execution status for the plan branch.
+      operationId: getPlanStatus
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: branch
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Status payload.
+  /plans/{planId}/{branch}/tell:
+    post:
+      tags:
+        - Execution
+      summary: Tell Plan
+      description: Send a prompt to the plan and stream the model response (streaming endpoint, analogous to `plandex tell`).
+      operationId: tellPlan
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: branch
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Streaming response.
+  /plans/{planId}/{branch}/build:
+    patch:
+      tags:
+        - Execution
+      summary: Build Plan
+      description: Build pending changes from the conversation into file updates (streaming endpoint, analogous to `plandex build`).
+      operationId: buildPlan
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: branch
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Streaming response.
+  /plans/{planId}/{branch}/connect:
+    patch:
+      tags:
+        - Execution
+      summary: Connect To Plan Stream
+      description: Connect (or reconnect) to the live stream of an in-progress plan run.
+      operationId: connectPlan
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: branch
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Streaming response.
+  /plans/{planId}/{branch}/stop:
+    delete:
+      tags:
+        - Execution
+      summary: Stop Plan
+      description: Stop an in-progress plan run.
+      operationId: stopPlan
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: branch
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Plan stopped.
+  /plans/{planId}/{branch}/respond_missing_file:
+    post:
+      tags:
+        - Execution
+      summary: Respond Missing File
+      description: Reply to a model request for a file the agent could not find.
+      operationId: respondMissingFile
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: branch
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Response sent.
+  /plans/{planId}/{branch}/auto_load_context:
+    post:
+      tags:
+        - Execution
+      summary: Auto Load Context
+      description: Have the agent automatically load context based on the project map.
+      operationId: autoLoadContext
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: branch
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Auto-load triggered.
+  /plans/{planId}/{branch}/build_status:
+    get:
+      tags:
+        - Execution
+      summary: Get Build Status
+      description: Get build status for the plan branch.
+      operationId: getBuildStatus
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: branch
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Build status.
+  /custom_models:
+    get:
+      tags:
+        - Models
+      summary: List Custom Models
+      description: List user-defined custom models.
+      operationId: listCustomModels
+      responses:
+        '200':
+          description: Custom models.
+    post:
+      tags:
+        - Models
+      summary: Upsert Custom Models
+      description: Create or update one or more custom models.
+      operationId: upsertCustomModels
+      responses:
+        '200':
+          description: Custom models upserted.
+  /custom_models/{modelId}:
+    get:
+      tags:
+        - Models
+      summary: Get Custom Model
+      description: Get a single user-defined custom model.
+      operationId: getCustomModel
+      parameters:
+        - in: path
+          name: modelId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Custom model.
+  /custom_providers:
+    get:
+      tags:
+        - Models
+      summary: List Custom Providers
+      description: List custom (OpenAI-compatible) model providers.
+      operationId: listCustomProviders
+      responses:
+        '200':
+          description: Custom providers.
+  /custom_providers/{providerId}:
+    get:
+      tags:
+        - Models
+      summary: Get Custom Provider
+      description: Get a custom provider by ID.
+      operationId: getCustomProvider
+      parameters:
+        - in: path
+          name: providerId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Custom provider.
+  /model_sets:
+    get:
+      tags:
+        - Models
+      summary: List Model Packs
+      description: List available model packs (daily, strong, cheap, oss, planner-specific, custom).
+      operationId: listModelPacks
+      responses:
+        '200':
+          description: Model packs.
+    post:
+      tags:
+        - Models
+      summary: Create Model Pack
+      description: Create a new model pack composition.
+      operationId: createModelPack
+      responses:
+        '201':
+          description: Model pack created.
+  /model_sets/{setId}:
+    put:
+      tags:
+        - Models
+      summary: Update Model Pack
+      description: Update an existing model pack.
+      operationId: updateModelPack
+      parameters:
+        - in: path
+          name: setId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Model pack updated.
+  /default_settings:
+    get:
+      tags:
+        - Settings
+      summary: Get Default Settings
+      description: Get org-level default model and execution settings.
+      operationId: getDefaultSettings
+      responses:
+        '200':
+          description: Default settings.
+    put:
+      tags:
+        - Settings
+      summary: Update Default Settings
+      description: Update org-level default settings.
+      operationId: updateDefaultSettings
+      responses:
+        '200':
+          description: Default settings updated.
+  /file_map:
+    post:
+      tags:
+        - FileMap
+      summary: Get File Map
+      description: Generate a tree-sitter file map for the supplied directory or files.
+      operationId: getFileMap
+      responses:
+        '200':
+          description: File map.
+  /plans/{planId}/{branch}/load_cached_file_map:
+    post:
+      tags:
+        - FileMap
+      summary: Load Cached File Map
+      description: Load a cached file map into the plan context.
+      operationId: loadCachedFileMap
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: branch
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: File map loaded.
+  /plans/{planId}/config:
+    get:
+      tags:
+        - Settings
+      summary: Get Plan Config
+      description: Get the per-plan configuration (autonomy flags, executor settings).
+      operationId: getPlanConfig
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Plan config.
+    put:
+      tags:
+        - Settings
+      summary: Update Plan Config
+      description: Update the per-plan configuration.
+      operationId: updatePlanConfig
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Plan config updated.
+  /default_plan_config:
+    get:
+      tags:
+        - Settings
+      summary: Get Default Plan Config
+      description: Get the org-level default plan config used as a template for new plans.
+      operationId: getDefaultPlanConfig
+      responses:
+        '200':
+          description: Default plan config.
+    put:
+      tags:
+        - Settings
+      summary: Update Default Plan Config
+      description: Update the org-level default plan config.
+      operationId: updateDefaultPlanConfig
+      responses:
+        '200':
+          description: Default plan config updated.
+  /org_user_config:
+    get:
+      tags:
+        - Settings
+      summary: Get Org User Config
+      description: Get the per-user configuration scoped to the current org.
+      operationId: getOrgUserConfig
+      responses:
+        '200':
+          description: Org user config.
+    put:
+      tags:
+        - Settings
+      summary: Update Org User Config
+      description: Update the per-user configuration scoped to the current org.
+      operationId: updateOrgUserConfig
+      responses:
+        '200':
+          description: Org user config updated.
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Bearer token issued by the Plandex server on sign-in. Used by the CLI/REPL for all authenticated API calls.
+  schemas:
+    Org:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+    Project:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        orgId:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+    Plan:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        projectId:
+          type: string
+        currentBranch:
+          type: string
+        contextTokens:
+          type: integer
+        convoTokens:
+          type: integer
+        archivedAt:
+          type: string
+          format: date-time
+          nullable: true
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    Branch:
+      type: object
+      properties:
+        name:
+          type: string
+        planId:
+          type: string
+        sha:
+          type: string
+        parent:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+    ContextItem:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+          enum:
+            - file
+            - directoryTree
+            - directoryMap
+            - url
+            - note
+            - image
+            - pipedData
+        path:
+          type: string
+        tokens:
+          type: integer
+        addedAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    ConvoMessage:
+      type: object
+      properties:
+        id:
+          type: string
+        planId:
+          type: string
+        branch:
+          type: string
+        role:
+          type: string
+          enum:
+            - user
+            - assistant
+            - system
+        content:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+    ModelPack:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        planner:
+          type: string
+        coder:
+          type: string
+        builder:
+          type: string
+        summarizer:
+          type: string
+        verifier:
+          type: string
+        contextLoader:
+          type: string
+    PlanConfig:
+      type: object
+      properties:
+        autoApply:
+          type: boolean
+        autoCommit:
+          type: boolean
+        autoContinue:
+          type: boolean
+        autoDebug:
+          type: boolean
+        autoDebugTries:
+          type: integer
+        autoExec:
+          type: boolean
+        autoLoadContext:
+          type: boolean
+        autoUpdateContext:
+          type: boolean
+        canExec:
+          type: boolean
+        skipChangesMenu:
+          type: boolean
+        smartContext:
+          type: boolean
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        details:
+          type: object
+security:
+  - BearerAuth: []
