@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Plandex Server Accounts Orgs API",
+    "version": "2"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Orgs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Orgs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8099/orgs"
+          },
+          "docs": "List organizations the authenticated user belongs to."
+        },
+        {
+          "info": {
+            "name": "Create Org",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8099/orgs"
+          },
+          "docs": "Create a new organization."
+        },
+        {
+          "info": {
+            "name": "Get Org Session",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8099/orgs/session"
+          },
+          "docs": "Return the active org session context for the authenticated user."
+        },
+        {
+          "info": {
+            "name": "List Org Roles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8099/orgs/roles"
+          },
+          "docs": "List RBAC roles available within the org."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

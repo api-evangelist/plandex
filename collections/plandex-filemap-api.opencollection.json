@@ -1,0 +1,58 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Plandex Server Accounts FileMap API",
+    "version": "2"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "FileMap",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get File Map",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8099/file_map"
+          },
+          "docs": "Generate a tree-sitter file map for the supplied directory or files."
+        },
+        {
+          "info": {
+            "name": "Load Cached File Map",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8099/plans/:planId/:branch/load_cached_file_map",
+            "params": [
+              {
+                "name": "planId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "branch",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Load a cached file map into the plan context."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

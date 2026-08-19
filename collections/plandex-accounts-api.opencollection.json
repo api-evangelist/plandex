@@ -1,0 +1,90 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Plandex Server Accounts API",
+    "version": "2"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Accounts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Email Verification",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8099/accounts/email_verifications"
+          },
+          "docs": "Send an email verification PIN to the supplied address."
+        },
+        {
+          "info": {
+            "name": "Check Email Verification Pin",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8099/accounts/email_verifications/check_pin"
+          },
+          "docs": "Verify the PIN previously emailed to the user."
+        },
+        {
+          "info": {
+            "name": "Create Sign In Code",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8099/accounts/sign_in_codes"
+          },
+          "docs": "Issue a single-use sign-in code (alternative to password flow)."
+        },
+        {
+          "info": {
+            "name": "Sign In",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8099/accounts/sign_in"
+          },
+          "docs": "Authenticate a user and start a session."
+        },
+        {
+          "info": {
+            "name": "Sign Out",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8099/accounts/sign_out"
+          },
+          "docs": "Terminate the active session."
+        },
+        {
+          "info": {
+            "name": "Create Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8099/accounts"
+          },
+          "docs": "Register a new Plandex account."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

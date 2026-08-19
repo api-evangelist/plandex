@@ -1,0 +1,133 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Plandex Server Accounts Models API",
+    "version": "2"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Models",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Custom Models",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8099/custom_models"
+          },
+          "docs": "List user-defined custom models."
+        },
+        {
+          "info": {
+            "name": "Upsert Custom Models",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8099/custom_models"
+          },
+          "docs": "Create or update one or more custom models."
+        },
+        {
+          "info": {
+            "name": "Get Custom Model",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8099/custom_models/:modelId",
+            "params": [
+              {
+                "name": "modelId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a single user-defined custom model."
+        },
+        {
+          "info": {
+            "name": "List Custom Providers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8099/custom_providers"
+          },
+          "docs": "List custom (OpenAI-compatible) model providers."
+        },
+        {
+          "info": {
+            "name": "Get Custom Provider",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8099/custom_providers/:providerId",
+            "params": [
+              {
+                "name": "providerId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a custom provider by ID."
+        },
+        {
+          "info": {
+            "name": "List Model Packs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8099/model_sets"
+          },
+          "docs": "List available model packs (daily, strong, cheap, oss, planner-specific, custom)."
+        },
+        {
+          "info": {
+            "name": "Create Model Pack",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8099/model_sets"
+          },
+          "docs": "Create a new model pack composition."
+        },
+        {
+          "info": {
+            "name": "Update Model Pack",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:8099/model_sets/:setId",
+            "params": [
+              {
+                "name": "setId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update an existing model pack."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

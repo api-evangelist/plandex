@@ -1,0 +1,86 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Plandex Server Accounts Invites API",
+    "version": "2"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Invites",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Invite User",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8099/invites"
+          },
+          "docs": "Send an invite to add a user to the org."
+        },
+        {
+          "info": {
+            "name": "List Pending Invites",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8099/invites/pending"
+          },
+          "docs": "List invites that have not yet been accepted."
+        },
+        {
+          "info": {
+            "name": "List Accepted Invites",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8099/invites/accepted"
+          },
+          "docs": "List invites that have already been accepted."
+        },
+        {
+          "info": {
+            "name": "List All Invites",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8099/invites/all"
+          },
+          "docs": "List all invites regardless of state."
+        },
+        {
+          "info": {
+            "name": "Delete Invite",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:8099/invites/:inviteId",
+            "params": [
+              {
+                "name": "inviteId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Revoke an outstanding invite."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

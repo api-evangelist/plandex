@@ -1,0 +1,172 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Plandex Server Accounts Settings API",
+    "version": "2"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Settings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Plan Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8099/plans/:planId/:branch/settings",
+            "params": [
+              {
+                "name": "planId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "branch",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get the model and execution settings for the plan branch."
+        },
+        {
+          "info": {
+            "name": "Update Plan Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:8099/plans/:planId/:branch/settings",
+            "params": [
+              {
+                "name": "planId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "branch",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update the model and execution settings for the plan branch."
+        },
+        {
+          "info": {
+            "name": "Get Default Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8099/default_settings"
+          },
+          "docs": "Get org-level default model and execution settings."
+        },
+        {
+          "info": {
+            "name": "Update Default Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:8099/default_settings"
+          },
+          "docs": "Update org-level default settings."
+        },
+        {
+          "info": {
+            "name": "Get Plan Config",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8099/plans/:planId/config",
+            "params": [
+              {
+                "name": "planId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get the per-plan configuration (autonomy flags, executor settings)."
+        },
+        {
+          "info": {
+            "name": "Update Plan Config",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:8099/plans/:planId/config",
+            "params": [
+              {
+                "name": "planId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update the per-plan configuration."
+        },
+        {
+          "info": {
+            "name": "Get Default Plan Config",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8099/default_plan_config"
+          },
+          "docs": "Get the org-level default plan config used as a template for new plans."
+        },
+        {
+          "info": {
+            "name": "Update Default Plan Config",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:8099/default_plan_config"
+          },
+          "docs": "Update the org-level default plan config."
+        },
+        {
+          "info": {
+            "name": "Get Org User Config",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8099/org_user_config"
+          },
+          "docs": "Get the per-user configuration scoped to the current org."
+        },
+        {
+          "info": {
+            "name": "Update Org User Config",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:8099/org_user_config"
+          },
+          "docs": "Update the per-user configuration scoped to the current org."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
