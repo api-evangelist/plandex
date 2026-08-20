@@ -32,6 +32,21 @@ position: Provider
 access: 3rd-Party
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/plandex.png
 tags:
+  - Artificial Intelligence
+  - AI Coding Agent
+  - Developer Tools
+  - Open-Source
+  - CLI
+  - Terminal
+  - LLM
+  - Coding Assistant
+  - Agents
+  - Go
+  - Context Management
+  - Plans
+  - Self-Hosted
+  - REST
+tags_raw:
   - AI
   - AI Coding Agent
   - Developer Tools
@@ -57,6 +72,8 @@ apis:
   humanURL: https://docs.plandex.ai/development
   baseURL: http://localhost:8099
   tags:
+  - Account
+  tags_raw:
   - Accounts
   properties:
   - type: OpenAPI
@@ -637,6 +654,8 @@ apis:
   humanURL: https://docs.plandex.ai/development
   baseURL: http://localhost:8099
   tags:
+  - Organization
+  tags_raw:
   - Orgs
   properties:
   - type: OpenAPI
@@ -753,6 +772,8 @@ apis:
   humanURL: https://docs.plandex.ai/development
   baseURL: http://localhost:8099
   tags:
+  - Project
+  tags_raw:
   - Projects
   properties:
   - type: OpenAPI
@@ -869,6 +890,8 @@ apis:
   humanURL: https://docs.plandex.ai/development
   baseURL: http://localhost:8099
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
