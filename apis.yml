@@ -47,7 +47,7 @@ access: 3rd-Party
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/plandex.png
 tags:
   - Artificial Intelligence
-  - AI Coding Agent
+  - AI Coding Agents
   - Developer Tools
   - Open-Source
   - CLI
@@ -262,6 +262,8 @@ apis:
   humanURL: https://docs.plandex.ai/development
   baseURL: http://localhost:8099
   tags:
+  - Conversations
+  tags_raw:
   - Conversation
   properties:
   - type: OpenAPI
