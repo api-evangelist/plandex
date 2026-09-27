@@ -16,17 +16,22 @@ description: >-
   model-provider API keys.
 type: Index
 deliveryModel:
-  model: unknown
-  open_source: unknown
+  model: open-core
+  license: MIT
+  license_evidence:
+    repo: plandex-ai/plandex
+    spdx: MIT
+    stars: 15659
+  open_source: true
   commercial: true
   callable_host: false
-  label: Delivery model not determined — needs a product licence on record
-  confidence: low
+  label: Open core · an OSS project plus a commercial hosted product
+  confidence: medium
   source:
   - openapi
   - pricing
-  - repository-unlicensed
-  generated: '2026-08-28'
+  - repository-license
+  generated: '2026-09-25'
   method: derived
 accessModel:
   pricing: paid
@@ -49,7 +54,7 @@ tags:
   - Artificial Intelligence
   - AI Coding Agents
   - Developer Tools
-  - Open-Source
+  - Open Source
   - CLI
   - Terminal
   - LLM
@@ -75,6 +80,7 @@ tags_raw:
   - Plans
   - Self-Hosted
   - REST
+  - Open-Source
 url: https://raw.githubusercontent.com/api-evangelist/plandex/refs/heads/main/apis.yml
 created: '2026-05-25'
 modified: '2026-05-29'
