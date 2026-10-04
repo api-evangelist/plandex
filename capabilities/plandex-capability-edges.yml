@@ -1,0 +1,36 @@
+slug: plandex
+provider: Plandex
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: Diffs
+  spec_file: plandex-diffs-api-openapi.yml
+  capability_id: BC-4200.40
+  capability_id_l1: BC-4200
+  capability_name: Software Construction Management
+  confidence: 0.75
+  evidence: PATCH /plans/{planId}/{branch}/apply  applyPlan  Apply Plan Changes; GET /plans/{planId}/{branch}/diffs  getPlanDiffs  Get
+    Plan Diffs
+  reason: Reviewing diffs and applying or rejecting per-file code changes is source-change review and
+    application — software construction practice (source control / code review) for an AI coding agent.
+- tag: Execution
+  spec_file: plandex-execution-api-openapi.yml
+  capability_id: BC-4200.40
+  capability_id_l1: BC-4200
+  capability_name: Software Construction Management
+  confidence: 0.7
+  evidence: POST /plans/{planId}/{branch}/tell  tellPlan  Tell Plan; PATCH /plans/{planId}/{branch}/build  buildPlan  Build
+    Plan
+  reason: Drives the agent to generate and build code changes for a plan; this is implementation of software
+    changes. 'Build Plan' here is the agent writing file changes, not a CI pipeline, so construction rather
+    than CI management.

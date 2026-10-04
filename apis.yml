@@ -967,6 +967,9 @@ apis:
   - type: Authentication
     url: https://docs.plandex.ai/hosting/self-hosting/local-mode-quickstart
 common:
+  - type: CapabilityMap
+    url: capabilities/plandex-capability-edges.yml
+    name: Plandex Business Capability Map
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/plandex/overview
   - type: AgenticAccess
