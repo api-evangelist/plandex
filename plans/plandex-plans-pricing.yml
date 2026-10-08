@@ -220,3 +220,42 @@ plans:
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - free
+  - hybrid
+  - subscription
+  units:
+  - credit
+  - period
+  plans:
+  - name: Self-Hosted / Local Mode
+    access: free
+    model: free
+    model_how: derived
+    units:
+    - other
+    periods:
+    - month
+  - name: Plandex Cloud — BYO API Key Mode (Historical)
+    access: paid
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    - period
+    periods:
+    - month
+    - term
+  - name: Plandex Cloud — Integrated Models Mode (Historical)
+    access: paid
+    model: hybrid
+    model_how: derived
+    units:
+    - credit
+    - period
+    periods:
+    - month
+    - term
