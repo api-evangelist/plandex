@@ -1,4 +1,4 @@
-# Plandex (plandex)
+# Plandex
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,116 +66,208 @@
 
 Plandex is an open-source, terminal-based AI coding agent designed to take on large, multi-step software development tasks across many files in real world codebases. Written in Go and released under the MIT license, Plandex builds and executes long-running "plans" — durable, branchable units of work that combine intelligent context management, project maps generated with tree-sitter for 30+ programming languages, an effective 2M-token context window, and a cumulative diff review sandbox that isolates AI edits until a developer explicitly applies them. The tool ships as a CLI with an interactive REPL (fuzzy auto-complete), supports automated debugging of terminal commands and browser applications, integrates with Git for branching and commit-message generation, and is provider-neutral — working with Anthropic Claude, OpenAI, Google Gemini, OpenRouter.ai, Azure OpenAI, AWS Bedrock, DeepSeek, Perplexity, Ollama, and any OpenAI-compatible custom provider. The Plandex Server exposes a REST management/orchestration API (over 60 endpoints across accounts, orgs, projects, plans, branches, context, conversation, diffs, settings, model packs, and streaming execution) that powers both the CLI/REPL and the hosted Plandex Cloud. Plandex Cloud is winding down as of 2025-10-03; Plandex is now distributed primarily as a Docker-based self-hosted / local-mode product that users run with their own model-provider API keys.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/plandex/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/plandex/refs/heads/main/apis.yml)
+**Areas:** Artificial Intelligence · AI Coding Agents · Developer Tools · Open Source · CLI · Terminal · LLM · Coding Assistant · Agents · Go · Context Management · Plans
 
-## Scope
+## Plandex on APIs.io
 
-- **Type:** Index
-- **Position:** Provider
-- **Access:** 3rd-Party
+Everything profiled for Plandex is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/plandex/](https://apis.io/providers/plandex/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (15)
 
-- AI
-- AI Coding Agent
-- Developer Tools
-- Open Source
-- CLI
-- Terminal
-- LLM
-- Coding Assistant
-- Agents
-- Go
-- Context Management
-- Plans
-- Self-Hosted
-- REST
+- [Plandex Accounts API](https://apis.io/apis/plandex/plandex-accounts-api/) — User account, email verification, and authentication operations.
+- [Plandex Branches API](https://apis.io/apis/plandex/plandex-branches-api/) — Per-plan branches for parallel exploration and diffing.
+- [Plandex Context API](https://apis.io/apis/plandex/plandex-context-api/) — Files, directory trees, URLs, notes, and images loaded into a plan.
+- [Plandex Conversation API](https://apis.io/apis/plandex/plandex-conversation-api/) — Prompts, responses, and rewind history within a plan branch.
+- [Plandex Diffs API](https://apis.io/apis/plandex/plandex-diffs-api/) — Per-file pending changes, apply, and reject operations.
+- [Plandex Execution API](https://apis.io/apis/plandex/plandex-execution-api/) — Streaming connect, build, tell, and stop endpoints for plan execution.
+- [Plandex FileMap API](https://apis.io/apis/plandex/plandex-filemap-api/) — Tree-sitter project map generation and cached map loading.
+- [Plandex Health API](https://apis.io/apis/plandex/plandex-health-api/) — Operational health and version endpoints.
+- [Plandex Invites API](https://apis.io/apis/plandex/plandex-invites-api/) — Invite users into an org and manage pending invites.
+- [Plandex Models API](https://apis.io/apis/plandex/plandex-models-api/) — Model packs, custom models, custom providers, default settings.
+- [Plandex Orgs API](https://apis.io/apis/plandex/plandex-orgs-api/) — Organization and role membership management.
+- [Plandex Plans API](https://apis.io/apis/plandex/plandex-plans-api/) — Long-running, branchable units of AI coding work over loaded context.
+- [Plandex Projects API](https://apis.io/apis/plandex/plandex-projects-api/) — Project containers that group plans, mapped to a working directory.
+- [Plandex Settings API](https://apis.io/apis/plandex/plandex-settings-api/) — Per-plan model settings, default settings, and org/user config.
+- [Plandex Users API](https://apis.io/apis/plandex/plandex-users-api/) — User listing and removal within an org.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-05-25
-- **Modified:** 2026-05-29
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### Plandex Server API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-Management and orchestration REST API exposed by the Plandex server (open-source, Go) used by the Plandex CLI/REPL to drive long-running coding plans across organizations, projects, plans, branches, context, conversation, model packs, and configuration. The same API powered Plandex Cloud (winding down 2025-10-03) and now powers self-hosted / local-mode deployments via Docker. Default local-mode bind is http://localhost:8099.
+- [Plandex Agentic Access](https://apis.io/agentic-access/plandex/plandex-agentic-access/)
 
-- **Human URL:** [https://docs.plandex.ai/development](https://docs.plandex.ai/development)
-- **Base URL:** `http://localhost:8099`
+#### JSON Schema (6)
 
-#### Tags
+The data models the API reads and writes.
 
-- AI Coding Agent
-- Plans
-- REST
-- Self-Hosted
+- [Branch](https://apis.io/schemas/plandex/plandex-server-branch/)
+- [ContextItem](https://apis.io/schemas/plandex/plandex-server-context-item/)
+- [ConvoMessage](https://apis.io/schemas/plandex/plandex-server-convo-message/)
+- [ModelPack](https://apis.io/schemas/plandex/plandex-server-model-pack/)
+- [Plan](https://apis.io/schemas/plandex/plandex-server-plan/)
+- [PlanConfig](https://apis.io/schemas/plandex/plandex-server-plan-config/)
 
-#### Properties
+#### JSON Structure (3)
 
-- [Documentation](https://docs.plandex.ai)
-- [Source Code](https://github.com/plandex-ai/plandex/tree/main/app/server)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/plandex/main/openapi/plandex-server-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-plan-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-context-item-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-branch-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-convo-message-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-model-pack-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/plandex/main/json-schema/plandex-server-plan-config-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-plan-structure.json)
-- [JSON Structure](https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-context-item-structure.json)
-- [JSON Structure](https://raw.githubusercontent.com/api-evangelist/plandex/main/json-structure/plandex-server-model-pack-structure.json)
-- [Example](https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-plan-example.json)
-- [Example](https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-context-item-example.json)
-- [Example](https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-convo-message-example.json)
-- [Example](https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-model-pack-example.json)
-- [Example](https://raw.githubusercontent.com/api-evangelist/plandex/main/examples/plandex-server-plan-config-example.json)
-- [Authentication](https://docs.plandex.ai/hosting/self-hosting/local-mode-quickstart)
-- [Postman Collection](collections/plandex-server.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/plandex-server.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Data models expressed in JSON Structure.
 
-## Common Properties
+- [Plandex Server Context Item Structure](https://apis.io/json-structure/plandex/plandex-server-context-item-structure/)
+- [Plandex Server Model Pack Structure](https://apis.io/json-structure/plandex/plandex-server-model-pack-structure/)
+- [Plandex Server Plan Structure](https://apis.io/json-structure/plandex/plandex-server-plan-structure/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Plandex Context](https://apis.io/jsonld/plandex/plandex-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Plandex Vocabulary](https://apis.io/vocabularies/plandex/plandex-vocabulary/)
+
+#### Examples (5)
+
+Example requests and responses.
+
+- [Plandex Server Context Item Example](https://apis.io/examples/plandex/plandex-server-context-item-example/)
+- [Plandex Server Convo Message Example](https://apis.io/examples/plandex/plandex-server-convo-message-example/)
+- [Plandex Server Model Pack Example](https://apis.io/examples/plandex/plandex-server-model-pack-example/)
+- [Plandex Server Plan Config Example](https://apis.io/examples/plandex/plandex-server-plan-config-example/)
+- [Plandex Server Plan Example](https://apis.io/examples/plandex/plandex-server-plan-example/)
+
+#### Collections (31)
+
+Postman and Open Collection request collections.
+
+- [Plandex Server Accounts API](https://apis.io/collections/plandex/open-plandex-accounts-api/)
+- [Plandex Server Accounts Branches API](https://apis.io/collections/plandex/open-plandex-branches-api/)
+- [Plandex Server Accounts Context API](https://apis.io/collections/plandex/open-plandex-context-api/)
+- [Plandex Server Accounts Conversation API](https://apis.io/collections/plandex/open-plandex-conversation-api/)
+- [Plandex Server Accounts Diffs API](https://apis.io/collections/plandex/open-plandex-diffs-api/)
+- [Plandex Server Accounts Execution API](https://apis.io/collections/plandex/open-plandex-execution-api/)
+- [Plandex Server Accounts FileMap API](https://apis.io/collections/plandex/open-plandex-filemap-api/)
+- [Plandex Server Accounts Health API](https://apis.io/collections/plandex/open-plandex-health-api/)
+- [Plandex Server Accounts Invites API](https://apis.io/collections/plandex/open-plandex-invites-api/)
+- [Plandex Server Accounts Models API](https://apis.io/collections/plandex/open-plandex-models-api/)
+- [Plandex Server Accounts Orgs API](https://apis.io/collections/plandex/open-plandex-orgs-api/)
+- [Plandex Server Accounts Plans API](https://apis.io/collections/plandex/open-plandex-plans-api/)
+- [Plandex Server Accounts Projects API](https://apis.io/collections/plandex/open-plandex-projects-api/)
+- [Plandex Server API](https://apis.io/collections/plandex/open-plandex-server/)
+- [Plandex Server Accounts Settings API](https://apis.io/collections/plandex/open-plandex-settings-api/)
+- [Plandex Server Accounts Users API](https://apis.io/collections/plandex/open-plandex-users-api/)
+- [Plandex Server Accounts API](https://apis.io/collections/plandex/postman-plandex-accounts-api/)
+- [Plandex Server Accounts Branches API](https://apis.io/collections/plandex/postman-plandex-branches-api/)
+- [Plandex Server Accounts Context API](https://apis.io/collections/plandex/postman-plandex-context-api/)
+- [Plandex Server Accounts Conversation API](https://apis.io/collections/plandex/postman-plandex-conversation-api/)
+- [Plandex Server Accounts Diffs API](https://apis.io/collections/plandex/postman-plandex-diffs-api/)
+- [Plandex Server Accounts Execution API](https://apis.io/collections/plandex/postman-plandex-execution-api/)
+- [Plandex Server Accounts FileMap API](https://apis.io/collections/plandex/postman-plandex-filemap-api/)
+- [Plandex Server Accounts Health API](https://apis.io/collections/plandex/postman-plandex-health-api/)
+- [Plandex Server Accounts Invites API](https://apis.io/collections/plandex/postman-plandex-invites-api/)
+- …and 6 more published on APIs.io
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Plandex — jsonschema rules](https://apis.io/rules/plandex/plandex-jsonschema-spectral-rules/)
+- [Plandex API Rules](https://apis.io/rules/plandex/plandex-rules/)
+
+#### Security (1)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Plandex Authentication](https://apis.io/security/plandex/plandex-authentication/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Plandex Plans Pricing](https://apis.io/plans/plandex/plandex-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Plandex Rate Limits](https://apis.io/rate-limits/plandex/plandex-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Plandex Finops](https://apis.io/finops/plandex/plandex-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://plandex.ai)
 - [Documentation](https://docs.plandex.ai)
-- [Getting Started](https://docs.plandex.ai/quick-start)
-- [Quickstart](https://docs.plandex.ai/hosting/self-hosting/local-mode-quickstart)
-- [Install](https://plandex.ai/install.sh)
-- [Git Hub](https://github.com/plandex-ai/plandex)
-- [GitHub Organization](https://github.com/plandex-ai)
-- [GitHub Repository](https://github.com/plandex-ai/plandex)
-- [Source Code](https://github.com/plandex-ai/plandex)
-- [License](https://github.com/plandex-ai/plandex/blob/main/LICENSE)
-- [C L I](https://docs.plandex.ai/cli-reference)
-- [R E P L](https://docs.plandex.ai/repl)
+- [Getting started](https://docs.plandex.ai/quick-start)
 - [Pricing](https://docs.plandex.ai/hosting/cloud)
-- [Privacy Policy](https://plandex.ai/privacy)
-- [Terms of Service](https://plandex.ai/terms)
-- [Security](https://docs.plandex.ai/security)
-- [Blog](https://plandex.ai/blog)
-- [Release Notes](https://github.com/plandex-ai/plandex/releases)
-- [Changelog](https://github.com/plandex-ai/plandex/releases)
 - [Support](https://github.com/plandex-ai/plandex/issues)
-- [Discord](https://discord.gg/plandex-ai)
-- [Twitter](https://twitter.com/plandex_ai)
-- [YouTube](https://www.youtube.com/@plandex-ai)
-- [Discussions](https://github.com/plandex-ai/plandex/discussions)
-- [Issues](https://github.com/plandex-ai/plandex/issues)
-- [Docker](https://hub.docker.com/r/plandexai/plandex-server)
-- [Docker Compose](https://github.com/plandex-ai/plandex/blob/main/app/docker-compose.yml)
-- [Spectral Rules](https://raw.githubusercontent.com/api-evangelist/plandex/main/rules/plandex-rules.yml)
-- [Vocabulary](https://raw.githubusercontent.com/api-evangelist/plandex/main/vocabulary/plandex-vocabulary.yml)
-- [J S O N- L D](https://raw.githubusercontent.com/api-evangelist/plandex/main/json-ld/plandex-context.jsonld)
-- [Plans](https://raw.githubusercontent.com/api-evangelist/plandex/main/plans/plandex-plans-pricing.yml)
-- [Rate Limits](https://raw.githubusercontent.com/api-evangelist/plandex/main/rate-limits/plandex-rate-limits.yml)
-- [Fin Ops](https://raw.githubusercontent.com/api-evangelist/plandex/main/finops/plandex-finops.yml)
-- [Features](undefined)
-- [Use Cases](undefined)
-- [Integrations](undefined)
-- [Solutions](undefined)
+- [Changelog](https://github.com/plandex-ai/plandex/releases)
+- [Blog](https://plandex.ai/blog)
+- [Security](https://docs.plandex.ai/security)
+- [Terms of service](https://plandex.ai/terms)
+- [Privacy policy](https://plandex.ai/privacy)
+- [GitHub](https://github.com/plandex-ai)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 38.9** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 57.1 |
+| Contract quality | 59.0 |
+| Contract governance | 27.3 |
+| Operational transparency | 31.6 |
+| Developer ergonomics | 27.4 |
+| Access clarity | 23.7 |
+
+**Agent readiness 22.3** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 19.1** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/plandex/](https://apis.io/providers/plandex/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Plandex: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/plandex/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
